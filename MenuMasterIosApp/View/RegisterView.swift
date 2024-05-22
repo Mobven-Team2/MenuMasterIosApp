@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  MenuMasterIosApp
 //
 //  Created by Cansu Özdizlekli on 5/22/24.
@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct RegisterView: View {
+    @State private var fullName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
     @State private var showPassword: Bool = false
     
     var body: some View {
@@ -20,16 +22,27 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.5)
             
-            
-            
             VStack(alignment:.center) {
-                Text("Giriş Yap")
+                Text("Kaydol")
                     .foregroundColor(Color.theme.titleColor)
                     .font(.chillaxVariable(size: 32))
                     .fontWeight(.semibold)
                 
-                
                 VStack(alignment: .leading) {
+                    
+                    Text("İsim Soyisim")
+                        .font(.dmSans(size: 14))
+                        .foregroundColor(Color.theme.titleColor)
+                    
+                    TextField("Jane Doe", text: $fullName)
+                        .font(.dmSans(size: 14))
+                        .padding()
+                        .frame(width: 327, height: 49)
+                        .background(Color.white)
+                        .cornerRadius(25.0)
+                        .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                    
+                    
                     Text("E-posta")
                         .font(.dmSans(size: 14))
                         .foregroundColor(Color.theme.titleColor)
@@ -65,7 +78,42 @@ struct LoginView: View {
                                 .cornerRadius(25.0)
                                 .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
                         }
-                        
+                        Button(action: {
+                            showPassword.toggle()
+                        }) {
+                            Image(showPassword ? "eye" : "eye-slash")
+                                .resizable()
+                                .renderingMode(.template)
+                                .frame(width: 20,height: 20)
+                                .foregroundColor(Color.theme.titleColor)
+                                .opacity(0.5)
+                        }
+                        .padding(.trailing, 16)
+                    }
+                    
+                    Text("Şifre Tekrar")
+                        .font(.dmSans(size: 14))
+                        .foregroundColor(Color.theme.titleColor)
+                    
+                    ZStack(alignment:.trailing) {
+                        if showPassword {
+                            TextField("Şifre Tekrar", text: $password)
+                            
+                                .font(.dmSans(size: 14))
+                                .padding()
+                                .frame(width: 327, height: 49)
+                                .background(Color.white)
+                                .cornerRadius(25.0)
+                                .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                        } else {
+                            SecureField("Şifre Tekrar", text: $confirmPassword)
+                                .font(.dmSans(size: 14))
+                                .padding()
+                                .frame(width: 327, height: 49)
+                                .background(Color.white)
+                                .cornerRadius(25.0)
+                                .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                        }
                         Button(action: {
                             showPassword.toggle()
                         }) {
@@ -80,28 +128,14 @@ struct LoginView: View {
                     }
      
                 }.padding(.top,34)
+                    .padding(.bottom,88)
                 
-                
-                HStack(alignment: .bottom) { 
-                    Spacer()
-                    Button(action: {
-                        // Şifreni mi unuttun?
-                    }) {
-                        Text("Şifreni mi Unuttun?")
-                            .foregroundColor(Color.theme.titleColor)
-                            .underline()
-                            .font(.dmSans(size: 12))
-                    }
-                }
-                .padding(.trailing, 27)
-                .padding(.top, 20)
-                .padding(.bottom, 13)
                 
                 
                 Button(action: {
-                    // login
+                    // sign in
                 }) {
-                    Text("Giriş Yap")
+                    Text("Hesap Oluştur")
                         .font(.dmSans(size: 16))
                         .foregroundColor(.white)
                         .frame(width: 327, height: 49)
@@ -112,24 +146,23 @@ struct LoginView: View {
                 .padding(.bottom, 13)
                 
                 HStack(spacing:3) {
-                    Text("Hesabın yok mu?")
+                    Text("Hesabın var mı?")
                     Button(action: {
                         // redirect register page
                     }) {
-                        Text("Kaydol")
+                        Text("Giriş Yap")
                             .underline()
                             .fontWeight(.bold)
                     }
                 }.font(.dmSans(size: 16))
                     .foregroundColor(Color.theme.titleColor)
-                
-                
-                
             }
         }
     }
 }
 
 #Preview {
-    LoginView()
+    RegisterView()
 }
+
+
