@@ -19,7 +19,7 @@ struct LoginView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
-                .opacity(0.8)
+                .opacity(0.5)
             
             
             
