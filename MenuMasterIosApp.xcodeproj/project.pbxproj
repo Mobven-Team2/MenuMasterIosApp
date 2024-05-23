@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C35D6AF2BFFDEB20044A2C1 /* MockAuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D6AE2BFFDEB20044A2C1 /* MockAuthenticationModel.swift */; };
 		0C35D6B12BFFE0090044A2C1 /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D6B02BFFE0090044A2C1 /* MockAuthenticationService.swift */; };
+		0C41F1032BFFE515007AA0D2 /* MockAuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41F1022BFFE515007AA0D2 /* MockAuthenticationViewModel.swift */; };
 		7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40942BFEB5C30026CC3A /* AuthenticationService.swift */; };
 		7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */; };
 		8D246E612BFF7641008CA0A4 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E602BFF7640008CA0A4 /* View+Ext.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		0C35D6AE2BFFDEB20044A2C1 /* MockAuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationModel.swift; sourceTree = "<group>"; };
 		0C35D6B02BFFE0090044A2C1 /* MockAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationService.swift; sourceTree = "<group>"; };
+		0C41F1022BFFE515007AA0D2 /* MockAuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationViewModel.swift; sourceTree = "<group>"; };
 		7A2E40942BFEB5C30026CC3A /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8D246E602BFF7640008CA0A4 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */,
 				8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */,
+				0C41F1022BFFE515007AA0D2 /* MockAuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */,
 				0C35D6AF2BFFDEB20044A2C1 /* MockAuthenticationModel.swift in Sources */,
 				7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */,
+				0C41F1032BFFE515007AA0D2 /* MockAuthenticationViewModel.swift in Sources */,
 				8DE4BD452BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld in Sources */,
 				8DF1AB692BFDF7FD008F9899 /* LoginView.swift in Sources */,
 				8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */,
