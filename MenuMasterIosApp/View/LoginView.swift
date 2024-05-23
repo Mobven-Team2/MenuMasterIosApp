@@ -12,6 +12,7 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var showPassword: Bool = false
     
+    
     var body: some View {
         ZStack {
             Image("background-image")
@@ -20,8 +21,7 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.5)
             
-            
-            
+
             VStack(alignment:.center) {
                 Text("Giriş Yap")
                     .foregroundColor(Color.theme.titleColor)
@@ -78,11 +78,11 @@ struct LoginView: View {
                         }
                         .padding(.trailing, 16)
                     }
-     
+                    
                 }.padding(.top,34)
                 
                 
-                HStack(alignment: .bottom) { 
+                HStack(alignment: .bottom) {
                     Spacer()
                     Button(action: {
                         // Şifreni mi unuttun?
@@ -100,6 +100,7 @@ struct LoginView: View {
                 
                 Button(action: {
                     // login
+                    LoginViewModel().login()
                 }) {
                     Text("Giriş Yap")
                         .font(.dmSans(size: 16))
@@ -122,8 +123,6 @@ struct LoginView: View {
                     }
                 }.font(.dmSans(size: 16))
                     .foregroundColor(Color.theme.titleColor)
-                
-                
                 
             }
         }
