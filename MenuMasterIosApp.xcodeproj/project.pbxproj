@@ -11,6 +11,7 @@
 		7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */; };
 		8D246E612BFF7641008CA0A4 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E602BFF7640008CA0A4 /* View+Ext.swift */; };
 		8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E622BFF7C1A008CA0A4 /* Text+Ext.swift */; };
+		8D246E652BFF872C008CA0A4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */; };
 		8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */; };
 		8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD3A2BFDE75500BEEE53 /* ContentView.swift */; };
 		8DE4BD3D2BFDE75700BEEE53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE4BD3C2BFDE75700BEEE53 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8D246E602BFF7640008CA0A4 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		8D246E622BFF7C1A008CA0A4 /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
+		8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		8DE4BD352BFDE75500BEEE53 /* MenuMasterIosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuMasterIosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMasterIosAppApp.swift; sourceTree = "<group>"; };
 		8DE4BD3A2BFDE75500BEEE53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */,
+				8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				8DF1AB692BFDF7FD008F9899 /* LoginView.swift in Sources */,
 				8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */,
 				8DF1AB772BFE3376008F9899 /* RegisterView.swift in Sources */,
+				8D246E652BFF872C008CA0A4 /* RegisterViewModel.swift in Sources */,
 				8D246E612BFF7641008CA0A4 /* View+Ext.swift in Sources */,
 				8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */,
 				7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */,

@@ -20,8 +20,8 @@ class LoginViewModel: ObservableObject {
     
     @Published var isAuthenticated: Bool = false
     
-    var email: String = ""
-    var password: String = ""
+    @Published var email: String = ""
+    @Published var password: String = ""
     
     func login() {
         if validateFields() {

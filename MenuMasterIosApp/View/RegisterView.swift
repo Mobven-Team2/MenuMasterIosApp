@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var fullName: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var confirmPassword: String = ""
+    @ObservedObject var viewModel = RegisterViewModel()
     @State private var showPassword: Bool = false
     
     var body: some View {
@@ -26,13 +23,13 @@ struct RegisterView: View {
                     Text("İsim Soyisim")
                         .formTitleStyle()
                     
-                    TextField("Jane Doe", text: $fullName)
+                    TextField("Jane Doe", text: $viewModel.fullName)
                         .customTextFieldStyle()
                     
                     Text("E-posta")
                         .formTitleStyle()
                     
-                    TextField("@janedoe.xamplemail.com", text: $email)
+                    TextField("@janedoe.xamplemail.com", text: $viewModel.email)
                         .customTextFieldStyle()
                     
                     Text("Şifre")
@@ -40,10 +37,10 @@ struct RegisterView: View {
                     
                     ZStack(alignment:.trailing) {
                         if showPassword {
-                            TextField("Şifre", text: $password)
+                            TextField("Şifre", text: $viewModel.password)
                                 .customTextFieldStyle()
                         } else {
-                            SecureField("Şifre", text: $password)
+                            SecureField("Şifre", text: $viewModel.password)
                                 .customTextFieldStyle()
                         }
                         Button(action: {
@@ -64,10 +61,10 @@ struct RegisterView: View {
                     
                     ZStack(alignment:.trailing) {
                         if showPassword {
-                            TextField("Şifre Tekrar", text: $password)
+                            TextField("Şifre Tekrar", text: $viewModel.confirmPassword)
                                 .customTextFieldStyle()
                         } else {
-                            SecureField("Şifre Tekrar", text: $confirmPassword)
+                            SecureField("Şifre Tekrar", text: $viewModel.confirmPassword)
                                 .customTextFieldStyle()
                         }
                         Button(action: {
@@ -119,7 +116,7 @@ extension RegisterView {
     
     private var createAccountButton : some View {
         Button(action: {
-            // sign up
+            viewModel.register()
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()

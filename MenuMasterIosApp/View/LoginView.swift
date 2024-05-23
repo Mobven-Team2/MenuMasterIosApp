@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var showPassword: Bool = false
     @ObservedObject var viewModel = LoginViewModel()
+    @State private var showPassword: Bool = false
     
     var body: some View {
         ZStack {
