@@ -98,6 +98,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C35D6AD2BFFDDD90044A2C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7A2E40962BFEB66B0026CC3A /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +149,7 @@
 				8DF1AB6F2BFE0243008F9899 /* Resources */,
 				8DF1AB6A2BFDFAC5008F9899 /* Extensions */,
 				7A2E40962BFEB66B0026CC3A /* Service */,
+				0C35D6AD2BFFDDD90044A2C1 /* Model */,
 				7A2E40972BFEB6940026CC3A /* ViewModel */,
 				8DF1AB652BFDF764008F9899 /* View */,
 				8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */,
