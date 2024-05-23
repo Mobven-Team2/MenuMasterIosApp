@@ -41,7 +41,24 @@ class MockAuthenticationViewModel {
             }
         }
     
-    
-    
+    func register() {
+        let request = RegisterRequest(
+            firstName: firstName,
+            lastName: lastName,
+            password: password,
+            passwordConfirm: passwordConfirm,
+            email: registerEmail)
+        
+        authenticationService.register(request: request) { [weak self] result in
+            switch result {
+            case.success(let response):
+                self?.registerResponse = response
+                self?.registerErrorMessage = nil
+            case.failure(let error):
+                self?.registerErrorMessage = error.localizedDescription
+            }
+        }
     }
+    
+}
 
