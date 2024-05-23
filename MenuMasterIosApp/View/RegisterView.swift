@@ -16,67 +16,35 @@ struct RegisterView: View {
     
     var body: some View {
         ZStack {
-            Image("background-image")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
-                .opacity(0.5)
+            backgroundImage
             
             VStack(alignment:.center) {
-                Text("Kaydol")
-                    .foregroundColor(Color.theme.titleColor)
-                    .font(.chillaxVariable(size: 32))
-                    .fontWeight(.semibold)
+                titleText
                 
                 VStack(alignment: .leading) {
                     
                     Text("İsim Soyisim")
-                        .font(.dmSans(size: 14))
-                        .foregroundColor(Color.theme.titleColor)
+                        .formTitleStyle()
                     
                     TextField("Jane Doe", text: $fullName)
-                        .font(.dmSans(size: 14))
-                        .padding()
-                        .frame(width: 327, height: 49)
-                        .background(Color.white)
-                        .cornerRadius(25.0)
-                        .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
-                    
+                        .customTextFieldStyle()
                     
                     Text("E-posta")
-                        .font(.dmSans(size: 14))
-                        .foregroundColor(Color.theme.titleColor)
+                        .formTitleStyle()
                     
                     TextField("@janedoe.xamplemail.com", text: $email)
-                        .font(.dmSans(size: 14))
-                        .padding()
-                        .frame(width: 327, height: 49)
-                        .background(Color.white)
-                        .cornerRadius(25.0)
-                        .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                        .customTextFieldStyle()
                     
                     Text("Şifre")
-                        .font(.dmSans(size: 14))
-                        .foregroundColor(Color.theme.titleColor)
+                        .formTitleStyle()
                     
                     ZStack(alignment:.trailing) {
                         if showPassword {
                             TextField("Şifre", text: $password)
-                            
-                                .font(.dmSans(size: 14))
-                                .padding()
-                                .frame(width: 327, height: 49)
-                                .background(Color.white)
-                                .cornerRadius(25.0)
-                                .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                                .customTextFieldStyle()
                         } else {
                             SecureField("Şifre", text: $password)
-                                .font(.dmSans(size: 14))
-                                .padding()
-                                .frame(width: 327, height: 49)
-                                .background(Color.white)
-                                .cornerRadius(25.0)
-                                .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                                .customTextFieldStyle()
                         }
                         Button(action: {
                             showPassword.toggle()
@@ -92,27 +60,15 @@ struct RegisterView: View {
                     }
                     
                     Text("Şifre Tekrar")
-                        .font(.dmSans(size: 14))
-                        .foregroundColor(Color.theme.titleColor)
+                        .formTitleStyle()
                     
                     ZStack(alignment:.trailing) {
                         if showPassword {
                             TextField("Şifre Tekrar", text: $password)
-                            
-                                .font(.dmSans(size: 14))
-                                .padding()
-                                .frame(width: 327, height: 49)
-                                .background(Color.white)
-                                .cornerRadius(25.0)
-                                .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                                .customTextFieldStyle()
                         } else {
                             SecureField("Şifre Tekrar", text: $confirmPassword)
-                                .font(.dmSans(size: 14))
-                                .padding()
-                                .frame(width: 327, height: 49)
-                                .background(Color.white)
-                                .cornerRadius(25.0)
-                                .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+                                .customTextFieldStyle()
                         }
                         Button(action: {
                             showPassword.toggle()
@@ -126,36 +82,13 @@ struct RegisterView: View {
                         }
                         .padding(.trailing, 16)
                     }
-     
+                    
                 }.padding(.top,34)
                     .padding(.bottom,88)
                 
-                
-                
-                Button(action: {
-                    // sign in
-                }) {
-                    Text("Hesap Oluştur")
-                        .font(.dmSans(size: 16))
-                        .foregroundColor(.white)
-                        .frame(width: 327, height: 49)
-                        .background(Color.theme.greenColor)
-                        .cornerRadius(25.0)
-                        .fontWeight(.semibold)
-                }
-                .padding(.bottom, 13)
-                
-                HStack(spacing:3) {
-                    Text("Hesabın var mı?")
-                    Button(action: {
-                        // redirect register page
-                    }) {
-                        Text("Giriş Yap")
-                            .underline()
-                            .fontWeight(.bold)
-                    }
-                }.font(.dmSans(size: 16))
-                    .foregroundColor(Color.theme.titleColor)
+                createAccountButton
+                redirectLoginPageButton
+             
             }
         }
     }
@@ -166,3 +99,46 @@ struct RegisterView: View {
 }
 
 
+extension RegisterView {
+    
+    private var backgroundImage : some View {
+        Image("background-image")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .edgesIgnoringSafeArea(.all)
+            .opacity(0.5)
+    }
+    
+    private var titleText : some View {
+        Text("Kaydol")
+            .foregroundColor(Color.theme.titleColor)
+            .font(.chillaxVariable(size: 32))
+            .fontWeight(.semibold)
+    }
+    
+    
+    private var createAccountButton : some View {
+        Button(action: {
+            // sign up
+        }) {
+            Text("Hesap Oluştur")
+                .customButtonStyle()
+        }
+        .padding(.bottom, 13)
+    }
+    
+    private var redirectLoginPageButton : some View {
+        HStack(spacing:3) {
+            Text("Hesabın var mı?")
+            Button(action: {
+                // redirect register page
+            }) {
+                Text("Giriş Yap")
+                    .underline()
+                    .fontWeight(.bold)
+            }
+        }.font(.dmSans(size: 16))
+            .foregroundColor(Color.theme.titleColor)
+    }
+    
+}
