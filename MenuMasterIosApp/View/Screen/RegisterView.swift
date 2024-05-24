@@ -10,59 +10,68 @@ import SwiftUI
 struct RegisterView: View {
     @ObservedObject var viewModel = RegisterViewModel()
     @State private var showPassword: Bool = false
+    @State private var loginTag: Bool = false
     
     var body: some View {
-        ZStack {
-            backgroundImage
-            
-            VStack(alignment:.center) {
-                titleText
+        NavigationViewStack {
+            ZStack {
+                backgroundImage
                 
-                VStack(alignment: .leading) {
+                VStack(alignment:.center) {
+                    titleText
                     
-                    TextfieldView(title: "İsim Soyisim", placeholder: "Jane Doe", isPasswordField: false, text: $viewModel.fullName)
-                    
-                    TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
-                    
-                    ZStack(alignment:.trailing) {
-                        TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                    VStack(alignment: .leading) {
                         
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.theme.titleColor)
-                                .opacity(0.5)
-                                .padding(.top, 25)
-                                .padding(.trailing, 20)
-                        }
-                    }
-                    
-                    ZStack(alignment:.trailing) {
-                        TextfieldView(title: "Şifre Tekrar", placeholder: "Şifre Tekrar", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
+                        TextfieldView(title: "İsim Soyisim", placeholder: "Jane Doe", isPasswordField: false, text: $viewModel.fullName)
                         
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.theme.titleColor)
-                                .opacity(0.5)
-                                .padding(.top, 25)
-                                .padding(.trailing, 20)
+                        TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
+                        
+                        ZStack(alignment:.trailing) {
+                            TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                            
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(showPassword ? "eye" : "eye-slash")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(Color.theme.titleColor)
+                                    .opacity(0.5)
+                                    .padding(.top, 25)
+                                    .padding(.trailing, 20)
+                            }
                         }
-                    }
+                        
+                        ZStack(alignment:.trailing) {
+                            TextfieldView(title: "Şifre Tekrar", placeholder: "Şifre Tekrar", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
+                            
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(showPassword ? "eye" : "eye-slash")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(Color.theme.titleColor)
+                                    .opacity(0.5)
+                                    .padding(.top, 25)
+                                    .padding(.trailing, 20)
+                            }
+                        }
+                        
+                    }.padding(.top,34)
+                        .padding(.bottom,88)
                     
-                }.padding(.top,34)
-                    .padding(.bottom,88)
-                
-                createAccountButton
-                redirectLoginPageButton
-                
+                    createAccountButton
+                    redirectLoginPageButton
+                    
+                }
             }
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+                HomeView()
+            })
+            .navigationDestinationWrapper(isPresented: $loginTag, destination: {
+                LoginView()
+            })
         }
     }
 }
@@ -93,6 +102,7 @@ extension RegisterView {
     private var createAccountButton : some View {
         Button(action: {
             viewModel.register()
+            //            viewModel.isAuthenticated = true // for test
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
@@ -104,7 +114,8 @@ extension RegisterView {
         HStack(spacing:3) {
             Text("Hesabın var mı?")
             Button(action: {
-                // redirect register page
+                // redirect login page
+                loginTag = true
             }) {
                 Text("Giriş Yap")
                     .underline()
