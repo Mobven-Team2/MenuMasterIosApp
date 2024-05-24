@@ -20,64 +20,40 @@ struct RegisterView: View {
                 
                 VStack(alignment: .leading) {
                     
-                    Text("İsim Soyisim")
-                        .formTitleStyle()
+                    TextfieldView(title: "İsim Soyisim", placeholder: "Jane Doe", isPasswordField: false, text: $viewModel.fullName)
                     
-                    TextField("Jane Doe", text: $viewModel.fullName)
-                        .customTextFieldStyle()
-                    
-                    Text("E-posta")
-                        .formTitleStyle()
-                    
-                    TextField("@janedoe.xamplemail.com", text: $viewModel.email)
-                        .customTextFieldStyle()
-                    
-                    Text("Şifre")
-                        .formTitleStyle()
+                    TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
                     
                     ZStack(alignment:.trailing) {
-                        if showPassword {
-                            TextField("Şifre", text: $viewModel.password)
-                                .customTextFieldStyle()
-                        } else {
-                            SecureField("Şifre", text: $viewModel.password)
-                                .customTextFieldStyle()
-                        }
+                        TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                        
                         Button(action: {
                             showPassword.toggle()
                         }) {
                             Image(showPassword ? "eye" : "eye-slash")
                                 .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 20,height: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(Color.theme.titleColor)
                                 .opacity(0.5)
+                                .padding(.top, 25)
+                                .padding(.trailing, 20)
                         }
-                        .padding(.trailing, 16)
                     }
                     
-                    Text("Şifre Tekrar")
-                        .formTitleStyle()
-                    
                     ZStack(alignment:.trailing) {
-                        if showPassword {
-                            TextField("Şifre Tekrar", text: $viewModel.confirmPassword)
-                                .customTextFieldStyle()
-                        } else {
-                            SecureField("Şifre Tekrar", text: $viewModel.confirmPassword)
-                                .customTextFieldStyle()
-                        }
+                        TextfieldView(title: "Şifre Tekrar", placeholder: "Şifre Tekrar", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
+                        
                         Button(action: {
                             showPassword.toggle()
                         }) {
                             Image(showPassword ? "eye" : "eye-slash")
                                 .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 20,height: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(Color.theme.titleColor)
                                 .opacity(0.5)
+                                .padding(.top, 25)
+                                .padding(.trailing, 20)
                         }
-                        .padding(.trailing, 16)
                     }
                     
                 }.padding(.top,34)
@@ -85,7 +61,7 @@ struct RegisterView: View {
                 
                 createAccountButton
                 redirectLoginPageButton
-             
+                
             }
         }
     }
