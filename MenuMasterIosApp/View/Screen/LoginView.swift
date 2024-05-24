@@ -11,40 +11,50 @@ struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
     @State private var showPassword: Bool = false
     
+    @State private var registerTag: Bool = false
+    
     var body: some View {
-        ZStack {
-            backgroundImage
-            
-            VStack(alignment:.center) {
-                titleText
+        NavigationViewStack {
+            ZStack {
+                backgroundImage
                 
-                VStack(alignment: .leading) {
+                VStack(alignment:.center) {
+                    titleText
                     
-                    TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
-                    
-                    ZStack(alignment:.trailing) {
-                        TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                    VStack(alignment: .leading) {
                         
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .frame(width: 20,height: 20)
-                                .foregroundColor(Color.theme.titleColor)
-                                .opacity(0.5)
-                                .padding(.top, 25)
-                                .padding(.trailing,20)
+                        TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
+                        
+                        ZStack(alignment:.trailing) {
+                            TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                            
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(showPassword ? "eye" : "eye-slash")
+                                    .resizable()
+                                    .frame(width: 20,height: 20)
+                                    .foregroundColor(Color.theme.titleColor)
+                                    .opacity(0.5)
+                                    .padding(.top, 25)
+                                    .padding(.trailing,20)
+                            }
                         }
-                    }
+                        
+                    }.padding(.top,34)
                     
-                }.padding(.top,34)
-                
-                forgetPasswordButton
-                loginButton
-                redirectSignUpPageButton
-                
+                    forgetPasswordButton
+                    loginButton
+                    redirectSignUpPageButton
+                    
+                }
             }
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+                HomeView()
+            })
+            .navigationDestinationWrapper(isPresented: $registerTag, destination: {
+                RegisterView()
+            })
         }
     }
 }
@@ -92,6 +102,7 @@ extension LoginView {
         Button(action: {
             // login
             viewModel.login()
+//            viewModel.isAuthenticated = true // for test
         }) {
             Text("Giriş Yap")
         }
@@ -104,6 +115,7 @@ extension LoginView {
             Text("Hesabın yok mu?")
             Button(action: {
                 // redirect register page
+                registerTag = true
             }) {
                 Text("Kaydol")
                     .underline()
@@ -115,6 +127,6 @@ extension LoginView {
     }
     
     
-    
+
 }
 
