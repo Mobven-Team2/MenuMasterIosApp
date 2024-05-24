@@ -11,56 +11,67 @@ struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
     @State private var showPassword: Bool = false
     
+    @State private var registerTag: Bool = false
+    
     var body: some View {
-        ZStack {
-            
-            backgroundImage
-            
-            VStack(alignment:.center) {
-                titleText
+        NavigationViewStack {
+            ZStack {
                 
-                VStack(alignment: .leading) {
-                    Text("E-posta")
-                        .formTitleStyle()
+                backgroundImage
+                
+                VStack(alignment:.center) {
+                    titleText
                     
-                    TextField("@janedoe.xamplemail.com", text: $viewModel.email)
-                        .customTextFieldStyle()
-                        .textContentType(.emailAddress)
-                    
-                    Text("Şifre")
-                        .formTitleStyle()
-                    
-                    ZStack(alignment:.trailing) {
-                        if showPassword {
-                            TextField("Şifre", text: $viewModel.password)
-                                .customTextFieldStyle()
+                    VStack(alignment: .leading) {
+                        Text("E-posta")
+                            .formTitleStyle()
+                        
+                        TextField("@janedoe.xamplemail.com", text: $viewModel.email)
+                            .customTextFieldStyle()
+                            .textContentType(.emailAddress)
+                        
+                        Text("Şifre")
+                            .formTitleStyle()
+                        
+                        ZStack(alignment:.trailing) {
+                            if showPassword {
+                                TextField("Şifre", text: $viewModel.password)
+                                    .customTextFieldStyle()
+                                
+                            } else {
+                                SecureField("Şifre", text: $viewModel.password)
+                                    .customTextFieldStyle()
+                            }
                             
-                        } else {
-                            SecureField("Şifre", text: $viewModel.password)
-                                .customTextFieldStyle()
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(showPassword ? "eye" : "eye-slash")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .frame(width: 20,height: 20)
+                                    .foregroundColor(Color.theme.titleColor)
+                                    .opacity(0.5)
+                            }
+                            .padding(.trailing, 16)
                         }
                         
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 20,height: 20)
-                                .foregroundColor(Color.theme.titleColor)
-                                .opacity(0.5)
-                        }
-                        .padding(.trailing, 16)
-                    }
+                    }.padding(.top,34)
                     
-                }.padding(.top,34)
+                    forgetPasswordButton
+                    loginButton
+                    redirectSignUpPageButton
                 
-                forgetPasswordButton
-                loginButton
-                redirectSignUpPageButton
-            
+                }
             }
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+                Text("Giris Yap Basarili!")
+            })
+            .navigationDestinationWrapper(isPresented: $registerTag, destination: {
+                RegisterView()
+            })
         }
+        
     }
 }
 
@@ -107,6 +118,7 @@ extension LoginView {
         Button(action: {
             // login
             viewModel.login()
+            viewModel.isAuthenticated = true // for test
         }) {
             Text("Giriş Yap")
         }
@@ -119,6 +131,8 @@ extension LoginView {
             Text("Hesabın yok mu?")
             Button(action: {
                 // redirect register page
+                registerTag = true
+                
             }) {
                 Text("Kaydol")
                     .underline()
