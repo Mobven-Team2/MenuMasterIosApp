@@ -15,19 +15,17 @@ struct RegisterView: View {
     var body: some View {
         NavigationViewStack {
             ZStack {
-                backgroundImage
-                
                 VStack(alignment:.center) {
                     titleText
                     
                     VStack(alignment: .leading) {
                         
-                        TextfieldView(title: "İsim Soyisim", placeholder: "Jane Doe", isPasswordField: false, text: $viewModel.fullName)
+                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, text: $viewModel.fullName)
                         
-                        TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
+                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
                         
                         ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
                             
                             Button(action: {
                                 showPassword.toggle()
@@ -35,15 +33,14 @@ struct RegisterView: View {
                                 Image(showPassword ? "eye" : "eye-slash")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(Color.theme.titleColor)
-                                    .opacity(0.5)
+                                    .foregroundColor(Color.theme.primaryTextColor)
                                     .padding(.top, 25)
                                     .padding(.trailing, 20)
                             }
                         }
                         
                         ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre Tekrar", placeholder: "Şifre Tekrar", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
+                            TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
                             
                             Button(action: {
                                 showPassword.toggle()
@@ -51,8 +48,7 @@ struct RegisterView: View {
                                 Image(showPassword ? "eye" : "eye-slash")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(Color.theme.titleColor)
-                                    .opacity(0.5)
+                                    .foregroundColor(Color.theme.primaryTextColor)
                                     .padding(.top, 25)
                                     .padding(.trailing, 20)
                             }
@@ -60,6 +56,8 @@ struct RegisterView: View {
                         
                     }.padding(.top,34)
                         .padding(.bottom,88)
+                    
+                    Spacer()
                     
                     createAccountButton
                     redirectLoginPageButton
@@ -83,19 +81,13 @@ struct RegisterView: View {
 
 extension RegisterView {
     
-    private var backgroundImage : some View {
-        Image("background-image")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .edgesIgnoringSafeArea(.all)
-            .opacity(0.5)
-    }
     
     private var titleText : some View {
         Text("Kaydol")
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
             .font(.chillaxVariable(size: 32))
             .fontWeight(.semibold)
+            .padding(.top,80)
     }
     
     
@@ -122,7 +114,7 @@ extension RegisterView {
                     .fontWeight(.bold)
             }
         }.font(.dmSans(size: 16))
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
     }
     
 }

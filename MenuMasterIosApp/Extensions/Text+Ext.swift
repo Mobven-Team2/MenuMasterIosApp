@@ -11,6 +11,6 @@ extension Text {
     func formTitleStyle() -> some View {
         self
             .font(.dmSans(size: 14))
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
     }
 }

@@ -15,17 +15,16 @@ struct LoginView: View {
     var body: some View {
         NavigationViewStack {
             ZStack {
-                backgroundImage
                 
                 VStack(alignment:.center) {
                     titleText
                     
                     VStack(alignment: .leading) {
                         
-                        TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
+                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
                         
                         ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
+                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
                             
                             Button(action: {
                                 showPassword.toggle()
@@ -33,8 +32,7 @@ struct LoginView: View {
                                 Image(showPassword ? "eye" : "eye-slash")
                                     .resizable()
                                     .frame(width: 20,height: 20)
-                                    .foregroundColor(Color.theme.titleColor)
-                                    .opacity(0.5)
+                                    .foregroundColor(Color.theme.primaryTextColor)
                                     .padding(.top, 25)
                                     .padding(.trailing,20)
                             }
@@ -43,6 +41,7 @@ struct LoginView: View {
                     }.padding(.top,34)
                     
                     forgetPasswordButton
+                    Spacer()
                     loginButton
                     redirectSignUpPageButton
                     
@@ -58,6 +57,7 @@ struct LoginView: View {
     }
 }
 
+
 #Preview {
     LoginView()
 }
@@ -65,19 +65,12 @@ struct LoginView: View {
 
 extension LoginView {
     
-    private var backgroundImage : some View {
-        Image("background-image")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .edgesIgnoringSafeArea(.all)
-            .opacity(0.5)
-    }
-    
     private var titleText : some View {
         Text("Giriş Yap")
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
             .font(.chillaxVariable(size: 32))
             .fontWeight(.semibold)
+            .padding(.top, 120)
     }
     
     private var forgetPasswordButton : some View {
@@ -87,21 +80,20 @@ extension LoginView {
                 // Şifreni mi unuttun?
             }) {
                 Text("Şifreni mi Unuttun?")
-                    .foregroundColor(Color.theme.titleColor)
+                    .foregroundColor(Color.theme.primaryTextColor)
                     .underline()
                     .font(.dmSans(size: 12))
             }
         }
-        .padding(.trailing, 27)
+        .padding(.trailing, 35)
         .padding(.top, 20)
-        .padding(.bottom, 13)
     }
     
     private var loginButton : some View {
         Button(action: {
             // login
             viewModel.login()
-//            viewModel.isAuthenticated = true // for test
+            //            viewModel.isAuthenticated = true // for test
         }) {
             Text("Giriş Yap")
         }
@@ -121,11 +113,11 @@ extension LoginView {
                     .fontWeight(.bold)
             }
         }.font(.dmSans(size: 16))
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
         
     }
     
     
-
+    
 }
 
