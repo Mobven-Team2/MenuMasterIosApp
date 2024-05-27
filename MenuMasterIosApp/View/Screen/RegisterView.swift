@@ -94,6 +94,7 @@ extension RegisterView {
     private var createAccountButton : some View {
         Button(action: {
             viewModel.register()
+            //            viewModel.isAuthenticated = true // for test
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
