@@ -25,7 +25,18 @@ extension View {
                 .fontWeight(.medium)
                 .foregroundColor(.white)
                 .frame(width: 327, height: 56)
-                .background(Color.theme.primaryRedColor)
+                .background(Color.theme.primaryOrangeColor)
+                .cornerRadius(16.0)
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+        }
+    
+    func customButtonStyleLight() -> some View {
+            self
+                .font(.dmSans(size: 16))
+                .fontWeight(.medium)
+                .foregroundColor(Color.theme.primaryOrangeColor)
+                .frame(width: 327, height: 56)
+                .background(Color.theme.lightOrangeColor)
                 .cornerRadius(16.0)
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
         }
