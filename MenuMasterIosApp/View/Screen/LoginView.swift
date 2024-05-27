@@ -15,48 +15,49 @@ struct LoginView: View {
     
     var body: some View {
         NavigationViewStack {
-            
-            VStack(alignment:.center) {
-                titleText
+            ZStack {
                 
-                VStack(alignment: .leading) {
+                VStack(alignment:.center) {
+                    titleText
                     
-                    TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
-                    
-                    ZStack(alignment:.trailing) {
-                        TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
+                    VStack(alignment: .leading) {
                         
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .frame(width: 20,height: 20)
-                                .foregroundColor(Color.theme.primaryTextColor)
-                                .opacity(0.5)
-                                .padding(.top, 25)
-                                .padding(.trailing,20)
+                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
+                        
+                        ZStack(alignment:.trailing) {
+                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
+                            
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(showPassword ? "eye" : "eye-slash")
+                                    .resizable()
+                                    .frame(width: 20,height: 20)
+                                    .foregroundColor(Color.theme.primaryTextColor)
+                                    .padding(.top, 25)
+                                    .padding(.trailing,20)
+                            }
                         }
-                    }
+                        
+                    }.padding(.top,34)
                     
-                }.padding(.top,34)
-                
-                forgetPasswordButton
-                Spacer()
-                loginButton
-                redirectSignUpPageButton
-                
+                    forgetPasswordButton
+                    Spacer()
+                    loginButton
+                    redirectSignUpPageButton
+                    
+                }
             }
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+                HomeView()
+            })
+            .navigationDestinationWrapper(isPresented: $registerTag, destination: {
+                RegisterView()
+            })
         }
-        .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
-            HomeView()
-        })
-        .navigationDestinationWrapper(isPresented: $registerTag, destination: {
-            RegisterView()
-        })
     }
-    
 }
+
 
 #Preview {
     LoginView()
@@ -70,7 +71,7 @@ extension LoginView {
             .foregroundColor(Color.theme.primaryTextColor)
             .font(.chillaxVariable(size: 32))
             .fontWeight(.semibold)
-            .padding(.top, 100)
+            .padding(.top, 120)
     }
     
     private var forgetPasswordButton : some View {

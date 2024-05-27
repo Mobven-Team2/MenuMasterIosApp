@@ -10,6 +10,7 @@ import SwiftUI
 extension View {
     func customTextFieldStyle() -> some View {
         self
+            .padding(.leading, 16)
             .font(.dmSans(size: 14))
             .foregroundColor(Color.theme.primaryTextColor)
             .frame(width: 327, height: 49)

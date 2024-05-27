@@ -23,6 +23,7 @@ struct TextfieldView: View {
                     .customTextFieldStyle()
             } else {
                 TextField(placeholder, text: $text)
+                    
                     .customTextFieldStyle()
                     
             }
