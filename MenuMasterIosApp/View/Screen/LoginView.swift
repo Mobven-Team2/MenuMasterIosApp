@@ -113,6 +113,7 @@ extension LoginView {
                     .fontWeight(.bold)
             }
         }.font(.dmSans(size: 16))
+            .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
         
     }
