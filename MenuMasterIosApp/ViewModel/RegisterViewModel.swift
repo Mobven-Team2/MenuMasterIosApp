@@ -10,11 +10,12 @@ import Foundation
 class RegisterViewModel: ObservableObject {
     
     @Published var isAuthenticated: Bool = false
-    
     @Published var fullName: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
+    @Published var confirmText: String = ""
+    @Published var errorMessage: String? //     You are here!
     
     func register() {
         if validateFields() {
@@ -48,4 +49,16 @@ class RegisterViewModel: ObservableObject {
         return true
     }
 
+}
+
+extension RegisterViewModel {
+    func isMatched() -> Bool {
+        if password != confirmPassword {
+            confirmText = "Girdiğiniz şifreler uyuşmuyor. Tekrar deneyiniz."
+            return false
+        }
+        else {
+            return true
+        }
+    }
 }

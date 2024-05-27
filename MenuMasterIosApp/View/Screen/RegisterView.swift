@@ -40,6 +40,7 @@ struct RegisterView: View {
                         }
                         
                         ZStack(alignment:.trailing) {
+
                             TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
                             
                             Button(action: {
@@ -117,5 +118,4 @@ extension RegisterView {
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
     }
-    
 }
