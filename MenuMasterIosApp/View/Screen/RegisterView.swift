@@ -12,59 +12,59 @@ struct RegisterView: View {
     @State private var showPassword: Bool = false
     
     var body: some View {
-        ZStack {
-            backgroundImage
+        
+        VStack(alignment:.center) {
+            titleText
             
-            VStack(alignment:.center) {
-                titleText
+            VStack(alignment: .leading) {
                 
-                VStack(alignment: .leading) {
+                TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, text: $viewModel.fullName)
+                
+                TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
+                
+                ZStack(alignment:.trailing) {
+                    TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
                     
-                    TextfieldView(title: "İsim Soyisim", placeholder: "Jane Doe", isPasswordField: false, text: $viewModel.fullName)
-                    
-                    TextfieldView(title: "E-posta", placeholder: "@janedoe.xamplemail.com", isPasswordField: false, text: $viewModel.email)
-                    
-                    ZStack(alignment:.trailing) {
-                        TextfieldView(title: "Şifre", placeholder: "Şifre", isPasswordField: !showPassword, text: $viewModel.password)
-                        
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.theme.titleColor)
-                                .opacity(0.5)
-                                .padding(.top, 25)
-                                .padding(.trailing, 20)
-                        }
+                    Button(action: {
+                        showPassword.toggle()
+                    }) {
+                        Image(showPassword ? "eye" : "eye-slash")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color.theme.primaryTextColor)
+                            .opacity(0.5)
+                            .padding(.top, 25)
+                            .padding(.trailing, 20)
                     }
+                }
+                
+                ZStack(alignment:.trailing) {
+                    TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
                     
-                    ZStack(alignment:.trailing) {
-                        TextfieldView(title: "Şifre Tekrar", placeholder: "Şifre Tekrar", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
-                        
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(showPassword ? "eye" : "eye-slash")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.theme.titleColor)
-                                .opacity(0.5)
-                                .padding(.top, 25)
-                                .padding(.trailing, 20)
-                        }
+                    Button(action: {
+                        showPassword.toggle()
+                    }) {
+                        Image(showPassword ? "eye" : "eye-slash")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color.theme.primaryTextColor)
+                            .opacity(0.5)
+                            .padding(.top, 25)
+                            .padding(.trailing, 20)
                     }
-                    
-                }.padding(.top,34)
-                    .padding(.bottom,88)
+                }
                 
-                createAccountButton
-                redirectLoginPageButton
-                
-            }
+            }.padding(.top,34)
+                .padding(.bottom,88)
+            
+            Spacer()
+            
+            createAccountButton
+            redirectLoginPageButton
+            
         }
     }
+    
 }
 
 #Preview {
@@ -74,19 +74,13 @@ struct RegisterView: View {
 
 extension RegisterView {
     
-    private var backgroundImage : some View {
-        Image("background-image")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .edgesIgnoringSafeArea(.all)
-            .opacity(0.5)
-    }
-    
+
     private var titleText : some View {
         Text("Kaydol")
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
             .font(.chillaxVariable(size: 32))
             .fontWeight(.semibold)
+            .padding(.top,100)
     }
     
     
@@ -111,7 +105,7 @@ extension RegisterView {
                     .fontWeight(.bold)
             }
         }.font(.dmSans(size: 16))
-            .foregroundColor(Color.theme.titleColor)
+            .foregroundColor(Color.theme.primaryTextColor)
     }
     
 }
