@@ -27,7 +27,7 @@ struct RegisterView: View {
                     titleText
                     
                     VStack(alignment: .leading) {
-                        
+
                         TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: viewModel.validateFullName(), text: $viewModel.fullName)
                             .onChange(of: viewModel.fullName) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
