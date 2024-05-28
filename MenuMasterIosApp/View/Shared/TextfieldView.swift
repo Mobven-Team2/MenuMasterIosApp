@@ -15,6 +15,7 @@ struct TextfieldView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            
             Text(title)
                 .formTitleStyle()
             
@@ -23,7 +24,6 @@ struct TextfieldView: View {
                     .customTextFieldStyle()
             } else {
                 TextField(placeholder, text: $text)
-                    
                     .customTextFieldStyle()
                     
             }
