@@ -11,7 +11,7 @@ struct TextfieldView: View {
     let title: String
     let placeholder: String
     let isPasswordField: Bool
-    var errorMessage: String?
+    var errorMessage: String = ""
     @Binding var text: String
     
     var body: some View {
@@ -22,23 +22,12 @@ struct TextfieldView: View {
             if isPasswordField {
                 SecureField(placeholder, text: $text)
                     .customTextFieldStyle()
-                    .overlay( errorMessage == nil ? RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .stroke(Color.white) : RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .stroke(Color.red))
             } else {
                 TextField(placeholder, text: $text)
-                    
                     .customTextFieldStyle()
-<<<<<<< HEAD
-                    
-=======
-                    .overlay( errorMessage == nil ? RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .stroke(Color.white) : RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .stroke(Color.red))
->>>>>>> 7f8e41b (start of password check)
             }
             
-            Text(errorMessage ?? "")
+            Text(errorMessage)
                 .foregroundColor(.red)
                 .font(.caption)
         }

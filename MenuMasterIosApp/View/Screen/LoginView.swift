@@ -98,6 +98,7 @@ extension LoginView {
             Text("Giriş Yap")
         }
         .customButtonStyle()
+//        .opacity(viewModel.isAuthenticated ? 1 : 0.5)
         .padding(.bottom, 13)
     }
     
