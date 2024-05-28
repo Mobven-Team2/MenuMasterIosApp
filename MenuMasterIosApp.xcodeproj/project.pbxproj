@@ -15,8 +15,12 @@
 		8D246E612BFF7641008CA0A4 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E602BFF7640008CA0A4 /* View+Ext.swift */; };
 		8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E622BFF7C1A008CA0A4 /* Text+Ext.swift */; };
 		8D246E652BFF872C008CA0A4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */; };
+		8D87DC8C2C065B26004D16BA /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DC8B2C065B26004D16BA /* CustomPickerView.swift */; };
+		8D87DC8E2C065D1F004D16BA /* UserInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DC8D2C065D1E004D16BA /* UserInformationViewModel.swift */; };
+		8D87DC922C065EC4004D16BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DC912C065EC4004D16BA /* User.swift */; };
 		8DD00ED22C04A56600594F1A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD00ED12C04A56600594F1A /* SplashView.swift */; };
 		8DD00ED42C04A92900594F1A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD00ED32C04A92900594F1A /* WelcomeView.swift */; };
+		8DD00ED62C04C02B00594F1A /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD00ED52C04C02B00594F1A /* UserInformationView.swift */; };
 		8DD195DD2C00A03E0057C130 /* TextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD195DC2C00A03E0057C130 /* TextfieldView.swift */; };
 		8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */; };
 		8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD3A2BFDE75500BEEE53 /* ContentView.swift */; };
@@ -61,8 +65,12 @@
 		8D246E602BFF7640008CA0A4 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		8D246E622BFF7C1A008CA0A4 /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
 		8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		8D87DC8B2C065B26004D16BA /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		8D87DC8D2C065D1E004D16BA /* UserInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewModel.swift; sourceTree = "<group>"; };
+		8D87DC912C065EC4004D16BA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8DD00ED12C04A56600594F1A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		8DD00ED32C04A92900594F1A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8DD00ED52C04C02B00594F1A /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		8DD195DC2C00A03E0057C130 /* TextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldView.swift; sourceTree = "<group>"; };
 		8DE4BD352BFDE75500BEEE53 /* MenuMasterIosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuMasterIosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMasterIosAppApp.swift; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 			children = (
 				7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */,
 				8D246E642BFF872C008CA0A4 /* RegisterViewModel.swift */,
+				8D87DC8D2C065D1E004D16BA /* UserInformationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -136,6 +145,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		8D87DC902C065EAA004D16BA /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				8D87DC912C065EC4004D16BA /* User.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		8DD195DA2C009FD60057C130 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +161,7 @@
 				7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */,
 				8DD00ED12C04A56600594F1A /* SplashView.swift */,
 				8DD00ED32C04A92900594F1A /* WelcomeView.swift */,
+				8DD00ED52C04C02B00594F1A /* UserInformationView.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -152,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				8DD195DC2C00A03E0057C130 /* TextfieldView.swift */,
+				8D87DC8B2C065B26004D16BA /* CustomPickerView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -179,6 +198,7 @@
 		8DE4BD372BFDE75500BEEE53 /* MenuMasterIosApp */ = {
 			isa = PBXGroup;
 			children = (
+				8D87DC902C065EAA004D16BA /* New Group */,
 				8DF1AB732BFE04CF008F9899 /* Info.plist */,
 				8DF1AB6F2BFE0243008F9899 /* Resources */,
 				8DF1AB6A2BFDFAC5008F9899 /* Extensions */,
@@ -391,12 +411,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DE4BD422BFDE75700BEEE53 /* Persistence.swift in Sources */,
+				8D87DC8C2C065B26004D16BA /* CustomPickerView.swift in Sources */,
 				8DF1AB6E2BFE0116008F9899 /* Font+Ext.swift in Sources */,
 				8DD00ED22C04A56600594F1A /* SplashView.swift in Sources */,
 				8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */,
 				7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */,
 				8DE4BD452BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld in Sources */,
 				7AFCCB6C2C00BA9D00D96BD0 /* NavigationViewStack.swift in Sources */,
+				8DD00ED62C04C02B00594F1A /* UserInformationView.swift in Sources */,
+				8D87DC8E2C065D1F004D16BA /* UserInformationViewModel.swift in Sources */,
+				8D87DC922C065EC4004D16BA /* User.swift in Sources */,
 				8DF1AB692BFDF7FD008F9899 /* LoginView.swift in Sources */,
 				8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */,
 				8DF1AB772BFE3376008F9899 /* RegisterView.swift in Sources */,
