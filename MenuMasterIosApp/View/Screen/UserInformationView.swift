@@ -10,13 +10,17 @@ import SwiftUI
 struct UserInformationView: View {
     @StateObject var viewModel = UserInformationViewModel()
     @State private var isContinueButtonTapped = false
+    @State private var loginTag: Bool = false
+    @State private var dietTypeTag: Bool = false
+    @State private var welcomeTag: Bool = false
     
     var body: some View {
         NavigationViewStack {
-            
             VStack(alignment: .center) {
-                
                 VStack(alignment: .leading,spacing: 8){
+                    
+                    backButton
+                    
                     Text("Bilgilerini Gir")
                         .foregroundColor(Color.theme.primaryTextColor)
                         .font(.chillaxVariable(size: 24))
@@ -29,6 +33,8 @@ struct UserInformationView: View {
                         .lineLimit(2)
                     
                 }.frame(width: UIScreen.main.bounds.width - 39)
+                
+                Spacer()
                 
                 Form {
                     VStack(spacing: 20) {
@@ -45,15 +51,26 @@ struct UserInformationView: View {
                     
                 }.scrollContentBackground(.hidden)
                     .formStyle(.columns)
-                    .frame(height: 480)
-                    .padding(.bottom,40)
+                    .frame(height: 450)
+                    .padding(.bottom,30)
                 
                 
-                continueButton
+                CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
+                    dietTypeTag = true
+                }.disabled(viewModel.isAnyFieldEmpty || isContinueButtonTapped)
+                    .opacity((viewModel.isAnyFieldEmpty || isContinueButtonTapped) ? 0.5 : 1.0)
                 
                 redirectLoginPageButton
                 
-            }
+            }.navigationDestinationWrapper(isPresented: $dietTypeTag, destination: {
+                DietTypeView()
+            })
+            .navigationDestinationWrapper(isPresented: $loginTag, destination: {
+                LoginView()
+            })
+            .navigationDestinationWrapper(isPresented: $welcomeTag, destination: {
+                WelcomeView()
+            })
             
         }
     }
@@ -65,39 +82,30 @@ struct UserInformationView: View {
 
 
 extension UserInformationView {
-    private var continueButton : some View {
-        Button(action: {
-            isContinueButtonTapped = true
-            // simulate a delay before navigating to the other view
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                
-            }
-        }) {
-            if !isContinueButtonTapped {
-                Text("Devam Et")
-            } else {
-                ProgressView()
-            }
-        }
-        .customButtonStyle()
-        .padding(.bottom, 18)
-        .disabled(viewModel.isAnyFieldEmpty || isContinueButtonTapped)
-        .opacity((viewModel.isAnyFieldEmpty || isContinueButtonTapped) ? 0.5 : 1.0)
-    }
     
     private var redirectLoginPageButton : some View {
         HStack(spacing:3) {
             Text("Hesabın var mı?")
             Button(action: {
-                // redirect login page
-                //                loginTag = true
+                loginTag = true
             }) {
                 Text("Giriş Yap")
                     .underline()
                     .fontWeight(.bold)
             }
         }.font(.dmSans(size: 16))
-            .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
+    }
+    
+    private var backButton : some View {
+        Button(action: {
+            welcomeTag = true
+        }) {
+            Image("back-button-icon")
+                .resizable()
+                .foregroundColor(Color.theme.primaryTextColor)
+                .frame(width: 20,height: 32)
+                .padding(0)
+        }
     }
 }

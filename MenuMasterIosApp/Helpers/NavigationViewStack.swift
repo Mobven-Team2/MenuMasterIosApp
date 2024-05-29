@@ -18,9 +18,9 @@ public struct NavigationViewStack<V>: View where V: View {
 
     public var body: some View {
         if #available(iOS 16, *) {
-            NavigationStack { content() }
+            NavigationStack { content() }.navigationBarBackButtonHidden(true)
         } else {
-            NavigationView { content() }
+            NavigationView { content() }.navigationBarBackButtonHidden(true)
         }
     }
 }
