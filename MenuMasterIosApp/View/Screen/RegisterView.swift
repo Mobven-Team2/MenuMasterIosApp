@@ -9,15 +9,16 @@ import SwiftUI
 
 struct RegisterView: View {
     @ObservedObject var viewModel = RegisterViewModel()
+    
     @State private var showPassword: Bool = false
     @State private var loginTag: Bool = false
     @State private var registerTag: Bool = false
     
-    //Validation messages
-    @State private var test1: String = ""
-    @State private var test2: String = ""
-    @State private var test3: String = ""
-    @State private var test4: String = ""
+    //Validation error messages
+    @State private var errorFullName: String = ""
+    @State private var errorEmail: String = ""
+    @State private var errorPassword: String = ""
+    @State private var errorConfirmPassword: String = ""
     
     var body: some View {
         NavigationViewStack {
@@ -27,29 +28,23 @@ struct RegisterView: View {
                     
                     VStack(alignment: .leading) {
                         
-                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: test1, text: $viewModel.fullName)
+                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: viewModel.validateFullName(), text: $viewModel.fullName)
                             .onChange(of: viewModel.fullName) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
-                                test1 = viewModel.registerValidator?.errorMessage ?? ""
-//                                if viewModel.isAuthenticated {
-//                                    test1 = viewModel.registerValidator?.errorMessage ?? ""
-//                                    test2 = viewModel.registerValidator?.errorMessage ?? ""
-//                                    test3 = viewModel.registerValidator?.errorMessage ?? ""
-//                                    test4 = viewModel.registerValidator?.errorMessage ?? ""
-//                                }
+                                errorFullName = viewModel.validateFullName()
                             }
                         
-                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, errorMessage: test2, text: $viewModel.email)
+                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, errorMessage: errorEmail, text: $viewModel.email)
                             .onChange(of: viewModel.email) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
-                                test2 = viewModel.registerValidator?.errorMessage ?? ""
+                                errorEmail = viewModel.validateEmail()
                             }
                         
                         ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, errorMessage: test3, text: $viewModel.password)
+                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, errorMessage: errorPassword, text: $viewModel.password)
                                 .onChange(of: viewModel.password) {
                                     viewModel.isAuthenticated = viewModel.validateFields()
-                                    test3 = viewModel.registerValidator?.errorMessage ?? ""
+                                    errorPassword = viewModel.validatePassword()
                                 }
                             
                             Button(action: {
@@ -66,10 +61,10 @@ struct RegisterView: View {
                         
                         ZStack(alignment:.trailing) {
 
-                            TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, errorMessage: test4, text: $viewModel.confirmPassword)
+                            TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, errorMessage: errorConfirmPassword, text: $viewModel.confirmPassword)
                                 .onChange(of: viewModel.confirmPassword) {
                                     viewModel.isAuthenticated = viewModel.validateFields()
-                                    test4 = viewModel.registerValidator?.errorMessage ?? ""
+                                    errorConfirmPassword = viewModel.validateConfirmPassword()
                                 }
                             
                             Button(action: {
