@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @State private var registerTag: Bool = false
     @State private var loginTag: Bool = false
+    @State private var userInfoTag: Bool = false
     
     var body: some View {
         NavigationViewStack {
@@ -53,7 +53,7 @@ struct WelcomeView: View {
                     .padding(.bottom, 13)
                     
                     Button(action: {
-                        registerTag = true
+                        userInfoTag = true
                     }) {
                         Text("Kaydol")
                     }
@@ -61,8 +61,8 @@ struct WelcomeView: View {
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $registerTag, destination: {
-                RegisterView()
+            .navigationDestinationWrapper(isPresented: $userInfoTag, destination: {
+                UserInformationView()
             })
             .navigationDestinationWrapper(isPresented: $loginTag, destination: {
                 LoginView()
