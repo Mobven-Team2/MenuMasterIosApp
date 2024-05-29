@@ -45,6 +45,7 @@ struct RegisterView: View {
                                 .onChange(of: viewModel.password) {
                                     viewModel.isAuthenticated = viewModel.validateFields()
                                     errorPassword = viewModel.validatePassword()
+                                    errorConfirmPassword = viewModel.validateConfirmPassword()
                                 }
                             
                             Button(action: {

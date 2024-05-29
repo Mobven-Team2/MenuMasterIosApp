@@ -149,12 +149,12 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		8D87DC902C065EAA004D16BA /* New Group */ = {
+		8D87DC902C065EAA004D16BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				8D87DC912C065EC4004D16BA /* User.swift */,
 			);
-			path = "New Group";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8DD195DA2C009FD60057C130 /* Screen */ = {
@@ -205,12 +205,12 @@
 		8DE4BD372BFDE75500BEEE53 /* MenuMasterIosApp */ = {
 			isa = PBXGroup;
 			children = (
-				8D87DC902C065EAA004D16BA /* New Group */,
 				8DF1AB732BFE04CF008F9899 /* Info.plist */,
 				8DF1AB6F2BFE0243008F9899 /* Resources */,
 				8DF1AB6A2BFDFAC5008F9899 /* Extensions */,
 				7AFCCB6A2C00BA8B00D96BD0 /* Helpers */,
 				7A2E40962BFEB66B0026CC3A /* Service */,
+				8D87DC902C065EAA004D16BA /* Model */,
 				7A2E40972BFEB6940026CC3A /* ViewModel */,
 				8DF1AB652BFDF764008F9899 /* View */,
 				8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */,

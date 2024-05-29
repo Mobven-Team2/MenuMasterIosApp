@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct LoginRequestBodyAuth: Codable {
-    let email: String
-    let password: String
-}
-
-struct LoginAuthResponse: Codable {
-    let access_token: String?
-}
-
 class LoginViewModel: ObservableObject {
     
     @Published var email: String = ""

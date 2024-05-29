@@ -100,6 +100,7 @@ extension LoginView {
     private var loginButton : some View {
         Button(action: {
             loginTag = viewModel.login()
+            // TODO: backend gelince false iken hata mesajı yazdır
         }) {
             Text("Giriş Yap")
         }
