@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct LoginRequestBodyAuth: Codable {  // TODO: Belki bunlar model klasörüne taşınabilir
+    let email: String
+    let password: String
+}
+
+struct LoginAuthResponse: Codable {
+    let access_token: String?
+}
+
 enum AuthenticationError: Error {
     case invalidCredentials
     case custom(errorMessage : String)

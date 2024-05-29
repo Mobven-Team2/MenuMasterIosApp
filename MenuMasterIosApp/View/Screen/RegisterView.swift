@@ -9,8 +9,16 @@ import SwiftUI
 
 struct RegisterView: View {
     @ObservedObject var viewModel = RegisterViewModel()
+    
     @State private var showPassword: Bool = false
     @State private var loginTag: Bool = false
+    @State private var registerTag: Bool = false
+    
+    //Validation error messages
+    @State private var errorFullName: String = ""
+    @State private var errorEmail: String = ""
+    @State private var errorPassword: String = ""
+    @State private var errorConfirmPassword: String = ""
     
     var body: some View {
         NavigationViewStack {
@@ -19,13 +27,26 @@ struct RegisterView: View {
                     titleText
                     
                     VStack(alignment: .leading) {
+
+                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: viewModel.validateFullName(), text: $viewModel.fullName)
+                            .onChange(of: viewModel.fullName) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorFullName = viewModel.validateFullName()
+                            }
                         
-                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, text: $viewModel.fullName)
-                        
-                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
+                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, errorMessage: errorEmail, text: $viewModel.email)
+                            .onChange(of: viewModel.email) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorEmail = viewModel.validateEmail()
+                            }
                         
                         ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
+                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, errorMessage: errorPassword, text: $viewModel.password)
+                                .onChange(of: viewModel.password) {
+                                    viewModel.isAuthenticated = viewModel.validateFields()
+                                    errorPassword = viewModel.validatePassword()
+                                    errorConfirmPassword = viewModel.validateConfirmPassword()
+                                }
                             
                             Button(action: {
                                 showPassword.toggle()
@@ -40,7 +61,12 @@ struct RegisterView: View {
                         }
                         
                         ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, text: $viewModel.confirmPassword)
+
+                            TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, errorMessage: errorConfirmPassword, text: $viewModel.confirmPassword)
+                                .onChange(of: viewModel.confirmPassword) {
+                                    viewModel.isAuthenticated = viewModel.validateFields()
+                                    errorConfirmPassword = viewModel.validateConfirmPassword()
+                                }
                             
                             Button(action: {
                                 showPassword.toggle()
@@ -64,7 +90,7 @@ struct RegisterView: View {
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+            .navigationDestinationWrapper(isPresented: $registerTag, destination: {
                 HomeView()
             })
             .navigationDestinationWrapper(isPresented: $loginTag, destination: {
@@ -81,7 +107,6 @@ struct RegisterView: View {
 
 extension RegisterView {
     
-    
     private var titleText : some View {
         Text("Kaydol")
             .foregroundColor(Color.theme.primaryTextColor)
@@ -93,11 +118,11 @@ extension RegisterView {
     
     private var createAccountButton : some View {
         Button(action: {
-            viewModel.register()
-            //            viewModel.isAuthenticated = true // for test
+            registerTag = viewModel.register()
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
+                .opacity(viewModel.isAuthenticated ? 1 : 0.5)
         }
         .padding(.bottom, 13)
     }
@@ -117,5 +142,4 @@ extension RegisterView {
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
     }
-    
 }

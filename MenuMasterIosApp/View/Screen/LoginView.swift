@@ -10,7 +10,9 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
     @State private var showPassword: Bool = false
+    @State private var loginTag: Bool = false
     @State private var registerTag: Bool = false
+    @State private var isButtonClickable: Bool = false
     
     var body: some View {
         NavigationViewStack {
@@ -22,9 +24,15 @@ struct LoginView: View {
                     VStack(alignment: .leading) {
                         
                         TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
+                            .onChange(of: viewModel.email) {
+                                isButtonClickable = viewModel.validateFields()
+                            }
                         
                         ZStack(alignment:.trailing) {
                             TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
+                                .onChange(of: viewModel.password) {
+                                    isButtonClickable = viewModel.validateFields()
+                                }
                             
                             Button(action: {
                                 showPassword.toggle()
@@ -43,11 +51,11 @@ struct LoginView: View {
                     forgetPasswordButton
                     Spacer()
                     loginButton
-                    redirectSignUpPageButton
+                    redirectRegisterPageButton
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+            .navigationDestinationWrapper(isPresented: $loginTag, destination: {
                 HomeView()
             })
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {
@@ -91,21 +99,20 @@ extension LoginView {
     
     private var loginButton : some View {
         Button(action: {
-            // login
-            viewModel.login()
-            //            viewModel.isAuthenticated = true // for test
+            loginTag = viewModel.login()
+            // TODO: backend gelince false iken hata mesajı yazdır
         }) {
             Text("Giriş Yap")
         }
         .customButtonStyle()
+        .opacity(isButtonClickable ? 1 : 0.5)
         .padding(.bottom, 13)
     }
     
-    private var redirectSignUpPageButton : some View {
+    private var redirectRegisterPageButton : some View {
         HStack(spacing:3) {
             Text("Hesabın yok mu?")
             Button(action: {
-                // redirect register page
                 registerTag = true
             }) {
                 Text("Kaydol")

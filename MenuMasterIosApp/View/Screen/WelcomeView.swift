@@ -48,6 +48,7 @@ struct WelcomeView: View {
                         loginTag = true
                     }) {
                         Text("Giriş Yap")
+                            .frame(width: UIScreen.main.bounds.width - 48, height: 56)
                     }
                     .customButtonStyle()
                     .padding(.bottom, 13)
@@ -56,6 +57,7 @@ struct WelcomeView: View {
                         userInfoTag = true
                     }) {
                         Text("Kaydol")
+                            .frame(width: UIScreen.main.bounds.width - 48, height: 56)
                     }
                     .customButtonStyleLight()
                     

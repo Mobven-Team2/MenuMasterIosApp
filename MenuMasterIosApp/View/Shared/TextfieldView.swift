@@ -11,6 +11,7 @@ struct TextfieldView: View {
     let title: String
     let placeholder: String
     let isPasswordField: Bool
+    var errorMessage: String = ""
     @Binding var text: String
     
     var body: some View {
@@ -25,8 +26,11 @@ struct TextfieldView: View {
             } else {
                 TextField(placeholder, text: $text)
                     .customTextFieldStyle()
-                    
             }
+            
+            Text(errorMessage)
+                .foregroundColor(.red)
+                .font(.caption)
         }
     }
 }
