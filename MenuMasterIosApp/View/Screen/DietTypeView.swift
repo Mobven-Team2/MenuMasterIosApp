@@ -12,7 +12,7 @@ struct DietTypeView: View {
     @State private var isContinueButtonTapped = false
     
     var body: some View {
-        NavigationView {
+        NavigationViewStack {
             VStack(alignment:.leading) {
                 VStack(alignment: .leading,spacing: 8){
                     Text("Beslenme tercihim...")
@@ -51,12 +51,8 @@ struct DietTypeView: View {
                 }
                 
             }
-            
-            
         }
     }
-    
-    
 }
 
 
