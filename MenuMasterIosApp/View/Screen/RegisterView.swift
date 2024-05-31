@@ -31,7 +31,7 @@ struct RegisterView: View {
                     
                     VStack(alignment: .leading) {
 
-                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: viewModel.validateFullName(), text: $viewModel.fullName)
+                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: errorFullName, text: $viewModel.fullName)
                             .onChange(of: viewModel.fullName) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorFullName = viewModel.validateFullName()
@@ -139,12 +139,13 @@ extension RegisterView {
     
     private var createAccountButton : some View {
         Button(action: {
-            registerTag = viewModel.register(checkbox: isOn)
+            registerTag = true
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
                 .opacity((viewModel.isAuthenticated && isOn) ? 1 : 0.5 )
         }
+        .disabled(viewModel.isAuthenticated || isOn)
         .padding(.bottom, 13)
     }
     

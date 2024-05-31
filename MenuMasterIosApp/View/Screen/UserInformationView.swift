@@ -14,6 +14,11 @@ struct UserInformationView: View {
     @State private var continueTag: Bool = false
     @State private var backButtonTag: Bool = false
     
+    //Validation error messages
+    @State private var errorAge: String = ""
+    @State private var errorHeight: String = ""
+    @State private var errorWeight: String = ""
+    
     var body: some View {
         NavigationViewStack {
             VStack(alignment: .center) {
@@ -38,15 +43,35 @@ struct UserInformationView: View {
                 
                 Form {
                     VStack(spacing: 20) {
-                        TextfieldView(title: "Yaş", placeholder: "", isPasswordField: false, text: $viewModel.age)
+                        TextfieldView(title: "Yaş", placeholder: "", isPasswordField: false, errorMessage: errorAge, text: $viewModel.age)
+                            .onChange(of: viewModel.age) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorAge = viewModel.validateAge()
+                            }
                         
                         CustomPickerView(title: "Cinsiyet", selection: $viewModel.gender, options: Gender.allCases, placeholder: "")
+                            .onChange(of: viewModel.gender) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                viewModel.objectWillChange.send()
+                            }
                         
-                        TextfieldView(title: "Boy", placeholder: "CM", isPasswordField: false, text: $viewModel.height)
+                        TextfieldView(title: "Boy", placeholder: "CM", isPasswordField: false, errorMessage: errorHeight, text: $viewModel.height)
+                            .onChange(of: viewModel.height) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorHeight = viewModel.validateHeight()
+                            }
                         
-                        TextfieldView(title: "Kilo", placeholder: "KG", isPasswordField: false, text: $viewModel.weight)
+                        TextfieldView(title: "Kilo", placeholder: "KG", isPasswordField: false, errorMessage: errorWeight, text: $viewModel.weight)
+                            .onChange(of: viewModel.weight) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorWeight = viewModel.validateWeight()
+                            }
                         
                         CustomPickerView(title: "Aktivite Durumu", selection: $viewModel.activityStatus, options: ActivityStatus.allCases, placeholder: "")
+                            .onChange(of: viewModel.activityStatus) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                viewModel.objectWillChange.send()
+                            }
                     }
                     
                 }.scrollContentBackground(.hidden)
@@ -57,8 +82,8 @@ struct UserInformationView: View {
                 
                 CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
                     continueTag = true
-                }.disabled(viewModel.isAnyFieldEmpty || isContinueButtonTapped)
-                    .opacity((viewModel.isAnyFieldEmpty || isContinueButtonTapped) ? 0.5 : 1.0)
+                }.disabled(!viewModel.isAuthenticated)
+                    .opacity((viewModel.isAuthenticated) ? 1 : 0.5)
                 
                 redirectLoginPageButton
                 

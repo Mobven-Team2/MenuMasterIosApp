@@ -14,8 +14,26 @@ class UserInformationViewModel: ObservableObject {
     @Published var weight: String = ""
     @Published var activityStatus: ActivityStatus?
     
-    var isAnyFieldEmpty: Bool {
-            return age.isEmpty || gender == nil || height.isEmpty || weight.isEmpty || activityStatus == nil
-        }
+    var userInformationValidator = Validator()
+    var isAuthenticated: Bool = false
     
+    func validateFields() -> Bool {
+        if gender == nil || activityStatus == nil {
+            return false
+        } else {
+            return userInformationValidator.validateUserInformationFields(age, height, weight)
+        }
+    }
+    
+    func validateAge() -> String {
+        return userInformationValidator.validateAge(age)
+    }
+    
+    func validateHeight() -> String {
+        return userInformationValidator.validateHeight(height)
+    }
+    
+    func validateWeight() -> String {
+        return userInformationValidator.validateWeight(weight)
+    }
 }

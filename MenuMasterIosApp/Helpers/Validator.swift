@@ -31,6 +31,16 @@ class Validator {
         return true
     }
     
+    func validateUserInformationFields(_ age: String, _ height: String, _ weight: String) -> Bool {
+        guard !age.isEmpty, !height.isEmpty, !weight.isEmpty else { return false }
+        
+        guard validateAge(age).isEmpty else { return false }
+        guard validateHeight(height).isEmpty else { return false }
+        guard validateWeight(weight).isEmpty else { return false }
+        
+        return true
+    }
+    
     func validateFullName(_ fullName: String) -> String {
         if (fullName.count > 3 && fullName.count < 26) || fullName.isEmpty {
             validator = .noError
@@ -71,6 +81,39 @@ class Validator {
         }
         return validator?.errorMessage ?? ""
     }
+    
+    func validateAge(_ age: String) -> String {
+        let ageRegex = "[0-9]{2,2}"
+        let agePredicate = NSPredicate(format:"SELF MATCHES %@", ageRegex)
+        if agePredicate.evaluate(with: age) {
+            validator = .noError
+        } else {
+            validator = .age
+        }
+        return validator?.errorMessage ?? ""
+    }
+    
+    func validateHeight(_ height: String) -> String {
+        let heightRegex = "[0-9]{3,3}"
+        let heightPredicate = NSPredicate(format:"SELF MATCHES %@", heightRegex)
+        if heightPredicate.evaluate(with: height) {
+            validator = .noError
+        } else {
+            validator = .height
+        }
+        return validator?.errorMessage ?? ""
+    }
+    
+    func validateWeight(_ weight: String) -> String {
+        let weightRegex = "[0-9]{2,3}"
+        let weightPredicate = NSPredicate(format:"SELF MATCHES %@", weightRegex)
+        if weightPredicate.evaluate(with: weight) {
+            validator = .noError
+        } else {
+            validator = .weight
+        }
+        return validator?.errorMessage ?? ""
+    }
 }
 
 enum ValidationError {
@@ -80,6 +123,9 @@ enum ValidationError {
     case confirmPassword
     case noError
     case empty
+    case age
+    case height
+    case weight
     
     var errorMessage: String {
         switch self {
@@ -95,6 +141,12 @@ enum ValidationError {
             return ""
         case .empty:
             return "Bu alan boş bırakılamaz."
+        case .age:
+            return "Eksik veya hatalı yazım."
+        case .height:
+            return "Eksik veya hatalı yazım."
+        case .weight:
+            return "Eksik veya hatalı yazım."
         }
     }
 }
