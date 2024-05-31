@@ -51,8 +51,15 @@ struct LoginView: View {
                     }.padding(.top,34)
                     
                     forgetPasswordButton
+                    
                     Spacer()
+                    
                     loginButton
+                    
+                    Spacer()
+                    
+                    google
+                    
                     redirectRegisterPageButton
                     
                 }
@@ -128,6 +135,15 @@ extension LoginView {
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
         
+    }
+    
+    private var google : some View {
+        Image("Google")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 327, height: 56)
+            .padding(.bottom, 20)
+            .padding(.top, 50)
     }
     
     private var backButton : some View {

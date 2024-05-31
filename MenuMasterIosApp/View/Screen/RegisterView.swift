@@ -83,12 +83,13 @@ struct RegisterView: View {
                             }
                         }
                         
-                    }.padding(.top,34)
-                        .padding(.bottom,30)
+                    }.padding(.top, 10)
+                        .padding(.bottom, 10)
                     
                     Spacer()
                     termsConditionsText
                     createAccountButton
+                    google
                     redirectLoginPageButton
                     
                 }
@@ -118,7 +119,7 @@ extension RegisterView {
             .foregroundColor(Color.theme.primaryTextColor)
             .font(.chillaxVariable(size: 32))
             .fontWeight(.semibold)
-            .padding(.top,60)
+            .padding(.top, 50)
     }
     
     private var termsConditionsText : some View {
@@ -134,7 +135,7 @@ extension RegisterView {
                 .lineSpacing(0)
                 .lineLimit(2)
         }
-        .padding()
+        .padding(2)
     }
     
     private var createAccountButton : some View {
@@ -163,6 +164,14 @@ extension RegisterView {
         }.font(.dmSans(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
+    }
+    
+    private var google : some View {
+        Image("Google")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 327, height: 56)
+            .padding(.bottom, 10)
     }
     
     private var backButton : some View {
