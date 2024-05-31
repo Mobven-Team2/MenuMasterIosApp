@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2AAFBB2C0942E500D4E558 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AAFBA2C0942E500D4E558 /* CheckboxToggleStyle.swift */; };
 		7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40942BFEB5C30026CC3A /* AuthenticationService.swift */; };
 		7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */; };
 		7A51A06C2C062965008ADCF4 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51A06B2C062965008ADCF4 /* Validator.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A2AAFBA2C0942E500D4E558 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		7A2E40942BFEB5C30026CC3A /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7A51A06B2C062965008ADCF4 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -205,7 +207,6 @@
 		8DE4BD372BFDE75500BEEE53 /* MenuMasterIosApp */ = {
 			isa = PBXGroup;
 			children = (
-				8D87DC902C065EAA004D16BA /* New Group */,
 				8DF1AB732BFE04CF008F9899 /* Info.plist */,
 				8DF1AB6F2BFE0243008F9899 /* Resources */,
 				8DF1AB6A2BFDFAC5008F9899 /* Extensions */,
@@ -272,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				8DF1AB702BFE0283008F9899 /* Fonts */,
+				7A2AAFBA2C0942E500D4E558 /* CheckboxToggleStyle.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -442,6 +444,7 @@
 				8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */,
 				7AFCCB6E2C00BB9700D96BD0 /* HomeView.swift in Sources */,
 				7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */,
+				7A2AAFBB2C0942E500D4E558 /* CheckboxToggleStyle.swift in Sources */,
 				8DF1AB6C2BFDFAD8008F9899 /* Color+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

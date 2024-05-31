@@ -11,8 +11,8 @@ struct UserInformationView: View {
     @StateObject var viewModel = UserInformationViewModel()
     @State private var isContinueButtonTapped = false
     @State private var loginTag: Bool = false
-    @State private var dietTypeTag: Bool = false
-    @State private var welcomeTag: Bool = false
+    @State private var continueTag: Bool = false
+    @State private var backButtonTag: Bool = false
     
     var body: some View {
         NavigationViewStack {
@@ -56,19 +56,19 @@ struct UserInformationView: View {
                 
                 
                 CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
-                    dietTypeTag = true
+                    continueTag = true
                 }.disabled(viewModel.isAnyFieldEmpty || isContinueButtonTapped)
                     .opacity((viewModel.isAnyFieldEmpty || isContinueButtonTapped) ? 0.5 : 1.0)
                 
                 redirectLoginPageButton
                 
-            }.navigationDestinationWrapper(isPresented: $dietTypeTag, destination: {
+            }.navigationDestinationWrapper(isPresented: $continueTag, destination: {
                 DietTypeView()
             })
             .navigationDestinationWrapper(isPresented: $loginTag, destination: {
                 LoginView()
             })
-            .navigationDestinationWrapper(isPresented: $welcomeTag, destination: {
+            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
                 WelcomeView()
             })
             
@@ -99,7 +99,7 @@ extension UserInformationView {
     
     private var backButton : some View {
         Button(action: {
-            welcomeTag = true
+            backButtonTag = true
         }) {
             Image("back-button-icon")
                 .resizable()
