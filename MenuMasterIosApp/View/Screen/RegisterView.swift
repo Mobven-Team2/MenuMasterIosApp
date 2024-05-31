@@ -13,6 +13,8 @@ struct RegisterView: View {
     @State private var showPassword: Bool = false
     @State private var loginTag: Bool = false
     @State private var registerTag: Bool = false
+    @State private var backButtonTag: Bool = false
+    @State private var isOn: Bool = false
     
     //Validation error messages
     @State private var errorFullName: String = ""
@@ -24,11 +26,12 @@ struct RegisterView: View {
         NavigationViewStack {
             ZStack {
                 VStack(alignment:.center) {
+                    backButton
                     titleText
                     
                     VStack(alignment: .leading) {
 
-                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: viewModel.validateFullName(), text: $viewModel.fullName)
+                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: errorFullName, text: $viewModel.fullName)
                             .onChange(of: viewModel.fullName) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorFullName = viewModel.validateFullName()
@@ -80,12 +83,13 @@ struct RegisterView: View {
                             }
                         }
                         
-                    }.padding(.top,34)
-                        .padding(.bottom,88)
+                    }.padding(.top, 10)
+                        .padding(.bottom, 10)
                     
                     Spacer()
-                    
+                    termsConditionsText
                     createAccountButton
+                    google
                     redirectLoginPageButton
                     
                 }
@@ -95,6 +99,9 @@ struct RegisterView: View {
             })
             .navigationDestinationWrapper(isPresented: $loginTag, destination: {
                 LoginView()
+            })
+            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
+                WelcomeView() // TODO: Dünya Mutfağı sayfasına dönmeli?
             })
         }
     }
@@ -112,18 +119,34 @@ extension RegisterView {
             .foregroundColor(Color.theme.primaryTextColor)
             .font(.chillaxVariable(size: 32))
             .fontWeight(.semibold)
-            .padding(.top,80)
+            .padding(.top, 50)
     }
     
+    private var termsConditionsText : some View {
+        HStack {
+            Toggle("", isOn: $isOn)
+                .toggleStyle(CheckboxToggleStyle(isOn: isOn))
+            
+            Text("\(Text("Şartlar & Koşullar").underline()) ve \(Text("Gizlilik Politikasını").underline()) kabul ediyorum.")
+                .foregroundColor(isOn ? .black : .red)
+                .font(.dmSans(size: 14))
+                .frame(width: 287, height: 40)
+                .multilineTextAlignment(.leading)
+                .lineSpacing(0)
+                .lineLimit(2)
+        }
+        .padding(2)
+    }
     
     private var createAccountButton : some View {
         Button(action: {
-            registerTag = viewModel.register()
+            registerTag = true
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
-                .opacity(viewModel.isAuthenticated ? 1 : 0.5)
+                .opacity((viewModel.isAuthenticated && isOn) ? 1 : 0.5 )
         }
+        .disabled(viewModel.isAuthenticated || isOn)
         .padding(.bottom, 13)
     }
     
@@ -141,5 +164,30 @@ extension RegisterView {
         }.font(.dmSans(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
+    }
+    
+    private var google : some View {
+        Image("Google")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 327, height: 56)
+            .padding(.bottom, 10)
+    }
+    
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            HStack() {
+                Image("back-button-icon")
+                    .resizable()
+                    .foregroundColor(Color.theme.primaryTextColor)
+                    .frame(width: 20,height: 32)
+                    .padding([.top, .leading], 20)
+                
+                Spacer()
+            }
+            
+        }
     }
 }

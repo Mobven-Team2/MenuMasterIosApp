@@ -12,6 +12,7 @@ struct LoginView: View {
     @State private var showPassword: Bool = false
     @State private var loginTag: Bool = false
     @State private var registerTag: Bool = false
+    @State private var backButtonTag: Bool = false
     @State private var isButtonClickable: Bool = false
     
     var body: some View {
@@ -19,6 +20,7 @@ struct LoginView: View {
             ZStack {
                 
                 VStack(alignment:.center) {
+                    backButton
                     titleText
                     
                     VStack(alignment: .leading) {
@@ -49,8 +51,15 @@ struct LoginView: View {
                     }.padding(.top,34)
                     
                     forgetPasswordButton
+                    
                     Spacer()
+                    
                     loginButton
+                    
+                    Spacer()
+                    
+                    google
+                    
                     redirectRegisterPageButton
                     
                 }
@@ -59,7 +68,10 @@ struct LoginView: View {
                 HomeView()
             })
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {
-                RegisterView()
+                UserInformationView()
+            })
+            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
+                WelcomeView()
             })
         }
     }
@@ -125,7 +137,31 @@ extension LoginView {
         
     }
     
+    private var google : some View {
+        Image("Google")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 327, height: 56)
+            .padding(.bottom, 20)
+            .padding(.top, 50)
+    }
     
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            HStack() {
+                Image("back-button-icon")
+                    .resizable()
+                    .foregroundColor(Color.theme.primaryTextColor)
+                    .frame(width: 20,height: 32)
+                    .padding(.leading, 20)
+                
+                Spacer()
+            }
+            
+        }
+    }
     
 }
 

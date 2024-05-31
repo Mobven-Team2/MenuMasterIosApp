@@ -17,8 +17,8 @@ class RegisterViewModel: ObservableObject {
     var registerValidator = Validator()
     var isAuthenticated: Bool = false
     
-    func register() -> Bool {
-        if isAuthenticated {
+    func register(checkbox: Bool) -> Bool {
+        if isAuthenticated && checkbox {
             print("Kayıt başarılı!")
             return true
         }else {
