@@ -10,6 +10,7 @@ import SwiftUI
 struct DietTypeView: View {
     @State private var selectedPreferences: Set<DietType> = []
     @State private var isContinueButtonTapped = false
+    @State private var continueTag: Bool = false
     
     var body: some View {
         NavigationViewStack {
@@ -18,14 +19,14 @@ struct DietTypeView: View {
                     Text("Beslenme tercihim...")
                         .foregroundColor(Color.theme.primaryTextColor)
                         .font(.chillaxVariable(size: 24))
-                        .fontWeight(.semibold)
+                        .fontWeight(.medium)
                     
                     Text("Tariflerini istediğin beslenme türlerini seç.")
                         .foregroundColor(Color.theme.primaryTextColor)
                         .font(.dmSans(size: 14))
                         .lineSpacing(8)
                         .lineLimit(2)
-                }
+                }.padding(.top,50)
                 
                 Form {
                     VStack(spacing:20) {
@@ -44,13 +45,15 @@ struct DietTypeView: View {
                 .formStyle(.columns)
                 .frame(height: 500)
                 
+                Spacer()
+                
                 CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
-                    // Action to perform
-                    // Example: Navigate to another view
-                    print("Button tapped")
+                   continueTag = true
                 }
                 
-            }
+            }.navigationDestinationWrapper(isPresented: $continueTag, destination: {
+                CuisineSelectionView()
+            })
         }
     }
 }

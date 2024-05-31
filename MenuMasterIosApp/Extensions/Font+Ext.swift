@@ -11,6 +11,7 @@ import SwiftUI
 extension Font {
     static func chillaxVariable(size: CGFloat) -> Font {
         return .custom("Chillax Variable", size: size)
+        
     }
     
     static func dmSans(size: CGFloat) -> Font {
