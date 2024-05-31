@@ -13,6 +13,7 @@ struct CuisineSelectionView: View {
     @StateObject var viewModel = CuisineSelectionViewModel()
     @State private var isContinueButtonTapped = false
     @State private var isLong : Bool = false
+    @State private var continueTag: Bool = false
     
     let columns: [GridItem] = [
         GridItem(.flexible(),alignment: .leading),
@@ -37,7 +38,7 @@ struct CuisineSelectionView: View {
                         .font(.dmSans(size: 14))
                         .lineSpacing(8)
                         .lineLimit(2)
-                }
+                }.padding(.top,50)
                 
                 Spacer()
                 
@@ -60,10 +61,14 @@ struct CuisineSelectionView: View {
                 Spacer()
                 
                 CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
-                    // NEXT PAGE
+                    continueTag = true
                 }
                 
-            }.padding(.horizontal,20)
+            }
+            .padding(.horizontal,20)
+            .navigationDestinationWrapper(isPresented: $continueTag, destination: {
+                    AccountCreationCompletionView()
+                })
         }
         
         

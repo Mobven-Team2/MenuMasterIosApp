@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountCreationCompletionView: View {
-    @State private var homeTag: Bool = false
+    @State private var continueTag: Bool = false
     @State private var isContinueButtonTapped = false
     
     var body: some View {
@@ -40,13 +40,13 @@ struct AccountCreationCompletionView: View {
                         .fontWeight(.medium)
                     
                     CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
-                        homeTag = true
+                        continueTag = true
                     }.padding(.vertical,60)
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $homeTag, destination: {
-                HomeView()
+            .navigationDestinationWrapper(isPresented: $continueTag, destination: {
+                RegisterView()
             })
         }
     }
