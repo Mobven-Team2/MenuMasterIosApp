@@ -19,7 +19,8 @@ struct User: Codable {
     var weight: Int
     var gender: Gender
     var activityStatus: ActivityStatus
-    var dietType: String
+    var dietType: [DietType]
+    var cuisineNames : [Cuisine]
 }
 
 enum Gender: String, Codable, CaseIterable , CustomStringConvertible, Identifiable {
@@ -87,3 +88,23 @@ enum DietType: String, Codable, CaseIterable {
         }
     }
 }
+
+
+enum Cuisine: String, Codable, CaseIterable , Identifiable{
+    case turkish = "Türk"
+    case mexican = "Meksikan"
+    case french = "Fransız"
+    case indian = "Hint"
+    case greek = "Yunan"
+    case mediterranean = "Akdeniz"
+    case italian = "İtalyan"
+    case balkan = "Balkan"
+    case japanese = "Japon"
+    case chinese = "Çin"
+    case korean = "Kore"
+    case vietnamese = "Vietnam"
+    case thai = "Tayland"
+    
+    var id: String { self.rawValue }
+}
+
