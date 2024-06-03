@@ -13,6 +13,12 @@ extension Color {
 }
 
 struct ColorTheme {
-    let titleColor = Color("TextColor")
-    let greenColor = Color("PrimaryGreenColor")
+    let primaryTextColor = Color("PrimaryTextColor")
+    let textfieldBgColor = Color("TextfieldBgColor")
+    
+    let primaryOrangeColor = Color("PrimaryOrangeColor")
+    let lightOrangeColor = Color("LightOrangeColor")
+    
+    let primaryPurpleColor = Color("PrimaryPurpleColor")
+    let lightPurpleColor = Color("LightPurpleColor")
 }

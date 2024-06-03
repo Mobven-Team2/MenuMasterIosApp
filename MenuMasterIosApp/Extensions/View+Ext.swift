@@ -10,21 +10,33 @@ import SwiftUI
 extension View {
     func customTextFieldStyle() -> some View {
         self
+            .padding(.leading, 16)
             .font(.dmSans(size: 14))
-            .padding()
-            .frame(width: 327, height: 49)
-            .background(Color.white)
-            .cornerRadius(25.0)
-            .shadow(color: Color.black.opacity(0.1), radius: 45, x: 0, y: 2)
+            .foregroundColor(Color.theme.primaryTextColor)
+            .frame(width: UIScreen.main.bounds.width - 48, height: 49)
+            .background(Color.theme.textfieldBgColor)
+            .cornerRadius(8.0)
     }
     
     func customButtonStyle() -> some View {
             self
                 .font(.dmSans(size: 16))
+                .fontWeight(.medium)
                 .foregroundColor(.white)
-                .frame(width: 327, height: 49)
-                .background(Color.theme.greenColor)
-                .cornerRadius(25.0)
+                .frame(width: UIScreen.main.bounds.width - 48, height: 56)
+                .background(Color.theme.primaryOrangeColor)
+                .cornerRadius(16.0)
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+        }
+    
+    func customButtonStyleLight() -> some View {
+            self
+                .font(.dmSans(size: 16))
+                .fontWeight(.medium)
+                .foregroundColor(Color.theme.primaryOrangeColor)
+                .frame(width: UIScreen.main.bounds.width - 48, height: 56)
+                .background(Color.theme.lightOrangeColor)
+                .cornerRadius(16.0)
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
         }
     

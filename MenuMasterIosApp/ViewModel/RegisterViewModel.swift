@@ -8,44 +8,42 @@
 import Foundation
 
 class RegisterViewModel: ObservableObject {
-    
-    @Published var isAuthenticated: Bool = false
-    
+
     @Published var fullName: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
     
-    func register() {
-        if validateFields() {
-            
+    var registerValidator = Validator()
+    var isAuthenticated: Bool = false
+    
+    func register(checkbox: Bool) -> Bool {
+        if isAuthenticated && checkbox {
+            print("Kayıt başarılı!")
+            return true
         }else {
-            print("Giriş başarısız! Lütfen geçerli bir e-posta ve şifre girin.")
+            print("Kayıt başarısız!")
+            return false
         }
-        
     }
     
     func validateFields() -> Bool {
-        guard !email.isEmpty, !password.isEmpty, !fullName.isEmpty, !confirmPassword.isEmpty else {
-            return false
-        }
-        
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-        
-        if !emailPredicate.evaluate(with: email) {
-            return false
-        }
-        
-        if password.count < 6 {
-            return false
-        }
-        
-        if password != confirmPassword {
-            return false
-        }
-        
-        return true
+        return registerValidator.validateRegisterFields(fullName, email, password, confirmPassword)
     }
-
+    
+    func validateFullName() -> String {
+        return registerValidator.validateFullName(fullName)
+    }
+    
+    func validateEmail() -> String {
+        return registerValidator.validateEmail(email)
+    }
+    
+    func validatePassword() -> String {
+        return registerValidator.validatePassword(password)
+    }
+    
+    func validateConfirmPassword() -> String {
+        return registerValidator.validateConfirmPassword(password, confirmPassword)
+    }
 }
