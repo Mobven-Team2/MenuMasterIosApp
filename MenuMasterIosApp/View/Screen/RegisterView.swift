@@ -89,7 +89,6 @@ struct RegisterView: View {
                     Spacer()
                     termsConditionsText
                     createAccountButton
-                    google
                     redirectLoginPageButton
                     
                 }
@@ -146,7 +145,7 @@ extension RegisterView {
                 .customButtonStyle()
                 .opacity((viewModel.isAuthenticated && isOn) ? 1 : 0.5 )
         }
-        .disabled(viewModel.isAuthenticated || isOn)
+        .disabled(!viewModel.isAuthenticated || !isOn)
         .padding(.bottom, 13)
     }
     
@@ -166,13 +165,13 @@ extension RegisterView {
             .foregroundColor(Color.theme.primaryTextColor)
     }
     
-    private var google : some View {
-        Image("Google")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 327, height: 56)
-            .padding(.bottom, 10)
-    }
+//    private var google : some View {
+//        Image("Google")
+//            .resizable()
+//            .scaledToFit()
+//            .frame(width: 327, height: 56)
+//            .padding(.bottom, 10)
+//    }
     
     private var backButton : some View {
         Button(action: {
