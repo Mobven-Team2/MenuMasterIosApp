@@ -18,7 +18,10 @@ struct ColorTheme {
     
     let primaryOrangeColor = Color("PrimaryOrangeColor")
     let lightOrangeColor = Color("LightOrangeColor")
+    let gradientLightOrangeColor = Color("GradientLightOrangeColor")
     
-    let primaryPurpleColor = Color("PrimaryPurpleColor")
-    let lightPurpleColor = Color("LightPurpleColor")
+    let primaryGreenColor = Color("PrimaryGreenColor")
+    let lightGreenColor = Color("LightGreenColor")
+    
+    let borderColor = Color("BorderColor")
 }

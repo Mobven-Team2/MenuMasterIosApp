@@ -35,7 +35,7 @@ struct DietTypeView: View {
                         ForEach(DietType.allCases, id: \.self) { dietType in
                             DietTypeSelectionRowView(
                                 title: dietType.rawValue,
-                                iconName: dietType.iconName,
+                                iconName: dietType.iconName, description: dietType.description,
                                 isSelected: self.selectedPreferences.contains(dietType)
                             ) {
                                 self.toggleSelection(for: dietType)

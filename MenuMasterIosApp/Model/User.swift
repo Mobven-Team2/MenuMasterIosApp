@@ -87,6 +87,21 @@ enum DietType: String, Codable, CaseIterable {
             return "nopreference-icon"
         }
     }
+    
+    var description: String {
+        switch self {
+        case .vegan:
+            return "Yalnızca Bitkisel"
+        case .vegetarian:
+            return "Bitkisel temelli, etsiz"
+        case .ketogenic:
+            return "Yağ Temelli"
+        case .paleo:
+            return "İlkel, doğal beslenme"
+        case .noPreference:
+            return ""
+        }
+    }
 }
 
 
