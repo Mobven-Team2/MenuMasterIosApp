@@ -16,11 +16,11 @@ struct CuisineButtonView: View {
     var body: some View {
         Button(action: action) {
             Text(cuisine.rawValue)
-                .foregroundColor(isSelected ? .white : Color.theme.primaryPurpleColor)
+                .foregroundColor(isSelected ? .white : Color.theme.primaryGreenColor)
                 .contentShape(Rectangle())
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }.frame(width: isLong ? (UIScreen.main.bounds.width ) * 2 / 4 : (UIScreen.main.bounds.width) * 1.5 / 4 ,height: 59)
-            .background(isSelected ? Color.theme.primaryPurpleColor : Color.theme.lightPurpleColor)
+            .background(isSelected ? Color.theme.primaryGreenColor : Color.theme.lightGreenColor)
             .cornerRadius(16)
     }
 }
