@@ -14,6 +14,7 @@ struct CuisineSelectionView: View {
     @State private var isContinueButtonTapped = false
     @State private var isLong : Bool = false
     @State private var continueTag: Bool = false
+    @State private var backButtonTag: Bool = false
     
     let columns: [GridItem] = [
         GridItem(.flexible(),alignment: .leading),
@@ -22,8 +23,8 @@ struct CuisineSelectionView: View {
     
     var body: some View {
         NavigationViewStack {
-            VStack(alignment: .center) {
-                
+            VStack(alignment: .leading) {
+                backButton
                 VStack(alignment:.leading,spacing: 8) {
                     HStack {
                         Text("Favori Mutfağım...")
@@ -67,8 +68,11 @@ struct CuisineSelectionView: View {
             }
             .padding(.horizontal,20)
             .navigationDestinationWrapper(isPresented: $continueTag, destination: {
-                    AccountCreationCompletionView()
-                })
+                AccountCreationCompletionView()
+            })
+            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
+                DietTypeView()
+            })
         }
         
         
@@ -78,4 +82,18 @@ struct CuisineSelectionView: View {
 
 #Preview {
     CuisineSelectionView()
+}
+
+extension CuisineSelectionView {
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            Image("back-button-icon")
+                .resizable()
+                .foregroundColor(Color.theme.primaryTextColor)
+                .frame(width: 20,height: 32)
+                .padding(0)
+        }
+    }
 }

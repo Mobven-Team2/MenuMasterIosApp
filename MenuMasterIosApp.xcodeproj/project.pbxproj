@@ -453,7 +453,6 @@
 				8D246E612BFF7641008CA0A4 /* View+Ext.swift in Sources */,
 				7A51A06C2C062965008ADCF4 /* Validator.swift in Sources */,
 				8D87DC942C072F8B004D16BA /* DietTypeView.swift in Sources */,
-				7A51A06C2C062965008ADCF4 /* Validator.swift in Sources */,
 				8DD195DD2C00A03E0057C130 /* TextfieldView.swift in Sources */,
 				8D87DC992C0748D5004D16BA /* DietTypeSelectionRowView.swift in Sources */,
 				8DD00ED42C04A92900594F1A /* WelcomeView.swift in Sources */,

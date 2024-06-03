@@ -48,7 +48,7 @@ struct LoginView: View {
                             }
                         }
                         
-                    }.padding(.top,34)
+                    }.padding(.top,54)
                     
                     forgetPasswordButton
                     
@@ -58,7 +58,6 @@ struct LoginView: View {
                     
                     Spacer()
                     
-                    google
                     
                     redirectRegisterPageButton
                     
@@ -111,8 +110,10 @@ extension LoginView {
     
     private var loginButton : some View {
         Button(action: {
-            loginTag = viewModel.login()
+//            loginTag = viewModel.login()
             // TODO: backend gelince false iken hata mesajı yazdır
+            viewModel.isAuthenticated = true
+            loginTag = true
         }) {
             Text("Giriş Yap")
         }
@@ -137,14 +138,14 @@ extension LoginView {
         
     }
     
-    private var google : some View {
-        Image("Google")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 327, height: 56)
-            .padding(.bottom, 20)
-            .padding(.top, 50)
-    }
+//    private var google : some View {
+//        Image("Google")
+//            .resizable()
+//            .scaledToFit()
+//            .frame(width: 327, height: 56)
+//            .padding(.bottom, 20)
+//            .padding(.top, 50)
+//    }
     
     private var backButton : some View {
         Button(action: {

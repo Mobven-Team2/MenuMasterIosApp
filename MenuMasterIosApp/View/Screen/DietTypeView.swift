@@ -11,10 +11,12 @@ struct DietTypeView: View {
     @State private var selectedPreferences: Set<DietType> = []
     @State private var isContinueButtonTapped = false
     @State private var continueTag: Bool = false
+    @State private var backButtonTag: Bool = false
     
     var body: some View {
         NavigationViewStack {
             VStack(alignment:.leading) {
+                backButton
                 VStack(alignment: .leading,spacing: 8){
                     Text("Beslenme tercihim...")
                         .foregroundColor(Color.theme.primaryTextColor)
@@ -51,8 +53,12 @@ struct DietTypeView: View {
                    continueTag = true
                 }
                 
-            }.navigationDestinationWrapper(isPresented: $continueTag, destination: {
+            }
+            .navigationDestinationWrapper(isPresented: $continueTag, destination: {
                 CuisineSelectionView()
+            })
+            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
+                UserInformationView()
             })
         }
     }
@@ -75,6 +81,18 @@ extension DietTypeView {
                 selectedPreferences.insert(dietType)
                 selectedPreferences.remove(.noPreference)
             }
+        }
+    }
+    
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            Image("back-button-icon")
+                .resizable()
+                .foregroundColor(Color.theme.primaryTextColor)
+                .frame(width: 20,height: 32)
+                .padding(0)
         }
     }
 }
