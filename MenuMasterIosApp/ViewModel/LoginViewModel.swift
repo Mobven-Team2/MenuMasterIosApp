@@ -15,11 +15,11 @@ class LoginViewModel: ObservableObject {
     var loginValidator = Validator()
     var isAuthenticated: Bool = false
     
-    func login() -> Bool {
+    func login() async -> Bool {
         if validateFields() {
             let defaults = UserDefaults.standard
             
-            AuthenticationService().login(email: email, password: password) { result in
+            await AuthenticationService().login(email: email, password: password) { result in
                 switch result {
                 case .success(let token):
                     defaults.setValue(token, forKey: "access_token")

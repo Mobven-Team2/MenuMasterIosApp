@@ -139,7 +139,18 @@ extension RegisterView {
     
     private var createAccountButton : some View {
         Button(action: {
-            registerTag = true
+            Task {
+                let registrationResult = await viewModel.registerUser()
+                if registrationResult {
+                    // Registration was successful
+                    viewModel.register(checkbox: true)
+                    registerTag = true
+                } else {
+                    // Registration failed
+                    // Handle the failure, show an alert, etc.
+                }
+            }
+
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()

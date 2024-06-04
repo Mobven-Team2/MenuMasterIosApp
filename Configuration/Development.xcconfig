@@ -1,0 +1,13 @@
+//
+//  Configuration.xcconfig
+//  MenuMasterIosApp
+//
+//  Created by Cansu Özdizlekli on 6/3/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+BACKEND_URL = http:\/\/165.22.93.225:5002\/dev
+BUNDLE_ID = com.cansuozdizlekli.MenuMasterIosAppDev
+APP_NAME = MenuMasterAIDev
