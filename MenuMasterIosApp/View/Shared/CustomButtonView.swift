@@ -33,10 +33,3 @@ struct CustomButtonView: View {
 }
 
 
-//#Preview {
-//    StatefulPreviewWrapper(false) { isTapped in
-//        AnyView(CustomButtonView(text: "Devam Et", isButtonTapped: isTapped) {
-//            // Action to perform
-//        })
-//    }
-//}

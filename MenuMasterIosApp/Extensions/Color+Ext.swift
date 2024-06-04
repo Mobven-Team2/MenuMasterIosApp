@@ -24,4 +24,10 @@ struct ColorTheme {
     let lightGreenColor = Color("LightGreenColor")
     
     let borderColor = Color("BorderColor")
+    
+    let mediumGrayTextColor = Color("MediumGrayTextColor")
+    let lightBrownColor = Color("LightBrownColor")
+    
+    let darkTextColor = Color("DarkTextColor")
+    
 }

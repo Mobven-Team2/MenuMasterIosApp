@@ -6,6 +6,7 @@
 	<array>
 		<string>ChillaxVariable.ttf</string>
 		<string>DMSans.ttf</string>
+		<string>Poppins-Regular.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
