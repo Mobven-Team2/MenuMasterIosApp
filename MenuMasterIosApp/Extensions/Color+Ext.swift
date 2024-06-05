@@ -28,6 +28,6 @@ struct ColorTheme {
     let mediumGrayTextColor = Color("MediumGrayTextColor")
     let lightBrownColor = Color("LightBrownColor")
     
-    let darkTextColor = Color("DarkTextColor")
+    let customDarkTextColor = Color("CustomDarkTextColor")
     
 }

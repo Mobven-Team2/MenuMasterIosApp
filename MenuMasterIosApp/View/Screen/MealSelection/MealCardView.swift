@@ -23,11 +23,12 @@ struct MealCardView: View {
             
             VStack(alignment: .leading) {
                 Text(name)
-                    .font(.title2)
+                    .font(.poppins(size: 18))
                 
                 Text("Öğünü Ekle")
+                    .font(.poppins(size: 14))
                     .foregroundStyle(Color.theme.mediumGrayTextColor)
-            }
+            }.padding(.leading,5)
            
             Spacer()
             
@@ -39,7 +40,7 @@ struct MealCardView: View {
         }
         .frame(width: UIScreen.main.bounds.width - 48, height: 70)
         .padding(.vertical,16)
-        .foregroundColor(Color.theme.darkTextColor)
+        .foregroundColor(Color.theme.customDarkTextColor)
         .background(Color.white)
         .cornerRadius(16)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 0)

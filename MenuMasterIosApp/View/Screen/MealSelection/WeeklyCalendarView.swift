@@ -58,17 +58,17 @@ struct DayView: View {
         }) {
             VStack {
                 Text(getShortDayName(date: day))
-                    .font(.caption)
+                    .font(.poppins(size: 12))
                     .padding(.bottom,7)
                 
                 Text("\(getDayNumber(date: day))")
-                    .font(.headline)
+                    .font(.poppins(size: 16))
                 
             }
         }
         .frame(width: 60, height: 80)
         .background(isSelected ? Color.theme.primaryGreenColor : .white)
-        .foregroundColor(isSelected ? .white : Color.theme.lightBrownColor)
+        .foregroundColor(isSelected ? .white : Color.theme.customDarkTextColor)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 0)
     }

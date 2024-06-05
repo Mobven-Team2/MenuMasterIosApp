@@ -19,8 +19,7 @@ struct MealSelectionView: View {
                 Text("Öğün Seç")
                     .padding(.leading,20)
                     .fontWeight(.semibold)
-                    .font(.title3)
-//                    .font(.poppins(size: 20))
+                    .font(.poppins(size: 18))
                 Spacer()
             }
             
