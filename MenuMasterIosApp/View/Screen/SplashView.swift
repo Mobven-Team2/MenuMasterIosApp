@@ -14,7 +14,7 @@ struct SplashView: View {
     
     var body: some View {
         if self.isActive {
-            WelcomeView()
+            OnboardingTabView()
                 .transition(.blurReplace)
         }else {
             VStack {

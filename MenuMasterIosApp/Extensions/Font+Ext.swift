@@ -17,4 +17,9 @@ extension Font {
     static func dmSans(size: CGFloat) -> Font {
         return .custom("DM Sans", size: size)
     }
+    
+    
+    static func poppins(size: CGFloat) -> Font {
+        return .custom("Poppins-Regular", size: size)
+    }
 }

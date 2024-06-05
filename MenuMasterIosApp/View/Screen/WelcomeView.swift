@@ -14,12 +14,6 @@ struct WelcomeView: View {
     var body: some View {
         NavigationViewStack {
             ZStack {
-                Image("welcome-background-image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
-                    .opacity(1.0)
-                    .offset(x:-3)
                     
                 VStack {
                     

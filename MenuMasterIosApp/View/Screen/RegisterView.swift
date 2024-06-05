@@ -58,7 +58,7 @@ struct RegisterView: View {
                                     .resizable()
                                     .frame(width: 20, height: 20)
                                     .foregroundColor(Color.theme.primaryTextColor)
-                                    .padding(.top, 25)
+                                    .padding(.top, 15)
                                     .padding(.trailing, 20)
                             }
                         }
