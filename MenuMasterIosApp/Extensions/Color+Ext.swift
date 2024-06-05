@@ -29,5 +29,6 @@ struct ColorTheme {
     let lightBrownColor = Color("LightBrownColor")
     
     let customDarkTextColor = Color("CustomDarkTextColor")
+    let bellColor = Color("BellColor")
     
 }
