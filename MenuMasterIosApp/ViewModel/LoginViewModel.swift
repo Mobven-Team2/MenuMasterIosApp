@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class LoginViewModel: ObservableObject {
     
@@ -19,7 +20,7 @@ class LoginViewModel: ObservableObject {
         if validateFields() {
             let defaults = UserDefaults.standard
             
-            AuthenticationService().login(email: email, password: password) { result in
+            LoginService().loginUser(email: email, password: password) { result in
                 switch result {
                 case .success(let token):
                     defaults.setValue(token, forKey: "access_token")

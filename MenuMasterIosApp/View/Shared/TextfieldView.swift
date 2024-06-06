@@ -21,8 +21,10 @@ struct TextfieldView: View {
                 .formTitleStyle()
             
             if isPasswordField {
-                SecureField(placeholder, text: $text)
+                // securefield kaldırdım
+                TextField(placeholder, text: $text)
                     .customTextFieldStyle()
+                
             } else {
                 TextField(placeholder, text: $text)
                     .customTextFieldStyle()
