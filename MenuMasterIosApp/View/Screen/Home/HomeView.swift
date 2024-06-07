@@ -11,15 +11,24 @@ struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
     
     
+    @State private var isButtonTapped = false
     
     var body: some View {
         NavigationViewStack {
             VStack {
                 
-                ZStack {
                     Image(getImageName())
                         .resizable()
                         .scaledToFit()
+            ScrollView {
+                VStack {
+                    ZStack {
+                        Image(getImageName())
+                            .resizable()
+                            .scaledToFit()
+                        
+                        helloUser
+                    }
                     
                     helloUser
 //                    pickMeal
@@ -31,6 +40,13 @@ struct HomeView: View {
 //                Spacer()
                 VStack{
                     pickMeal
+                    VStack{
+                        pickMeal
+                        suggestion
+                    }
+                    .offset(y: -90)
+                    
+                    Spacer()
                 }
                 .offset(y: -140)
                 
@@ -38,6 +54,10 @@ struct HomeView: View {
             }
             
             
+            .edgesIgnoringSafeArea(.top)
+            .navigationDestinationWrapper(isPresented: $isButtonTapped, destination: {
+                MealSelectionView()
+            })
         }
 
     }
@@ -84,21 +104,21 @@ extension HomeView {
             
             VStack(alignment: .leading) {
                 Text("Öğün Seç & Tarifleri Al")
-                    .font(.dmSans(size: 16))
+                    .font(.poppins(size: 16))
                     .fontWeight(.bold)
                     .frame(width: 285, height: 24, alignment: .leading)
                     .lineLimit(1)
                     .padding(.leading, 4)
                 Text("Tarif almak istediğin öğünleri seç, yapay zekanın sana özel hazırladığı tariflere göz at")
-                    .font(.dmSans(size: 14))
+                    .font(.poppins(size: 14))
                     .frame(width: 285, height: 63)
                     .lineLimit(3)
                 Button(action: {
-                    
+                    isButtonTapped = true
                 }) {
-                    Text("Öğün Seç")
+                    Text("Öğün Oluştur")
                 }
-                .font(.dmSans(size: 16))
+                .font(.poppins(size: 16))
                 .fontWeight(.medium)
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width - 96, height: 56)
@@ -107,12 +127,24 @@ extension HomeView {
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             }
             .padding(.top, 80)
-            
-            
-            
         }
-//        .offset(y: -140)
-
+        .padding(.bottom, -40)
+    }
+    
+    private var suggestion : some View {
+        VStack {
+            Text("Menu Master AI Önerileri")
+                .font(.poppins(size: 18))
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 36)
+            
+            HomeSuggestionView(imageName: "suggestion-photo", title: "Fotoğraftan Yemek Tarifi Al", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+            
+            HomeSuggestionView(imageName: "suggestion-list", title: "Alışveriş Listesi ve Sepet", text: "Tariflerinizdeki malzemeleri listeler, sizi market alışverişine yönlendirir.")
+            
+            HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+        }
     }
     
 }
