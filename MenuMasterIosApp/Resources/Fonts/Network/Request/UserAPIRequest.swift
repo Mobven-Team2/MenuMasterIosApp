@@ -18,7 +18,7 @@ enum UserAPI {
 
 }
 
-extension UserAPI: PSNetworkRequestType {
+extension UserAPI: NetworkRequestType {
 
     // Endpoint path for each case
     var path: String {
