@@ -22,7 +22,7 @@ struct TextfieldView: View {
             
             if isPasswordField {
                 // securefield kaldırdım
-                TextField(placeholder, text: $text)
+                SecureField(placeholder, text: $text)
                     .customTextFieldStyle()
                 
             } else {

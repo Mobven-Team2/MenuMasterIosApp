@@ -16,6 +16,7 @@ extension View {
             .frame(width: UIScreen.main.bounds.width - 48, height: 49)
             .background(Color.theme.textfieldBgColor)
             .cornerRadius(8.0)
+            .textInputAutocapitalization(.never)
     }
     
     func customButtonStyle() -> some View {

@@ -347,6 +347,7 @@
 		8DD195DA2C009FD60057C130 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				8DDFA4B22C1351ED00CF8D6D /* UserInformation */,
 				8D5EB0352C10A97400073603 /* Home */,
 				8D5EB0082C10473500073603 /* Onboarding */,
 				8D5EB0032C0F56CA00073603 /* RecipeDetail */,
@@ -356,7 +357,6 @@
 				8DF1AB762BFE3376008F9899 /* RegisterView.swift */,
 				8DD00ED12C04A56600594F1A /* SplashView.swift */,
 				8DD00ED32C04A92900594F1A /* WelcomeView.swift */,
-				8DD00ED52C04C02B00594F1A /* UserInformationView.swift */,
 				8D87DC932C072F8B004D16BA /* DietTypeView.swift */,
 				8D87DC982C0748D5004D16BA /* DietTypeSelectionRowView.swift */,
 				8D09FFB92C08CD520069D196 /* AccountCreationCompletionView.swift */,
@@ -372,6 +372,14 @@
 				8D87DC952C0745AE004D16BA /* CustomButtonView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		8DDFA4B22C1351ED00CF8D6D /* UserInformation */ = {
+			isa = PBXGroup;
+			children = (
+				8DD00ED52C04C02B00594F1A /* UserInformationView.swift */,
+			);
+			path = UserInformation;
 			sourceTree = "<group>";
 		};
 		8DE4BD2C2BFDE75500BEEE53 = {
