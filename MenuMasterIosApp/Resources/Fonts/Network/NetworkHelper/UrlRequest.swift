@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension PSNetworkRequestType {
+extension NetworkRequestType {
     
     func asURLRequest() throws -> URLRequest {
         let requestURL: URL!
@@ -30,11 +30,6 @@ extension PSNetworkRequestType {
             }
         }
         
-//        headers.forEach({
-//            request.setValue($0.value, forHTTPHeaderField: $0.key)
-//        })
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         // Query Parameters
         if !queryParams.isEmpty {
             var queryItemArr: [URLQueryItem] = []
@@ -56,7 +51,7 @@ extension PSNetworkRequestType {
 
 extension String {
     func asURL() throws -> URL {
-        guard let url = URL(string: self) else { throw PSNetworkError.invalidUrl(urlString: self) }
+        guard let url = URL(string: self) else { throw NetworkError.invalidUrl(urlString: self) }
         return url
     }
 }

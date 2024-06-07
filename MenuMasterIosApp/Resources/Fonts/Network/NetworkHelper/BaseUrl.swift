@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension PSNetworkRequestType {
+extension NetworkRequestType {
     
     var baseUrl: URL {
         guard let apiUrl = URL(string: APPEnvironment.shared.environment.baseApiUrl) else {

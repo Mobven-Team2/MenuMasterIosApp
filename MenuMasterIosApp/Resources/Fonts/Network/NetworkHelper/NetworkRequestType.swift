@@ -16,7 +16,7 @@ enum HTTPMethod: String {
     case put = "PUT"
 }
 
-protocol PSNetworkRequestType {
+protocol NetworkRequestType {
     var baseUrl: URL { get }
     var path: String { get }
     var fullPath: String { get }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PSNetworkError: Error {
+enum NetworkError: Error {
     case noInternet
     case badRequest
     case invalidUrl(urlString: String)

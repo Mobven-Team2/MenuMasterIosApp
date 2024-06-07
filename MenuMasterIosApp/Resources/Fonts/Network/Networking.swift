@@ -1,5 +1,5 @@
 //
-//  PSNetworking.swift
+//  Networking.swift
 //  MenuMasterIosApp
 //
 //  Created by Cansu Özdizlekli on 6/6/24.
@@ -8,13 +8,13 @@
 import Foundation
 import Combine
 
-protocol PSNetworkService: AnyObject {
-    func request<T: Decodable>(_ request: PSNetworkRequestType, type: T.Type, decodingType: JSONDecoder.KeyDecodingStrategy, completion: @escaping (Result<T, Error>) -> Void)
+protocol NetworkService: AnyObject {
+    func request<T: Decodable>(_ request: NetworkRequestType, type: T.Type, decodingType: JSONDecoder.KeyDecodingStrategy, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-final class PSNetworking: PSNetworkService {
+final class Networking: NetworkService {
 
-    static let shared: PSNetworkService = PSNetworking()
+    static let shared: NetworkService = Networking()
     
     private var decoder: JSONDecoder = JSONDecoder()
     
@@ -24,19 +24,14 @@ final class PSNetworking: PSNetworkService {
     
     private init() {}
     
-    func request<T>(_ request: PSNetworkRequestType, type: T.Type, decodingType: JSONDecoder.KeyDecodingStrategy, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-//        if !Reachability.isConnectedToNetwork() {
-//            completion(.failure(PSNetworkError.noInternet))
-//        }
+    func request<T>(_ request: NetworkRequestType, type: T.Type, decodingType: JSONDecoder.KeyDecodingStrategy, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+
         Reachability.shared.isConnectedToNetwork { isConnected in
             if !isConnected {
-                return completion(.failure(PSNetworkError.noInternet))
+                return completion(.failure(NetworkError.noInternet))
             }
         }
-      
-        
-        
-        
+
         // Assign Decoding Strategy
         self.decoder.keyDecodingStrategy = decodingType
         
@@ -45,13 +40,13 @@ final class PSNetworking: PSNetworkService {
         do {
             networkRequest = try request.asURLRequest()
         } catch {
-            return completion(.failure(PSNetworkError.badRequest))
+            return completion(.failure(NetworkError.badRequest))
         }
         
         URLSession.shared.dataTaskPublisher(for: networkRequest!)
             .tryMap { output in
                 guard let response = output.response as? HTTPURLResponse else {
-                    throw PSNetworkError.unknownError
+                    throw NetworkError.unknownError
                 }
                 if response.statusCode > 399 {
                     throw self.httpError(response.statusCode)
@@ -74,7 +69,7 @@ final class PSNetworking: PSNetworkService {
             }).store(in: &self.cancellableSet)
     }
     
-    private func httpError(_ statusCode: Int) -> PSNetworkError {
+    private func httpError(_ statusCode: Int) -> NetworkError {
         switch statusCode {
         case 400: return .badRequest
         case 401: return .unauthorized
@@ -87,7 +82,7 @@ final class PSNetworking: PSNetworkService {
         }
     }
     
-    private func handleError(_ error: Error) -> PSNetworkError {
+    private func handleError(_ error: Error) -> NetworkError {
         switch error {
         case is Swift.DecodingError:
             if let decodingError = error as? DecodingError {
@@ -97,7 +92,7 @@ final class PSNetworking: PSNetworkService {
             return .decodableFailure(error)
         case let urlError as URLError:
             return .urlSessionFailed(urlError)
-        case let error as PSNetworkError:
+        case let error as NetworkError:
             return error
         default:
             return .unknownError
