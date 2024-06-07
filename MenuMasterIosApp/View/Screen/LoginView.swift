@@ -63,7 +63,7 @@ struct LoginView: View {
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $loginTag, destination: {
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
                 HomeView()
             })
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {
@@ -111,7 +111,6 @@ extension LoginView {
     private var loginButton : some View {
         Button(action: {
             viewModel.login()
-            loginTag = viewModel.isAuthenticated
         }) {
             Text("Giriş Yap")
         }

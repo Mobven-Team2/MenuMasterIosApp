@@ -78,7 +78,7 @@ extension UserAPI: PSNetworkRequestType {
     
     // Headers for each case
     var headers: HTTPHeaders {
-        var headers = ["Content-Type": "application/json"]
+        let headers = ["Content-Type": "application/json"]
         
 //        // Eğer auth token gerekiyorsa:
 //        if let authToken = getAuthToken() {

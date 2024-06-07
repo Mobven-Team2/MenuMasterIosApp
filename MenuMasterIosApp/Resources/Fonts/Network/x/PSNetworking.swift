@@ -25,9 +25,17 @@ final class PSNetworking: PSNetworkService {
     private init() {}
     
     func request<T>(_ request: PSNetworkRequestType, type: T.Type, decodingType: JSONDecoder.KeyDecodingStrategy, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-        if !Reachability.isConnectedToNetwork() {
-            completion(.failure(PSNetworkError.noInternet))
+//        if !Reachability.isConnectedToNetwork() {
+//            completion(.failure(PSNetworkError.noInternet))
+//        }
+        Reachability.shared.isConnectedToNetwork { isConnected in
+            if !isConnected {
+                return completion(.failure(PSNetworkError.noInternet))
+            }
         }
+      
+        
+        
         
         // Assign Decoding Strategy
         self.decoder.keyDecodingStrategy = decodingType
@@ -51,7 +59,8 @@ final class PSNetworking: PSNetworkService {
                 return output.data
             }
             .decode(type: type, decoder: decoder)
-            .eraseToAnyPublisher()
+            .receive(on: DispatchQueue.main)
+//            .eraseToAnyPublisher()
             .sink(receiveCompletion: { completionResponse in
                 switch completionResponse {
                 case .finished:

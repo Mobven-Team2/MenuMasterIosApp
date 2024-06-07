@@ -12,14 +12,15 @@ class LoginViewModel: ObservableObject {
     
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var isAuthenticated: Bool = false
     
     var loginValidator = Validator()
-    var isAuthenticated: Bool = false
     
-    func login() -> Bool {
+    
+    func login() {
         if validateFields() {
             let defaults = UserDefaults.standard
-            
+
             LoginService().loginUser(email: email, password: password) { result in
                 switch result {
                 case .success(let token):
@@ -36,8 +37,8 @@ class LoginViewModel: ObservableObject {
             self.isAuthenticated = false
             print("Giriş başarısız! Lütfen geçerli bir e-posta ve şifre girin.")
         }
-        return isAuthenticated
     }
+    
     
     func validateFields() -> Bool {
         return loginValidator.validateLoginFields(email, password)
