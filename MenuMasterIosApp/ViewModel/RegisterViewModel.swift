@@ -46,4 +46,15 @@ class RegisterViewModel: ObservableObject {
     func validateConfirmPassword() -> String {
         return registerValidator.validateConfirmPassword(password, confirmPassword)
     }
+    
+    private func saveUserInformation() {
+        UserDefaultsHelper.shared.setData(value: fullName, key: .fullName)
+        UserDefaultsHelper.shared.setData(value: email, key: .email)
+        // Do not save passwords in UserDefaults in a real application
+    }
+    
+    func printUserInformation() {
+        UserDefaultsHelper.shared.printUserInformation()
+    }
+    
 }

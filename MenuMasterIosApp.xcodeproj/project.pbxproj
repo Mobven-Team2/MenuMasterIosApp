@@ -63,6 +63,8 @@
 		8DD00ED42C04A92900594F1A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD00ED32C04A92900594F1A /* WelcomeView.swift */; };
 		8DD00ED62C04C02B00594F1A /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD00ED52C04C02B00594F1A /* UserInformationView.swift */; };
 		8DD195DD2C00A03E0057C130 /* TextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD195DC2C00A03E0057C130 /* TextfieldView.swift */; };
+		8DDFA4BE2C14793800CF8D6D /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDFA4BD2C14793800CF8D6D /* UserDefaultsHelper.swift */; };
+		8DDFA4C12C14A21000CF8D6D /* DietTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDFA4C02C14A21000CF8D6D /* DietTypeViewModel.swift */; };
 		8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */; };
 		8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD3A2BFDE75500BEEE53 /* ContentView.swift */; };
 		8DE4BD452BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD432BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld */; };
@@ -148,6 +150,8 @@
 		8DD00ED32C04A92900594F1A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		8DD00ED52C04C02B00594F1A /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		8DD195DC2C00A03E0057C130 /* TextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldView.swift; sourceTree = "<group>"; };
+		8DDFA4BD2C14793800CF8D6D /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		8DDFA4C02C14A21000CF8D6D /* DietTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietTypeViewModel.swift; sourceTree = "<group>"; };
 		8DE4BD352BFDE75500BEEE53 /* MenuMasterIosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuMasterIosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE4BD382BFDE75500BEEE53 /* MenuMasterIosAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMasterIosAppApp.swift; sourceTree = "<group>"; };
 		8DE4BD3A2BFDE75500BEEE53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				8D87DC8D2C065D1E004D16BA /* UserInformationViewModel.swift */,
 				8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */,
 				8D5EB0362C10A9C800073603 /* HomeViewModel.swift */,
+				8DDFA4C02C14A21000CF8D6D /* DietTypeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */,
 				7A51A06B2C062965008ADCF4 /* Validator.swift */,
 				8D585B1C2C11AC7A000D5621 /* Reachability.swift */,
+				8DDFA4BD2C14793800CF8D6D /* UserDefaultsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 		8DD195DA2C009FD60057C130 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				8DDFA4BF2C14A13600CF8D6D /* DietType */,
 				8DDFA4B22C1351ED00CF8D6D /* UserInformation */,
 				8D5EB0352C10A97400073603 /* Home */,
 				8D5EB0082C10473500073603 /* Onboarding */,
@@ -322,8 +329,6 @@
 				8DF1AB762BFE3376008F9899 /* RegisterView.swift */,
 				8DD00ED12C04A56600594F1A /* SplashView.swift */,
 				8DD00ED32C04A92900594F1A /* WelcomeView.swift */,
-				8D87DC932C072F8B004D16BA /* DietTypeView.swift */,
-				8D87DC982C0748D5004D16BA /* DietTypeSelectionRowView.swift */,
 				8D09FFB92C08CD520069D196 /* AccountCreationCompletionView.swift */,
 			);
 			path = Screen;
@@ -365,6 +370,15 @@
 				8D585B252C11AEB3000D5621 /* UrlRequest.swift */,
 			);
 			path = NetworkHelper;
+			sourceTree = "<group>";
+		};
+		8DDFA4BF2C14A13600CF8D6D /* DietType */ = {
+			isa = PBXGroup;
+			children = (
+				8D87DC982C0748D5004D16BA /* DietTypeSelectionRowView.swift */,
+				8D87DC932C072F8B004D16BA /* DietTypeView.swift */,
+			);
+			path = DietType;
 			sourceTree = "<group>";
 		};
 		8DE4BD2C2BFDE75500BEEE53 = {
@@ -646,6 +660,7 @@
 				8D585B2C2C11AF86000D5621 /* UserAPIRequest.swift in Sources */,
 				8D5EB0102C1058C600073603 /* OnboardingView.swift in Sources */,
 				8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */,
+				8DDFA4BE2C14793800CF8D6D /* UserDefaultsHelper.swift in Sources */,
 				7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */,
 				8D09FFBA2C08CD520069D196 /* AccountCreationCompletionView.swift in Sources */,
 				8DE4BD452BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld in Sources */,
@@ -678,6 +693,7 @@
 				8D585B332C11B555000D5621 /* UserLoginResponseModel.swift in Sources */,
 				8D585B1D2C11AC7A000D5621 /* Reachability.swift in Sources */,
 				8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */,
+				8DDFA4C12C14A21000CF8D6D /* DietTypeViewModel.swift in Sources */,
 				7AFCCB6E2C00BB9700D96BD0 /* HomeView.swift in Sources */,
 				8D5EB00A2C1047A100073603 /* OnboardingData.swift in Sources */,
 				7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */,

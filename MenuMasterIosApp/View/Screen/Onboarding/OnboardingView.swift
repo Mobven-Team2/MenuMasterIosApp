@@ -40,6 +40,7 @@ struct OnboardingView: View {
                         Circle()
                             .fill(index == currentTab ? Color.theme.primaryOrangeColor : Color.theme.lightOrangeColor)
                             .frame(width: 10, height: 10)
+                            
                     }
                 }
                 .padding(.bottom,50)
