@@ -140,6 +140,7 @@ extension RegisterView {
     private var createAccountButton : some View {
         Button(action: {
             registerTag = true
+            viewModel.printUserInformation()
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
@@ -164,14 +165,6 @@ extension RegisterView {
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
     }
-    
-//    private var google : some View {
-//        Image("Google")
-//            .resizable()
-//            .scaledToFit()
-//            .frame(width: 327, height: 56)
-//            .padding(.bottom, 10)
-//    }
     
     private var backButton : some View {
         Button(action: {

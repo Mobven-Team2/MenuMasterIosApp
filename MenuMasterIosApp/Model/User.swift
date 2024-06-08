@@ -66,7 +66,7 @@ enum ActivityStatus: String, Codable, CaseIterable , CustomStringConvertible , I
     var id: String { self.rawValue }
 }
 
-enum DietType: String, Codable, CaseIterable {
+enum DietType: String, Codable, CaseIterable , Identifiable{
     case vegan = "Vegan"
     case vegetarian = "Vejeteryan"
     case ketogenic = "Ketojenik"
@@ -102,6 +102,8 @@ enum DietType: String, Codable, CaseIterable {
             return ""
         }
     }
+    
+    var id: String { self.rawValue }
 }
 
 

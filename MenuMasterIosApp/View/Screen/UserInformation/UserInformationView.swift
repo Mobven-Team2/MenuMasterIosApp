@@ -81,10 +81,11 @@ struct UserInformationView: View {
                 
                 
                 CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
+                    viewModel.saveUserInformation()
                     continueTag = true
-                }.disabled(!viewModel.isAuthenticated)
-                    .opacity((viewModel.isAuthenticated) ? 1 : 0.5)
-                
+                }.disabled(!viewModel.areUserDefaultsFilled() && !viewModel.isAuthenticated)
+                    .opacity(viewModel.isAuthenticated || viewModel.areUserDefaultsFilled() ? 1 : 0.5)
+
                 redirectLoginPageButton
                 
             }.navigationDestinationWrapper(isPresented: $continueTag, destination: {

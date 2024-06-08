@@ -22,9 +22,8 @@ struct OnboardingTabView: View {
                     
             }
         })
-        
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
     }
 }
 
