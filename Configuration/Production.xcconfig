@@ -5,7 +5,7 @@
 //  Created by Cansu Özdizlekli on 6/6/24.
 //
 
-BACKEND_URL = http:\/\/165.22.93.225:5002\/
+BACKEND_URL = https:\/\/talent.mobven.com:5042\/
 BUNDLE_ID = com.cansuozdizlekli.MenuMasterIosApp
 APP_NAME = Menu Master AI
 

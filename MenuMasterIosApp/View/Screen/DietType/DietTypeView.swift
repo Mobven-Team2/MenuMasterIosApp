@@ -31,7 +31,7 @@ struct DietTypeView: View {
                     VStack(spacing:20) {
                         ForEach(DietType.allCases, id: \.self) { dietType in
                             DietTypeSelectionRowView(
-                                title: dietType.rawValue,
+                                title: dietType.title,
                                 iconName: dietType.iconName, description: dietType.description,
                                 isSelected: viewModel.selectedPreferences.contains(dietType)
                             ) {

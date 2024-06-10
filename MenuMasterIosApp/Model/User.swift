@@ -68,10 +68,10 @@ enum ActivityStatus: String, Codable, CaseIterable , CustomStringConvertible , I
 
 enum DietType: String, Codable, CaseIterable , Identifiable{
     case vegan = "Vegan"
-    case vegetarian = "Vejeteryan"
-    case ketogenic = "Ketojenik"
+    case vegetarian = "Vegetarian"
+    case ketogenic = "Ketogenic"
     case paleo = "Paleo"
-    case noPreference = "Beslenme Tercihim Yok"
+    case noPreference = "NotSpecified"
     
     var iconName: String {
         switch self {
@@ -100,6 +100,21 @@ enum DietType: String, Codable, CaseIterable , Identifiable{
             return "İlkel, doğal beslenme"
         case .noPreference:
             return ""
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .vegan:
+            return "Vegan"
+        case .vegetarian:
+            return "Vejeteryan"
+        case .ketogenic:
+            return "Ketojenik"
+        case .paleo:
+            return "Paleo"
+        case .noPreference:
+            return "Beslenme Tercihim Yok"
         }
     }
     

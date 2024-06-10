@@ -31,8 +31,8 @@ protocol Environment {
 
 private struct DEVEnvironment: Environment {
     var environment: EnvironmentType = .development
-    var baseApiUrl: String = "http://165.22.93.225:5002"
-    
+    var baseApiUrl: String = "https://talent.mobven.com:5042"
+
     init() {}
 }
 
