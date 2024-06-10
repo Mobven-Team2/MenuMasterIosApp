@@ -84,13 +84,13 @@ extension HomeView {
             
             VStack(alignment: .leading) {
                 Text("Öğün Seç & Tarifleri Al")
-                    .font(.dmSans(size: 16))
+                    .font(.poppins(size: 16))
                     .fontWeight(.bold)
                     .frame(width: 285, height: 24, alignment: .leading)
                     .lineLimit(1)
                     .padding(.leading, 4)
                 Text("Tarif almak istediğin öğünleri seç, yapay zekanın sana özel hazırladığı tariflere göz at")
-                    .font(.dmSans(size: 14))
+                    .font(.poppins(size: 14))
                     .frame(width: 285, height: 63)
                     .lineLimit(3)
                 Button(action: {
@@ -98,7 +98,7 @@ extension HomeView {
                 }) {
                     Text("Öğün Seç")
                 }
-                .font(.dmSans(size: 16))
+                .font(.poppins(size: 16))
                 .fontWeight(.medium)
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width - 96, height: 56)

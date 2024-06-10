@@ -10,7 +10,7 @@ import SwiftUI
 extension Text {
     func formTitleStyle() -> some View {
         self
-            .font(.dmSans(size: 14))
+            .font(.poppins(size: 14))
             .foregroundColor(Color.theme.primaryTextColor)
     }
 }

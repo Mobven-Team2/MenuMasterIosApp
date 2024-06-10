@@ -101,7 +101,7 @@ extension LoginView {
                 Text("Şifreni mi Unuttun?")
                     .foregroundColor(Color.theme.primaryTextColor)
                     .underline()
-                    .font(.dmSans(size: 12))
+                    .font(.poppins(size: 12))
             }
         }
         .padding(.trailing, 35)
@@ -129,7 +129,7 @@ extension LoginView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
         

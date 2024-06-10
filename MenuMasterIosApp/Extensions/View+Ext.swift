@@ -11,7 +11,7 @@ extension View {
     func customTextFieldStyle() -> some View {
         self
             .padding(.leading, 16)
-            .font(.dmSans(size: 14))
+            .font(.poppins(size: 14))
             .foregroundColor(Color.theme.primaryTextColor)
             .frame(width: UIScreen.main.bounds.width - 48, height: 49)
             .background(Color.theme.textfieldBgColor)

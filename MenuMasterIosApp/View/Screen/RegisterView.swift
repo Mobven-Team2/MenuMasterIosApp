@@ -128,7 +128,7 @@ extension RegisterView {
             
             Text("\(Text("Şartlar & Koşullar").underline()) ve \(Text("Gizlilik Politikasını").underline()) kabul ediyorum.")
                 .foregroundColor(isOn ? .black : .red)
-                .font(.dmSans(size: 14))
+                .font(.poppins(size: 14))
                 .frame(width: 287, height: 40)
                 .multilineTextAlignment(.leading)
                 .lineSpacing(0)
@@ -161,7 +161,7 @@ extension RegisterView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
     }

@@ -24,7 +24,7 @@ struct WelcomeView: View {
                     
                     Text("Tercihlerine göre beslenmenin tadını çıkar!")
                         .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.dmSans(size: 18))
+                        .font(.poppins(size: 18))
                         .frame(width: 292,height: 50)
                         .lineLimit(5)
                         .multilineTextAlignment(.center)
