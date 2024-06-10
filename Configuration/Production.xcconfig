@@ -8,3 +8,5 @@
 BACKEND_URL = http:\/\/165.22.93.225:5002\/
 BUNDLE_ID = com.cansuozdizlekli.MenuMasterIosApp
 APP_NAME = Menu Master AI
+
+

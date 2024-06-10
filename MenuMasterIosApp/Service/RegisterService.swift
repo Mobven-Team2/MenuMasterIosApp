@@ -26,14 +26,13 @@ class RegisterService {
             cuisineNames: requestModel.cuisineNames
         )
         
-        
         Networking.shared.request(request, type: UserRegisterResponseModel.self, decodingType: .useDefaultKeys) { result in
-            print("register response : ",result)
+            print("accessToken : ",result)
             switch result {
             case .success(let dataModel):
                 // Handle Success Case
                 print("Success")
-                completion(.success(dataModel.response ?? ""))
+                completion(.success(dataModel.accessToken ?? ""))
             case .failure(let error):
                 if let err = error as? NetworkError {
                     switch err {

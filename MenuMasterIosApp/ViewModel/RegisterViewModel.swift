@@ -56,9 +56,13 @@ class RegisterViewModel: ObservableObject {
         
         RegisterService().registerUser(requestModel: requestModel) { result in
             switch result {
-            case .success(let response):
-                self.isAuthenticated = true
-                print("kullanıcı olusturuldu:", response)
+            case .success(let token):
+                UserDefaults.standard.setValue(token, forKey: "access_token")
+                DispatchQueue.main.async {
+                    self.isAuthenticated = true
+                    print(token)
+                }
+                print("kullanıcı olusturuldu:", token)
             case .failure(let error):
                 print(error.localizedDescription)
                 print("fail:")

@@ -5,6 +5,8 @@
 //  Created by Cansu Özdizlekli on 6/6/24.
 //
 
+
+
 import Foundation
 import Combine
 
@@ -43,21 +45,31 @@ final class Networking: NetworkService {
             return completion(.failure(NetworkError.badRequest))
         }
         
+        print("---------------------------------")
+        print("Network Request for url : \(networkRequest?.url?.absoluteString ?? "")")
+        print("---------------------------------")
+        
         URLSession.shared.dataTaskPublisher(for: networkRequest!)
             .tryMap { output in
+                if let jsonString = String(data: output.data, encoding: .utf8) {
+                    print("---------------------------------")
+                    print("Response for url: \(networkRequest?.url?.absoluteString ?? "") \n \(jsonString)")
+                    print("---------------------------------")
+                }
+                
                 guard let response = output.response as? HTTPURLResponse else {
                     throw NetworkError.unknownError
                 }
+
                 if response.statusCode > 400 {
                     throw self.httpError(response.statusCode)
                 }
-                print("Response data: \(output.data)")
-                print("Response : \(output.response)")
+                
                 return output.data
             }
             .decode(type: type, decoder: decoder)
             .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+//            .eraseToAnyPublisher()
             .sink(receiveCompletion: { completionResponse in
                 switch completionResponse {
                 case .finished:
@@ -73,7 +85,6 @@ final class Networking: NetworkService {
     
     private func httpError(_ statusCode: Int) -> NetworkError {
         switch statusCode {
-//        case 400: return .badRequest
         case 401: return .unauthorized
         case 403: return .forbidden
         case 404: return .notFound

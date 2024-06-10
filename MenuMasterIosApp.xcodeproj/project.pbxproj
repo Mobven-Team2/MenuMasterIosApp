@@ -261,8 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				8D585B302C11B517000D5621 /* UserLoginRequestModel.swift */,
-				8D585B322C11B555000D5621 /* UserLoginResponseModel.swift */,
 				8DDFA4C62C14B6B500CF8D6D /* UserRegisterRequestModel.swift */,
+				8D585B322C11B555000D5621 /* UserLoginResponseModel.swift */,
 				8DDFA4C42C14B69400CF8D6D /* UserRegisterResponseModel.swift */,
 			);
 			path = UserModels;
