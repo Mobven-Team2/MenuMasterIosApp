@@ -1,0 +1,19 @@
+trigger:
+- master
+
+pool: Tolga-ios
+
+steps:
+- script: |
+    dotnet sonarscanner begin /k:"MenuMaster-BackEnd--T3-" /d:sonar.host.url="http://localhost:9000"  /d:sonar.token="$(token)"
+  displayName: 'SonarQube Begin'
+
+
+- task: Xcode@5 
+    inputs:sdk: 'iphoneos'
+      scheme: 'MenuMasterIosApp'
+      configuration: 'Development'
+      xcWorkspacePath: 'MenuMasterIosApp.xcodeproj\project.xcworkspace'
+      sdk: 'iphonesimulator'
+      buildArguments: '-derivedDataPath Build/'
+      args: '-destination "platform=iOS Simulator,name=iPhone Prod iOS17" -derivedDataPath Build/ -enableCodeCoverage YES'
