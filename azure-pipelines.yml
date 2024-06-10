@@ -8,8 +8,18 @@ steps:
   inputs:
     actions: 'build'
     scheme: 'MenuMasterIosApp'
-    configuration: 'Development'
+    configuration: 'Release'
     xcWorkspacePath: 'MenuMasterIosApp.xcodeproj/project.xcworkspace'
     sdk: 'iphonesimulator'
     buildArguments: '-derivedDataPath Build/'
     args: '-destination "platform=iOS Simulator,name=iPhone Prod iOS17" -derivedDataPath Build/ CODE_SIGNING_ALLOWED=NO'
+
+- script: |
+    xcodebuild archive -workspace MenuMasterIosApp.xcworkspace -scheme MenuMasterIosApp -configuration Release -archivePath MenuMasterIosApp.xcarchive
+    xcodebuild -exportArchive -archivePath MenuMasterIosApp.xcarchive -exportPath MenuMasterIosApp.ipa -exportOptionsPlist exportOptions.plist
+  displayName: 'Create IPA'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/MenuMasterIosApp.ipa'
+    ArtifactName: 'ipa'
