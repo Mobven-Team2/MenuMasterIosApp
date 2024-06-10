@@ -12,4 +12,4 @@ steps:
     xcWorkspacePath: 'MenuMasterIosApp.xcodeproj/project.xcworkspace'
     sdk: 'iphonesimulator'
     buildArguments: '-derivedDataPath Build/'
-    args: '-destination "platform=iOS Simulator,name=iPhone Prod iOS17" -derivedDataPath Build/ -enableCodeCoverage YES'
+    args: '-destination "platform=iOS Simulator,name=iPhone Prod iOS17" -derivedDataPath Build/ CODE_SIGNING_ALLOWED=NO'
