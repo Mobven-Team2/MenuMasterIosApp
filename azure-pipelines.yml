@@ -4,12 +4,7 @@ trigger:
 pool: Tolga-ios
 
 steps:
-- task: Xcode@5
-  inputs:
-    actions: 'build'
-    scheme: 'MenuMasterIosApp'
-    configuration: 'Development'
-    xcWorkspacePath: 'MenuMasterIosApp.xcodeproj/project.xcworkspace'
-    sdk: 'iphonesimulator'
-    buildArguments: '-derivedDataPath Build/'
-    args: '-destination "platform=iOS Simulator,name=iPhone Prod iOS17" -derivedDataPath Build/ CODE_SIGNING_ALLOWED=NO'
+
+- script: |
+    bundle exec fastlane build
+  displayName: 'Build iOS app with Fastlane'

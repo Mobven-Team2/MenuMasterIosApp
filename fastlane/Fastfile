@@ -1,0 +1,14 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build the iOS app"
+  lane :build do
+    gym(
+      scheme: "MenuMasterIosApp",
+      workspace: "MenuMasterIosApp.xcodeproj/project.xcworkspace",
+      configuration: "Release",
+      output_directory: "./build",
+      silent: true
+    )
+  end
+end
