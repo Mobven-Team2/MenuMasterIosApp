@@ -10,7 +10,7 @@ import Foundation
 class LoginService {
 
     // Post Request to login an User
-    func loginUser(email: String, password: String,completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func loginUserFunc(email: String, password: String,completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         print("Email: \(email), Password: \(password)")
         let request = UserAPI.loginUser(email: email, password: password)
         Networking.shared.request(request, type: UserLoginResponseModel.self, decodingType: .useDefaultKeys) { result in
@@ -36,5 +36,4 @@ class LoginService {
             }
         }
     }
-
 }

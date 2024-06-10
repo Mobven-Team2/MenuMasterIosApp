@@ -35,6 +35,8 @@ class DietTypeViewModel: ObservableObject {
     func continueButtonTapped() {
         isContinueButtonTapped = true
         savePreferences()
+        let x = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .dietPreferences)
+        print("diet pref:",x!)
         continueTag = true
     }
 }
