@@ -26,19 +26,19 @@ struct DietTypeSelectionRowView: View {
                 if self.description == "" {
                     Text(self.title)
                         .multilineTextAlignment(.leading)
-                        .font(.dmSans(size: 14))
+                        .font(.poppins(size: 14))
                         .fontWeight(.bold)
                     
                 }else {
                     VStack(alignment: .leading) {
                         Text(self.title)
                             .multilineTextAlignment(.leading)
-                            .font(.dmSans(size: 14))
+                            .font(.poppins(size: 14))
                             .fontWeight(.bold)
                         
                         Text(self.description)
                             .multilineTextAlignment(.leading)
-                            .font(.dmSans(size: 14))
+                            .font(.poppins(size: 14))
                             .fontWeight(.medium)
                         
                     }

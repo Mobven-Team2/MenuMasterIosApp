@@ -22,7 +22,7 @@ struct DietTypeView: View {
                     
                     Text("Tariflerini istediğin beslenme türlerini seç.")
                         .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.dmSans(size: 14))
+                        .font(.poppins(size: 14))
                         .lineSpacing(8)
                         .lineLimit(2)
                 }.padding(.top,50)

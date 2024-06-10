@@ -33,7 +33,7 @@ struct UserInformationView: View {
                     
                     Text("Yemek tariflerini sana özel olarak hazırlayabilmemiz için aşağıdaki bilgileri doldurmalısın.")
                         .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.dmSans(size: 14))
+                        .font(.poppins(size: 14))
                         .lineSpacing(8)
                         .lineLimit(2)
                     
@@ -119,7 +119,7 @@ extension UserInformationView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .foregroundColor(Color.theme.primaryTextColor)
     }
     

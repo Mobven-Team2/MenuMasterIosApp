@@ -22,7 +22,7 @@ struct CustomPickerView<T: CaseIterable & Identifiable & Hashable & CustomString
                 Text(selection?.description ?? placeholder)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16)
-                    .font(.dmSans(size: 14))
+                    .font(.poppins(size: 14))
                     .foregroundColor(Color.theme.primaryTextColor)
                 
                 Menu {

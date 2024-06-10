@@ -14,7 +14,7 @@ enum UserAPI {
     case updateUserProfile
     case getUserById(userID: Int)
     case updateUser(userID: Int)
-
+    case getRecipes(id: Int, mealTypes : [String])
 
 }
 
@@ -33,13 +33,15 @@ extension UserAPI: NetworkRequestType {
             return "/api/User/Update"
         case .getUserById(let userID):
             return "/api/User/Get/\(userID)"
+        case .getRecipes(id: let id, mealTypes: let mealTypes):
+            return "/api/User/GetRecipes"
         }
     }
     
     // HTTP method for each case
     var method: HTTPMethod {
         switch self {
-        case .getUserById:
+        case .getUserById, .getRecipes:
             return .get
         case .registerUser, .loginUser:
             return .post
@@ -73,6 +75,9 @@ extension UserAPI: NetworkRequestType {
             return [ "userID": userID]
         case .updateUserProfile:
             return nil
+        case .getRecipes(id: let id, mealTypes: let mealTypes):
+            return [ "id": id,
+                     "mealTypes": mealTypes ]
         }
     }
     
@@ -80,16 +85,16 @@ extension UserAPI: NetworkRequestType {
     var headers: HTTPHeaders {
         var headers: HTTPHeaders = ["Content-Type": "application/json; charset=utf-8"]
         
-//        // Eğer auth token gerekiyorsa:
-//        if let authToken = getAuthToken() {
-//            headers["Authorization"] = "Bearer \(authToken)"
-//        }
+        // Eğer auth token varsa:
+        if let authToken = getAuthToken(), !authToken.isEmpty {
+            headers["Authorization"] = "Bearer \(authToken)"
+        }
         return headers
     }
 
+
     func getAuthToken() -> String? {
-        // Auth token'ı elde etme yöntemi
-        return "your_token"
+        return UserDefaults.standard.string(forKey: "access_token")
     }
     
     // Query parameters for each case

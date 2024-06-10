@@ -13,7 +13,6 @@ enum MealType: String, Codable, CaseIterable {
     case dinner = "Dinner"
     case lunch = "Lunch"
     
-    
     var imageName: String {
         switch self {
         case .breakfast:
@@ -26,7 +25,20 @@ enum MealType: String, Codable, CaseIterable {
             return "dinner-card"
             
         }
-        
-        
     }
+    
+    var title: String {
+        switch self {
+        case .breakfast:
+            return "Kahvaltı"
+        case .snack:
+            return "Ara Öğün"
+        case .lunch:
+            return "Öğle Yemeği"
+        case .dinner:
+            return "Akşam Yemeği"
+            
+        }
+    }
+    
 }
