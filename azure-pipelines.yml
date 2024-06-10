@@ -9,7 +9,7 @@ steps:
     actions: 'build'
     scheme: 'MenuMasterIosApp'
     configuration: 'Release'
-    xcWorkspacePath: 'MenuMasterIosApp.xcodeproj/project.xcworkspace'
+    xcWorkspacePath: '**/*.xcworkspace'  # Tüm alt klasörlerdeki xcworkspace dosyalarını arayacak şekilde güncellendi.
     sdk: 'iphonesimulator'
     buildArguments: '-derivedDataPath Build/'
     args: '-destination "platform=iOS Simulator,name=iPhone Prod iOS17" -derivedDataPath Build/ CODE_SIGNING_ALLOWED=NO'
