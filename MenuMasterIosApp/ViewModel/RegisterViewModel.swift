@@ -39,6 +39,8 @@ class RegisterViewModel: ObservableObject {
             return
         }
         
+        let activityStatusString = activityStatus.replacingOccurrences(of: " ", with: "")
+        
         let requestModel = UserRegisterRequestModel(
             email: email,
             password: password,
@@ -48,7 +50,7 @@ class RegisterViewModel: ObservableObject {
             height: height,
             weight: weight,
             gender: gender,
-            activityStatus: activityStatus,
+            activityStatus: activityStatusString,
             dietTypes: dietTypes,
             cuisineNames: cuisineNames
         )
