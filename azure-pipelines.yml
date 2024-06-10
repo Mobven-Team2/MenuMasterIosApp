@@ -4,9 +4,6 @@ trigger:
 pool: Tolga-ios
 
 steps:
-- script: |
-    dotnet sonarscanner begin /k:"MenuMaster-BackEnd--T3-" /d:sonar.host.url="http://localhost:9000" /d:sonar.token="$(token)"
-  displayName: 'SonarQube Begin'
 
 - task: Xcode@5
   inputs:
