@@ -139,8 +139,8 @@ extension RegisterView {
     
     private var createAccountButton : some View {
         Button(action: {
-            registerTag = true
-            viewModel.printUserInformation()
+            viewModel.saveUserInformation()
+            registerTag = viewModel.register(checkbox: isOn)
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()

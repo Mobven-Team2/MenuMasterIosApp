@@ -16,6 +16,7 @@ enum UserDefaultKeys: String, CaseIterable {
     case fullName
     case email
     case dietPreferences
+    case selectedCuisines
 }
 
 final class UserDefaultsHelper {
@@ -34,14 +35,21 @@ final class UserDefaultsHelper {
     }
     
     func getData<T>(type: T.Type, forKey: UserDefaultKeys) -> T? {
-        if let value = defaults.object(forKey: forKey.rawValue) as? T {
-            return value
-        } else if let arrayValue = defaults.array(forKey: forKey.rawValue) as? T {
-            return arrayValue
+        if T.self == Array<Any>.self {
+            return defaults.stringArray(forKey: forKey.rawValue) as? T
+        } else if T.self == String.self {
+            return defaults.string(forKey: forKey.rawValue) as? T
+        } else if T.self == Int.self {
+            return defaults.integer(forKey: forKey.rawValue) as? T
+        } else if T.self == Bool.self {
+            return defaults.bool(forKey: forKey.rawValue) as? T
+        } else if T.self == Double.self {
+            return defaults.double(forKey: forKey.rawValue) as? T
         } else {
-            return nil
+            return defaults.object(forKey: forKey.rawValue) as? T
         }
     }
+    
     
     func removeData(key: UserDefaultKeys) {
         defaults.removeObject(forKey: key.rawValue)
@@ -49,10 +57,12 @@ final class UserDefaultsHelper {
     
     func printUserInformation() {
         for key in UserDefaultKeys.allCases {
-            if let value = getData(type: [String].self, forKey: key) {
-                print("\(key.rawValue.capitalized): \(value)")
-            } else if let value = getData(type: String.self, forKey: key) {
-                print("\(key.rawValue.capitalized): \(value)")
+            if let stringArrayValue = getData(type: [String].self, forKey: key) {
+                print("\(key.rawValue.capitalized): \(stringArrayValue.joined(separator: ", "))")
+            } else if let stringValue = getData(type: String.self, forKey: key) {
+                print("\(key.rawValue.capitalized): \(stringValue)")
+            } else if let intValue = getData(type: Int.self, forKey: key) {
+                print("\(key.rawValue.capitalized): \(intValue)")
             } else {
                 print("\(key.rawValue.capitalized): not set")
             }

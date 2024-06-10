@@ -78,7 +78,7 @@ extension UserAPI: NetworkRequestType {
     
     // Headers for each case
     var headers: HTTPHeaders {
-        let headers = ["Content-Type": "application/json"]
+        var headers: HTTPHeaders = ["Content-Type": "application/json; charset=utf-8"]
         
 //        // Eğer auth token gerekiyorsa:
 //        if let authToken = getAuthToken() {

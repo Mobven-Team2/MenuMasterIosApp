@@ -42,11 +42,11 @@ enum Gender: String, Codable, CaseIterable , CustomStringConvertible, Identifiab
 
 enum ActivityStatus: String, Codable, CaseIterable , CustomStringConvertible , Identifiable{
     
-    case sedentary
-    case lightlyActive
-    case moderatelyActive
-    case veryActive
-    case extraActive
+    case sedentary = "Hareketsiz"
+    case lightlyActive = "HafifAktif"
+    case moderatelyActive = "OrtaDereceAktif"
+    case veryActive = "ÇokAktif"
+    case extraActive = "AşırıAktif"
     
     var description: String {
         switch self {
