@@ -14,6 +14,8 @@
 		7AA7F6392C11315A007FAE4E /* CuisineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7F6382C11315A007FAE4E /* CuisineSelectionView.swift */; };
 		7AA7F63B2C113176007FAE4E /* CuisineButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7F63A2C113176007FAE4E /* CuisineButtonView.swift */; };
 		7AA7F63E2C1140E3007FAE4E /* HomeSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7F63D2C1140E3007FAE4E /* HomeSuggestionView.swift */; };
+		7AC9FF052C134C1F00A178F5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9FF042C134C1F00A178F5 /* MainView.swift */; };
+		7AC9FF072C17447900A178F5 /* TabSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9FF062C17447900A178F5 /* TabSelector.swift */; };
 		7AFCCB6C2C00BA9D00D96BD0 /* NavigationViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */; };
 		7AFCCB6E2C00BB9700D96BD0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */; };
 		8D09FFB62C087E610069D196 /* CuisineSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */; };
@@ -90,6 +92,8 @@
 		7AA7F6382C11315A007FAE4E /* CuisineSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineSelectionView.swift; sourceTree = "<group>"; };
 		7AA7F63A2C113176007FAE4E /* CuisineButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineButtonView.swift; sourceTree = "<group>"; };
 		7AA7F63D2C1140E3007FAE4E /* HomeSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSuggestionView.swift; sourceTree = "<group>"; };
+		7AC9FF042C134C1F00A178F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7AC9FF062C17447900A178F5 /* TabSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelector.swift; sourceTree = "<group>"; };
 		7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewStack.swift; sourceTree = "<group>"; };
 		7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 			children = (
 				7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */,
 				7A51A06B2C062965008ADCF4 /* Validator.swift */,
+				7AC9FF062C17447900A178F5 /* TabSelector.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				7AA7F63A2C113176007FAE4E /* CuisineButtonView.swift */,
 				8DD195DB2C009FE80057C130 /* Shared */,
 				8DD195DA2C009FD60057C130 /* Screen */,
+				7AC9FF042C134C1F00A178F5 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5EB0002C0F271900073603 /* WeeklyCalendarView.swift in Sources */,
+				7AC9FF052C134C1F00A178F5 /* MainView.swift in Sources */,
 				8D5EAFFC2C0F268700073603 /* MealSelectionView.swift in Sources */,
 				8D5EAFFE2C0F26BB00073603 /* MealCardView.swift in Sources */,
 				8D5EB0372C10A9C800073603 /* HomeViewModel.swift in Sources */,
@@ -553,6 +560,7 @@
 				7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */,
 				7AA7F6392C11315A007FAE4E /* CuisineSelectionView.swift in Sources */,
 				8D09FFBA2C08CD520069D196 /* AccountCreationCompletionView.swift in Sources */,
+				7AC9FF072C17447900A178F5 /* TabSelector.swift in Sources */,
 				8DE4BD452BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld in Sources */,
 				7AFCCB6C2C00BA9D00D96BD0 /* NavigationViewStack.swift in Sources */,
 				8D87DC962C0745AE004D16BA /* CustomButtonView.swift in Sources */,

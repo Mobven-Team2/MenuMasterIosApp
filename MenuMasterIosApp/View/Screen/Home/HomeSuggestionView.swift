@@ -20,30 +20,23 @@ struct HomeSuggestionView: View {
                 .frame(width: 80, height: 80)
                 .padding(.leading, 20)
                 .padding(.trailing, 10)
-            
-//            Spacer()
-            
-            VStack(alignment: .listRowSeparatorLeading) {
+                        
+            VStack {
                 Text(title)
-                    .frame(width: 200, height: 21)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.poppins(size: 14))
                     .fontWeight(.bold)
                     .lineLimit(1)
                 Text(text)
-                    .frame(width: 200, height: 63)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.poppins(size: 14))
                     .fontWeight(.regular)
                     .lineLimit(3)
-                    .padding(.bottom, 18)
-                    .padding(.top, -10)
             }
-
-//            Spacer()
             
             Image(systemName: "chevron.right")
                 .padding(.leading, 10)
                 .padding(.trailing, 32)
-                .padding(.bottom, 24)
             
             Spacer()
         }
@@ -51,9 +44,11 @@ struct HomeSuggestionView: View {
 }
 
 #Preview {
-    HomeSuggestionView(
-        imageName: "suggestion-photo",
-        title: "Fotoğraftan yemek tarifi al",
-        text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar."
-    )
+    VStack {
+        HomeSuggestionView(imageName: "suggestion-photo", title: "Fotoğraftan Yemek Tarifi Al", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+        
+        HomeSuggestionView(imageName: "suggestion-list", title: "Alışveriş Listesi ve Sepet", text: "Tariflerinizdeki malzemeleri listeler, sizi market alışverişine yönlendirir.")
+        
+        HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Malzemelerinizin analizini yaparak tariflerinizi ve öğünlerinizi oluşturur.")
+    }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
-    @State private var isButtonTapped = false
+    @State private var isButtonTapped: Bool = false
     
     var body: some View {
         NavigationViewStack {
@@ -115,12 +115,13 @@ extension HomeView {
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 36)
+                .padding(.bottom, 18)
             
             HomeSuggestionView(imageName: "suggestion-photo", title: "Fotoğraftan Yemek Tarifi Al", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
             
             HomeSuggestionView(imageName: "suggestion-list", title: "Alışveriş Listesi ve Sepet", text: "Tariflerinizdeki malzemeleri listeler, sizi market alışverişine yönlendirir.")
             
-            HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+            HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Malzemelerinizin analizini yaparak tariflerinizi ve öğünlerinizi oluşturur.")
         }
     }
     
