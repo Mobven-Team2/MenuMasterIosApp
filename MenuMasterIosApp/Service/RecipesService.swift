@@ -1,25 +1,26 @@
 //
-//  LoginService.swift
+//  RecipesService.swift
 //  MenuMasterIosApp
 //
-//  Created by Cansu Özdizlekli on 6/6/24.
+//  Created by Cansu Özdizlekli on 6/11/24.
 //
 
 import Foundation
 
-class LoginService {
-
-    // Post Request to login an User
-    func loginUserFunc(email: String, password: String,completion: @escaping (Result<String, ServiceError>) -> Void) {
-        print("Email: \(email), Password: \(password)")
-        let request = UserAPI.loginUser(email: email, password: password)
-        Networking.shared.request(request, type: UserLoginResponseModel.self, decodingType: .useDefaultKeys) { result in
-            print("accessToken : ",result)
+class RecipesService {
+    
+    // Get Request to take recipes
+    
+    func getSelectedMealRecipes(requestModel: RecipesRequestModel,completion: @escaping (Result<[RecipeResponseModel], ServiceError>) -> Void) {
+        let request = UserAPI.getRecipes(id: requestModel.id, mealTypes: requestModel.mealTypes)
+        print("req:",request)
+        Networking.shared.request(request, type: RecipesResponseModel.self, decodingType: .useDefaultKeys) { result in
+            print("recipes : ",result)
             switch result {
             case .success(let dataModel):
                 // Handle Success Case
                 print("Success")
-                completion(.success(dataModel.accessToken ?? ""))
+                completion(.success(dataModel.recipes))
             case .failure(let error):
                 if let err = error as? NetworkError {
                     switch err {
@@ -35,5 +36,8 @@ class LoginService {
                 }
             }
         }
+        
+        
     }
+    
 }

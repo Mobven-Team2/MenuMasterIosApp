@@ -61,14 +61,13 @@ class RegisterViewModel: ObservableObject {
         RegisterService().registerUser(requestModel: requestModel) { result in
             switch result {
             case .success(let token):
-                UserDefaults.standard.setValue(token, forKey: "access_token")
+                UserDefaultsHelper.shared.setData(value: token, key: .accessToken)
                 JWTDecoderHelper.handleJWTToken(token) { userId in
                     if let userId = userId {
                         DispatchQueue.main.async {
                             self.userId = userId
+                            UserDefaultsHelper.shared.setData(value: userId, key: .userId)
                             self.isAuthenticated = true
-                            UserDefaults.standard.setValue(token, forKey: "userId")
-                            print("User ID: \(userId)")
                         }
                     } else {
                         // Handle error

@@ -16,7 +16,7 @@ import Foundation
 //    let access_token: String?
 //}
 
-enum AuthenticationError: Error {
+enum ServiceError: Error {
     case invalidCredentials
     case custom(errorMessage : String)
 }

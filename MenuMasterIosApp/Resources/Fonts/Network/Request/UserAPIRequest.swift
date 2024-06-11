@@ -33,7 +33,7 @@ extension UserAPI: NetworkRequestType {
             return "/api/User/Update"
         case .getUserById(let userID):
             return "/api/User/Get/\(userID)"
-        case .getRecipes(id: let id, mealTypes: let mealTypes):
+        case .getRecipes:
             return "/api/User/GetRecipes"
         }
     }
@@ -94,7 +94,8 @@ extension UserAPI: NetworkRequestType {
 
 
     func getAuthToken() -> String? {
-        return UserDefaults.standard.string(forKey: "access_token")
+        let accessToken: String? = UserDefaultsHelper.shared.getData(type: String.self, forKey: .accessToken)
+        return accessToken
     }
     
     // Query parameters for each case

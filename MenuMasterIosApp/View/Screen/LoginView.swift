@@ -64,7 +64,10 @@ struct LoginView: View {
                 }
             }
             .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
-                HomeView()
+//                HomeView()
+                //meal selection home ekranı bitene kadar
+                MealSelectionView()
+                
             })
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {
                 UserInformationView()
