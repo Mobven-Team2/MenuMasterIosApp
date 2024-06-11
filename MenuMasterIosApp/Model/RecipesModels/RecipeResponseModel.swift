@@ -7,15 +7,6 @@
 
 import Foundation
 
-public struct RecipesResponseModel : Codable {
-    let recipes : [RecipeResponseModel]
-    
-    public init(recipes: [RecipeResponseModel]) {
-        self.recipes = recipes
-    }
-}
-
-
 public struct RecipeResponseModel : Codable {
     let id : Int
     let name : String

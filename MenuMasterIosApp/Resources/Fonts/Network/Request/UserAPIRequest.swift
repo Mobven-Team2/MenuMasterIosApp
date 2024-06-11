@@ -14,7 +14,7 @@ enum UserAPI {
     case updateUserProfile
     case getUserById(userID: Int)
     case updateUser(userID: Int)
-    case getRecipes(id: Int, mealTypes : [String])
+    case postRecipes(id: Int, mealTypes : [String])
 
 }
 
@@ -33,17 +33,17 @@ extension UserAPI: NetworkRequestType {
             return "/api/User/Update"
         case .getUserById(let userID):
             return "/api/User/Get/\(userID)"
-        case .getRecipes:
-            return "/api/User/GetRecipes"
+        case .postRecipes:
+            return "/api/User/PostRecipes"
         }
     }
     
     // HTTP method for each case
     var method: HTTPMethod {
         switch self {
-        case .getUserById, .getRecipes:
+        case .getUserById:
             return .get
-        case .registerUser, .loginUser:
+        case .registerUser, .loginUser , .postRecipes:
             return .post
         case .updateUser, .updateUserProfile:
             return .put
@@ -75,7 +75,7 @@ extension UserAPI: NetworkRequestType {
             return [ "userID": userID]
         case .updateUserProfile:
             return nil
-        case .getRecipes(id: let id, mealTypes: let mealTypes):
+        case .postRecipes(id: let id, mealTypes: let mealTypes):
             return [ "id": id,
                      "mealTypes": mealTypes ]
         }

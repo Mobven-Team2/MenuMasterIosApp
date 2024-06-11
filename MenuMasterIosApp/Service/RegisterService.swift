@@ -27,7 +27,6 @@ class RegisterService {
         )
         
         Networking.shared.request(request, type: UserRegisterResponseModel.self, decodingType: .useDefaultKeys) { result in
-            print("accessToken : ",result)
             switch result {
             case .success(let dataModel):
                 // Handle Success Case

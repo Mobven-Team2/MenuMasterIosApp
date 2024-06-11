@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    @ObservedObject var viewModel = RecipeDetailViewModel()
     @State private var selectedMeal: MealType = .breakfast
     @State private var showIngredients = false
     @State private var shoppingList: [String] = []
@@ -22,7 +23,9 @@ struct RecipeDetailView: View {
     ]
     
     var body: some View {
+        
         VStack {
+            
             HStack {
                 Text(selectedMeal.rawValue)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -100,8 +103,11 @@ struct RecipeDetailView: View {
                 }
                 .frame(height: 500)
             }
-            
+        }.onAppear {
+            viewModel.getRecipes()
         }
+      
+        
     }
     
     private func addIngredientsToShoppingList() {
