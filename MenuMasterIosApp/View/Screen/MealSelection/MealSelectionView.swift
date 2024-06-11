@@ -12,6 +12,7 @@ struct MealSelectionView: View {
     @State private var selectedPreferences: Set<MealType> = []
     @State private var isButtonTapped = false
     @State private var recipeDetailTag: Bool = false
+    @State private var backButtonTag: Bool = false
     
     var body: some View {
         VStack(alignment:.center,spacing: 10) {
