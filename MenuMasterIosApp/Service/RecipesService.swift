@@ -9,10 +9,10 @@ import Foundation
 
 class RecipesService {
     
-    // Get Request to take recipes
+    // Post Request to take recipes
     
-    func getSelectedMealRecipes(requestModel: RecipesRequestModel,completion: @escaping (Result<[RecipeResponseModel], ServiceError>) -> Void) {
-        let request = UserAPI.getRecipes(id: requestModel.id, mealTypes: requestModel.mealTypes)
+    func postSelectedMealRecipes(requestModel: RecipesRequestModel,completion: @escaping (Result<[RecipeResponseModel], ServiceError>) -> Void) {
+        let request = UserAPI.postRecipes(id: requestModel.id, mealTypes: requestModel.mealTypes)
         print("req:",request)
         Networking.shared.request(request, type: RecipesResponseModel.self, decodingType: .useDefaultKeys) { result in
             print("recipes : ",result)

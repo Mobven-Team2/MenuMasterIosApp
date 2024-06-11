@@ -21,7 +21,7 @@ class MealSelectionViewModel : ObservableObject {
         
         let requestModel = RecipesRequestModel(id: id, mealTypes: mealTypes)
         
-        RecipesService().getSelectedMealRecipes(requestModel: requestModel) { result in
+        RecipesService().postSelectedMealRecipes(requestModel: requestModel) { result in
             switch result {
             case .success(let recipes):
                 // Handle success
