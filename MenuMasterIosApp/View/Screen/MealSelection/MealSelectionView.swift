@@ -8,42 +8,43 @@
 import SwiftUI
 
 struct MealSelectionView: View {
+    @ObservedObject var viewModel = MealSelectionViewModel()
     @State private var selectedPreferences: Set<MealType> = []
     @State private var isButtonTapped: Bool = false
     @State private var backButtonTag: Bool = false
     
     var body: some View {
-        NavigationViewStack {
-            ZStack {
-                VStack(alignment:.center,spacing: 12) {
+        VStack(alignment:.center,spacing: 10) {
+            Text("Öğün Oluştur")
+                .font(.poppins(size: 18))
+                .fontWeight(.semibold)
+            WeeklyCalendarView()
+                
+                
+            HStack() {
+                Text("Öğün Seçimi Yap")
+                    .padding(.leading,20)
+                    .fontWeight(.semibold)
+                    .font(.poppins(size: 18))
+                Spacer()
+            }
+            
+            ForEach(MealType.allCases, id: \.self) { mealType in
+                MealCardView(name: mealType.rawValue, imageName: mealType.imageName, isSelected: self.selectedPreferences.contains(mealType)
+                ) {
+                    self.toggleSelection(for: mealType)
                     
-                    backButton
-                    
-                    WeeklyCalendarView()
-                    
-                    HStack() {
-                        Text("Öğün Seç")
-                            .padding(.leading,20)
-                            .fontWeight(.semibold)
-                            .font(.poppins(size: 18))
-                        Spacer()
-                    }
-                    
-                    ForEach(MealType.allCases, id: \.self) { mealType in
-                        MealCardView(name: mealType.rawValue, imageName: mealType.imageName, isSelected: self.selectedPreferences.contains(mealType)) {
-                            self.toggleSelection(for: mealType)
-                        }
-                    }
-                    
-                    CustomButtonView(text: "Ekle", isButtonTapped: $isButtonTapped) {
-                        //
-                    }.opacity(selectedPreferences.isEmpty ? 0.5 : 1)
-                        .disabled(selectedPreferences.isEmpty ? true : false)
                 }
             }
-            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
-                HomeView()
-            })
+            
+            CustomButtonView(text: "Öğünleri Oluştur", isButtonTapped: $isButtonTapped) {
+                UserDefaultsHelper.shared.setData(value: selectedPreferences.map { $0.rawValue }, key: .selectedMeals)
+                UserDefaultsHelper.shared.printUserInformation()
+                viewModel.getRecipes()
+            }.opacity(selectedPreferences.isEmpty ? 0.5 : 1)
+                .disabled(selectedPreferences.isEmpty ? true : false)
+            
+            Spacer()
         }
     }
 }

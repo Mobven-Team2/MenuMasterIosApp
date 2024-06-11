@@ -33,7 +33,7 @@ struct UserInformationView: View {
                     
                     Text("Yemek tariflerini sana özel olarak hazırlayabilmemiz için aşağıdaki bilgileri doldurmalısın.")
                         .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.dmSans(size: 14))
+                        .font(.poppins(size: 14))
                         .lineSpacing(8)
                         .lineLimit(2)
                     
@@ -81,10 +81,11 @@ struct UserInformationView: View {
                 
                 
                 CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
+                    viewModel.saveUserInformation()
                     continueTag = true
-                }.disabled(!viewModel.isAuthenticated)
-                    .opacity((viewModel.isAuthenticated) ? 1 : 0.5)
-                
+                }.disabled(!viewModel.areUserDefaultsFilled() && !viewModel.isAuthenticated)
+                    .opacity(viewModel.isAuthenticated || viewModel.areUserDefaultsFilled() ? 1 : 0.5)
+
                 redirectLoginPageButton
                 
             }.navigationDestinationWrapper(isPresented: $continueTag, destination: {
@@ -118,7 +119,7 @@ extension UserInformationView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .foregroundColor(Color.theme.primaryTextColor)
     }
     

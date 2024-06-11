@@ -36,7 +36,7 @@ struct CuisineSelectionView: View {
                     }
                     Text("En sevdiğin dünya mutfaklarını seç")
                         .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.dmSans(size: 14))
+                        .font(.poppins(size: 14))
                         .lineSpacing(8)
                         .lineLimit(2)
                 }.padding(.top,50)

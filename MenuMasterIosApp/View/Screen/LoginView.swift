@@ -101,7 +101,7 @@ extension LoginView {
                 Text("Şifreni mi Unuttun?")
                     .foregroundColor(Color.theme.primaryTextColor)
                     .underline()
-                    .font(.dmSans(size: 12))
+                    .font(.poppins(size: 12))
             }
         }
         .padding(.trailing, 35)
@@ -110,10 +110,7 @@ extension LoginView {
     
     private var loginButton : some View {
         Button(action: {
-//            loginTag = viewModel.login()
-            // TODO: backend gelince false iken hata mesajı yazdır
-            viewModel.isAuthenticated = true
-            loginTag = true
+            viewModel.login()
         }) {
             Text("Giriş Yap")
         }
@@ -132,7 +129,7 @@ extension LoginView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
         

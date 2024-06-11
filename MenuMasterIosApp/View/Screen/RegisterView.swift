@@ -128,7 +128,7 @@ extension RegisterView {
             
             Text("\(Text("Şartlar & Koşullar").underline()) ve \(Text("Gizlilik Politikasını").underline()) kabul ediyorum.")
                 .foregroundColor(isOn ? .black : .red)
-                .font(.dmSans(size: 14))
+                .font(.poppins(size: 14))
                 .frame(width: 287, height: 40)
                 .multilineTextAlignment(.leading)
                 .lineSpacing(0)
@@ -139,7 +139,8 @@ extension RegisterView {
     
     private var createAccountButton : some View {
         Button(action: {
-            registerTag = true
+            viewModel.saveUserInformation()
+            registerTag = viewModel.register(checkbox: isOn)
         }) {
             Text("Hesap Oluştur")
                 .customButtonStyle()
@@ -160,18 +161,10 @@ extension RegisterView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
     }
-    
-//    private var google : some View {
-//        Image("Google")
-//            .resizable()
-//            .scaledToFit()
-//            .frame(width: 327, height: 56)
-//            .padding(.bottom, 10)
-//    }
     
     private var backButton : some View {
         Button(action: {
