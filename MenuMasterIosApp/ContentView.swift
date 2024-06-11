@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+//    @EnvironmentObject var selectedTab: TabSelector
     
     var body: some View {
         SplashView()

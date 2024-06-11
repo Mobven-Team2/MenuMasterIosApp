@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 
-
 class HomeViewModel: ObservableObject {
     
     var topImage: String?

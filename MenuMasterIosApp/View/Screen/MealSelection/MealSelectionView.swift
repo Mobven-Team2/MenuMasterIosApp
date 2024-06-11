@@ -10,7 +10,8 @@ import SwiftUI
 struct MealSelectionView: View {
     @ObservedObject var viewModel = MealSelectionViewModel()
     @State private var selectedPreferences: Set<MealType> = []
-    @State private var isButtonTapped = false
+    @State private var isButtonTapped: Bool = false
+    @State private var backButtonTag: Bool = false
     
     var body: some View {
         VStack(alignment:.center,spacing: 10) {
@@ -58,6 +59,23 @@ extension MealSelectionView {
             selectedPreferences.remove(mealType)
         } else {
             selectedPreferences.insert(mealType)
+        }
+    }
+    
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            HStack() {
+                Image("back-button-icon")
+                    .resizable()
+                    .foregroundColor(Color.theme.primaryTextColor)
+                    .frame(width: 20,height: 32)
+                    .padding([.top, .leading], 20)
+                
+                Spacer()
+            }
+            
         }
     }
 }
