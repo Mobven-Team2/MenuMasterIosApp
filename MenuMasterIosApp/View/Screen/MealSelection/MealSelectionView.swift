@@ -11,6 +11,7 @@ struct MealSelectionView: View {
     @ObservedObject var viewModel = MealSelectionViewModel()
     @State private var selectedPreferences: Set<MealType> = []
     @State private var isButtonTapped = false
+    @State private var recipeDetailTag: Bool = false
     
     var body: some View {
         VStack(alignment:.center,spacing: 10) {
@@ -39,12 +40,14 @@ struct MealSelectionView: View {
             CustomButtonView(text: "Öğünleri Oluştur", isButtonTapped: $isButtonTapped) {
                 UserDefaultsHelper.shared.setData(value: selectedPreferences.map { $0.rawValue }, key: .selectedMeals)
                 UserDefaultsHelper.shared.printUserInformation()
-                viewModel.getRecipes()
+                recipeDetailTag = true
             }.opacity(selectedPreferences.isEmpty ? 0.5 : 1)
                 .disabled(selectedPreferences.isEmpty ? true : false)
             
             Spacer()
-        }
+        }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
+            RecipeDetailView()
+        })
     }
 }
 

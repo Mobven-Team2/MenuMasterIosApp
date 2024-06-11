@@ -14,13 +14,13 @@ class RecipesService {
     func postSelectedMealRecipes(requestModel: RecipesRequestModel,completion: @escaping (Result<[RecipeResponseModel], ServiceError>) -> Void) {
         let request = UserAPI.postRecipes(id: requestModel.id, mealTypes: requestModel.mealTypes)
         print("req:",request)
-        Networking.shared.request(request, type: RecipesResponseModel.self, decodingType: .useDefaultKeys) { result in
+        Networking.shared.request(request, type: [RecipeResponseModel].self, decodingType: .useDefaultKeys) { result in
             print("recipes : ",result)
             switch result {
             case .success(let dataModel):
                 // Handle Success Case
                 print("Success")
-                completion(.success(dataModel.recipes))
+                completion(.success(dataModel))
             case .failure(let error):
                 if let err = error as? NetworkError {
                     switch err {
@@ -36,7 +36,6 @@ class RecipesService {
                 }
             }
         }
-        
         
     }
     
