@@ -13,21 +13,32 @@ class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isAuthenticated: Bool = false
+    @Published var userId : String = ""
     
     var loginValidator = Validator()
-
+    
     func login() {
         if validateFields() {
             let defaults = UserDefaults.standard
-
+            
             LoginService().loginUserFunc(email: email, password: password) { result in
                 switch result {
+                    
                 case .success(let token):
                     defaults.setValue(token, forKey: "access_token")
-                    DispatchQueue.main.async {
-                        self.isAuthenticated = true
-                        print(token)
+                    JWTDecoderHelper.handleJWTToken(token) { userId in
+                        if let userId = userId {
+                            DispatchQueue.main.async {
+                                self.userId = userId
+                                self.isAuthenticated = true
+                                defaults.setValue(userId, forKey: "userId")
+                                print("User ID: \(userId)")
+                            }
+                        } else {
+                            // Handle error
+                        }
                     }
+
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
