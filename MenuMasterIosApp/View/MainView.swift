@@ -8,24 +8,46 @@
 import SwiftUI
 
 struct MainView: View {
-//    @StateObject var selectedTab = TabSelector()
+    @StateObject var tabSelector = TabSelector()
     @State var currentTab = 0
     
     var body: some View {
         TabView(selection: $currentTab) {
             HomeView()
                 .tabItem {
-                    Label("Ana Sayfa", systemImage: "1.circle")
+                    Image("tab-home").renderingMode(.template)
+                    Text("Ana Sayfa")
                 }
                 .tag(0)
             
             MealSelectionView()
                 .tabItem {
-                    Label("Öğünler", systemImage: "2.circle")
+                    Image("tab-meal").renderingMode(.template)
+                    Text("Öğünler")
                 }
                 .tag(1)
+            RecipeDetailView()
+                .tabItem {
+                    Image("tab-recipe").renderingMode(.template)
+                    Text("AI Tarifler")
+                }
+                .tag(2)
+            ProfileView()
+                .tabItem {
+                    Image("tab-profile").renderingMode(.template)
+                    Text("Profilim")
+                }
+                .tag(3)
             
         }
+        .environmentObject(tabSelector)
+        .accentColor(Color.theme.primaryOrangeColor)
+        .onAppear {
+            currentTab = tabSelector.selectedTab
+        }
+//        .onChange(of: tabSelector.selectedTab) {
+//            currentTab = tabSelector.selectedTab
+//        }
         .toolbar(.hidden)
         .tabViewStyle(.automatic)
 //        .navigationBarBackButtonHidden()

@@ -8,35 +8,32 @@
 import SwiftUI
 
 struct HomeView: View {
+//    @EnvironmentObject var tabSelector: TabSelector
     @ObservedObject var viewModel = HomeViewModel()
     @State private var isButtonTapped: Bool = false
     
     var body: some View {
-        NavigationViewStack {
-            ScrollView {
-                VStack {
-                    ZStack {
-                        Image(getImageName())
-                            .resizable()
-                            .scaledToFit()
-                        
-                        helloUser
-                    }
+        ScrollView {
+            VStack {
+                ZStack {
+                    Image(getImageName())
+                        .resizable()
+                        .scaledToFit()
                     
-                    VStack{
-                        pickMeal
-                        suggestion
-                    }
-                    .offset(y: -90)
-                    
-                    Spacer()
+                    helloUser
                 }
+                
+                VStack{
+                    pickMeal
+                    suggestion
+                }
+                .offset(y: -90)
+                
+                Spacer()
             }
-            .edgesIgnoringSafeArea(.top)
-            .navigationDestinationWrapper(isPresented: $isButtonTapped, destination: {
-                MealSelectionView()
-            })
         }
+        .edgesIgnoringSafeArea(.top)
+//        .environmentObject(tabSelector)
     }
 }
 

@@ -11,6 +11,7 @@
 		7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40942BFEB5C30026CC3A /* AuthenticationService.swift */; };
 		7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */; };
 		7A51A06C2C062965008ADCF4 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51A06B2C062965008ADCF4 /* Validator.swift */; };
+		7A8F7C802C186C1B000EFF95 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F7C7F2C186C1B000EFF95 /* ProfileView.swift */; };
 		7AA7F6392C11315A007FAE4E /* CuisineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7F6382C11315A007FAE4E /* CuisineSelectionView.swift */; };
 		7AA7F63B2C113176007FAE4E /* CuisineButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7F63A2C113176007FAE4E /* CuisineButtonView.swift */; };
 		7AA7F63E2C1140E3007FAE4E /* HomeSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7F63D2C1140E3007FAE4E /* HomeSuggestionView.swift */; };
@@ -89,6 +90,7 @@
 		7A2E40942BFEB5C30026CC3A /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		7A2E40982BFEB6C00026CC3A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7A51A06B2C062965008ADCF4 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		7A8F7C7F2C186C1B000EFF95 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7AA7F6382C11315A007FAE4E /* CuisineSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineSelectionView.swift; sourceTree = "<group>"; };
 		7AA7F63A2C113176007FAE4E /* CuisineButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineButtonView.swift; sourceTree = "<group>"; };
 		7AA7F63D2C1140E3007FAE4E /* HomeSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSuggestionView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		7A8F7C7E2C186C0B000EFF95 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F7C7F2C186C1B000EFF95 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		7AFCCB6A2C00BA8B00D96BD0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +265,7 @@
 		8DD195DA2C009FD60057C130 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				7A8F7C7E2C186C0B000EFF95 /* Profile */,
 				8D5EB0352C10A97400073603 /* Home */,
 				8D5EB0082C10473500073603 /* Onboarding */,
 				8D5EB0032C0F56CA00073603 /* RecipeDetail */,
@@ -567,6 +578,7 @@
 				8D09FFB62C087E610069D196 /* CuisineSelectionViewModel.swift in Sources */,
 				8DD00ED62C04C02B00594F1A /* UserInformationView.swift in Sources */,
 				8D87DC8E2C065D1F004D16BA /* UserInformationViewModel.swift in Sources */,
+				7A8F7C802C186C1B000EFF95 /* ProfileView.swift in Sources */,
 				8D87DC922C065EC4004D16BA /* User.swift in Sources */,
 				8DF1AB692BFDF7FD008F9899 /* LoginView.swift in Sources */,
 				8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */,
@@ -753,7 +765,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MenuMasterIosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U638ZS235;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MenuMasterIosApp/Info.plist;
@@ -782,7 +794,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MenuMasterIosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U638ZS235;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MenuMasterIosApp/Info.plist;
