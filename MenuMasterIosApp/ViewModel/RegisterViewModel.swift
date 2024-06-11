@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import JWTDecode
 
 class RegisterViewModel: ObservableObject {
     
@@ -14,6 +15,7 @@ class RegisterViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
     @Published var isAuthenticated: Bool = false
+    @Published var userId : String = ""
     var registerValidator = Validator()
     
     func register(checkbox: Bool) -> Bool {
@@ -60,11 +62,18 @@ class RegisterViewModel: ObservableObject {
             switch result {
             case .success(let token):
                 UserDefaults.standard.setValue(token, forKey: "access_token")
-                DispatchQueue.main.async {
-                    self.isAuthenticated = true
-                    print(token)
+                JWTDecoderHelper.handleJWTToken(token) { userId in
+                    if let userId = userId {
+                        DispatchQueue.main.async {
+                            self.userId = userId
+                            self.isAuthenticated = true
+                            UserDefaults.standard.setValue(token, forKey: "userId")
+                            print("User ID: \(userId)")
+                        }
+                    } else {
+                        // Handle error
+                    }
                 }
-                print("kullanıcı olusturuldu:", token)
             case .failure(let error):
                 print(error.localizedDescription)
                 print("fail:")

@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import JWTDecode
 
 class LoginViewModel: ObservableObject {
     
@@ -27,23 +26,19 @@ class LoginViewModel: ObservableObject {
                     
                 case .success(let token):
                     defaults.setValue(token, forKey: "access_token")
-                    do {
-                        let jwt = try decode(jwt: token)
-                        if let userId = jwt.claim(name: "Id").string {
+                    JWTDecoderHelper.handleJWTToken(token) { userId in
+                        if let userId = userId {
                             DispatchQueue.main.async {
                                 self.userId = userId
                                 self.isAuthenticated = true
-                                // Kullanıcının giriş yapmış olduğunu saklıyoruz
-                                defaults.set(true, forKey: "isUserLoggedIn")
                                 defaults.setValue(userId, forKey: "userId")
                                 print("User ID: \(userId)")
                             }
                         } else {
-                            print("User ID bulunamadı")
+                            // Handle error
                         }
-                    } catch {
-                        print("JWT decode hatası: \(error.localizedDescription)")
                     }
+
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
