@@ -75,6 +75,7 @@
 		8DE4BD4F2BFDE75700BEEE53 /* MenuMasterIosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD4E2BFDE75700BEEE53 /* MenuMasterIosAppTests.swift */; };
 		8DE4BD592BFDE75700BEEE53 /* MenuMasterIosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD582BFDE75700BEEE53 /* MenuMasterIosAppUITests.swift */; };
 		8DE4BD5B2BFDE75700BEEE53 /* MenuMasterIosAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4BD5A2BFDE75700BEEE53 /* MenuMasterIosAppUITestsLaunchTests.swift */; };
+		8DE8CF962C184AAA009DD456 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 8DE8CF952C184AAA009DD456 /* JWTDecode */; };
 		8DF1AB692BFDF7FD008F9899 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1AB682BFDF7FD008F9899 /* LoginView.swift */; };
 		8DF1AB6C2BFDFAD8008F9899 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1AB6B2BFDFAD8008F9899 /* Color+Ext.swift */; };
 		8DF1AB6E2BFE0116008F9899 /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1AB6D2BFE0116008F9899 /* Font+Ext.swift */; };
@@ -185,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE8CF962C184AAA009DD456 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +536,9 @@
 			dependencies = (
 			);
 			name = MenuMasterIosApp;
+			packageProductDependencies = (
+				8DE8CF952C184AAA009DD456 /* JWTDecode */,
+			);
 			productName = MenuMasterIosApp;
 			productReference = 8DE4BD352BFDE75500BEEE53 /* MenuMasterIosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -606,6 +611,9 @@
 				Base,
 			);
 			mainGroup = 8DE4BD2C2BFDE75500BEEE53;
+			packageReferences = (
+				8DE8CF942C184AA9009DD456 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+			);
 			productRefGroup = 8DE4BD362BFDE75500BEEE53 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1052,6 +1060,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8DE8CF942C184AA9009DD456 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8DE8CF952C184AAA009DD456 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DE8CF942C184AA9009DD456 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8DE4BD432BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld */ = {
