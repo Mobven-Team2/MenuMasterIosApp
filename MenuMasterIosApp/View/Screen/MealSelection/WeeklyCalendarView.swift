@@ -71,6 +71,7 @@ struct DayView: View {
         .foregroundColor(isSelected ? .white : Color.theme.customDarkTextColor)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 0)
+        .disabled(true)
     }
     
     func getShortDayName(date: Date) -> String {

@@ -25,14 +25,13 @@ class LoginViewModel: ObservableObject {
                 switch result {
                     
                 case .success(let token):
-                    defaults.setValue(token, forKey: "access_token")
+                    UserDefaultsHelper.shared.setData(value: token, key: .accessToken)
                     JWTDecoderHelper.handleJWTToken(token) { userId in
                         if let userId = userId {
                             DispatchQueue.main.async {
                                 self.userId = userId
                                 self.isAuthenticated = true
-                                defaults.setValue(userId, forKey: "userId")
-                                print("User ID: \(userId)")
+                                UserDefaultsHelper.shared.setData(value: userId, key: .userId)
                             }
                         } else {
                             // Handle error

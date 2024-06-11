@@ -10,7 +10,7 @@ import Foundation
 class RegisterService {
     
     // Post Request to register an User
-    func registerUser(requestModel: UserRegisterRequestModel,completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func registerUser(requestModel: UserRegisterRequestModel,completion: @escaping (Result<String, ServiceError>) -> Void) {
         
         let request = UserAPI.registerUser(
             fullName: requestModel.fullName,

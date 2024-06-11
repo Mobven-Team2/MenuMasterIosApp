@@ -25,9 +25,9 @@ struct MealCardView: View {
                 Text(name)
                     .font(.poppins(size: 18))
                 
-                Text("Öğünü Ekle")
+                Text(isSelected ? "Tarif Hazır!" : "Öğünü Ekle")
                     .font(.poppins(size: 14))
-                    .foregroundStyle(Color.theme.mediumGrayTextColor)
+                    .foregroundStyle(isSelected ? Color.theme.customDarkTextColor : Color.theme.mediumGrayTextColor)
             }.padding(.leading,5)
            
             Spacer()
@@ -41,15 +41,21 @@ struct MealCardView: View {
         .frame(width: UIScreen.main.bounds.width - 48, height: 70)
         .padding(.vertical,16)
         .foregroundColor(Color.theme.customDarkTextColor)
-        .background(Color.white)
+        .background(isSelected ? Color.theme.lightGreenColor : Color.white)
         .cornerRadius(16)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16.0)
+                .stroke(self.isSelected ? Color.theme.primaryGreenColor :.clear,lineWidth: 1)
+        )
+        .padding(.bottom,12)
         .onTapGesture {
             action()
         }
+        
     }
 }
 
 #Preview {
-    MealCardView(name: "Kahvaltı", imageName: "breakfast-card", isSelected: true, action: {})
+    MealCardView(name: "Kahvaltı", imageName: "breakfast-card", isSelected: false, action: {})
 }
