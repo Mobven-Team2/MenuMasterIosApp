@@ -8,38 +8,32 @@
 import SwiftUI
 
 struct HomeView: View {
+//    @EnvironmentObject var tabSelector: TabSelector
     @ObservedObject var viewModel = HomeViewModel()
-    
-    
+    @State private var isButtonTapped: Bool = false
     
     var body: some View {
-        NavigationViewStack {
+        ScrollView {
             VStack {
-                
                 ZStack {
                     Image(getImageName())
                         .resizable()
                         .scaledToFit()
                     
                     helloUser
-//                    pickMeal
-
                 }
-                .edgesIgnoringSafeArea(.top)
                 
-                
-//                Spacer()
                 VStack{
                     pickMeal
+                    suggestion
                 }
-                .offset(y: -140)
+                .offset(y: -90)
                 
                 Spacer()
             }
-            
-            
         }
-
+        .edgesIgnoringSafeArea(.top)
+//        .environmentObject(tabSelector)
     }
 }
 
@@ -94,9 +88,9 @@ extension HomeView {
                     .frame(width: 285, height: 63)
                     .lineLimit(3)
                 Button(action: {
-                    
+                    isButtonTapped = true
                 }) {
-                    Text("Öğün Seç")
+                    Text("Öğün Oluştur")
                 }
                 .font(.poppins(size: 16))
                 .fontWeight(.medium)
@@ -107,12 +101,25 @@ extension HomeView {
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             }
             .padding(.top, 80)
-            
-            
-            
         }
-//        .offset(y: -140)
-
+        .padding(.bottom, -40)
+    }
+    
+    private var suggestion : some View {
+        VStack {
+            Text("Menu Master AI Önerileri")
+                .font(.poppins(size: 18))
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 36)
+                .padding(.bottom, 18)
+            
+            HomeSuggestionView(imageName: "suggestion-photo", title: "Fotoğraftan Yemek Tarifi Al", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+            
+            HomeSuggestionView(imageName: "suggestion-list", title: "Alışveriş Listesi ve Sepet", text: "Tariflerinizdeki malzemeleri listeler, sizi market alışverişine yönlendirir.")
+            
+            HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Malzemelerinizin analizini yaparak tariflerinizi ve öğünlerinizi oluşturur.")
+        }
     }
     
 }

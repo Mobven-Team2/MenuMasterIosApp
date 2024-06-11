@@ -24,78 +24,76 @@ struct RegisterView: View {
     
     var body: some View {
         NavigationViewStack {
-            ZStack {
-                VStack(alignment:.center) {
-                    backButton
-                    titleText
+            VStack(alignment:.center) {
+                backButton
+                titleText
+                
+                VStack(alignment: .leading) {
                     
-                    VStack(alignment: .leading) {
-
-                        TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: errorFullName, text: $viewModel.fullName)
-                            .onChange(of: viewModel.fullName) {
-                                viewModel.isAuthenticated = viewModel.validateFields()
-                                errorFullName = viewModel.validateFullName()
-                            }
-                        
-                        TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, errorMessage: errorEmail, text: $viewModel.email)
-                            .onChange(of: viewModel.email) {
-                                viewModel.isAuthenticated = viewModel.validateFields()
-                                errorEmail = viewModel.validateEmail()
-                            }
-                        
-                        ZStack(alignment:.trailing) {
-                            TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, errorMessage: errorPassword, text: $viewModel.password)
-                                .onChange(of: viewModel.password) {
-                                    viewModel.isAuthenticated = viewModel.validateFields()
-                                    errorPassword = viewModel.validatePassword()
-                                    errorConfirmPassword = viewModel.validateConfirmPassword()
-                                }
-                            
-                            Button(action: {
-                                showPassword.toggle()
-                            }) {
-                                Image(showPassword ? "eye" : "eye-slash")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(Color.theme.primaryTextColor)
-                                    .padding(.top, 15)
-                                    .padding(.trailing, 20)
-                            }
+                    TextfieldView(title: "İsim Soyisim", placeholder: "", isPasswordField: false, errorMessage: errorFullName, text: $viewModel.fullName)
+                        .onChange(of: viewModel.fullName) {
+                            viewModel.isAuthenticated = viewModel.validateFields()
+                            errorFullName = viewModel.validateFullName()
                         }
-                        
-                        ZStack(alignment:.trailing) {
-
-                            TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, errorMessage: errorConfirmPassword, text: $viewModel.confirmPassword)
-                                .onChange(of: viewModel.confirmPassword) {
-                                    viewModel.isAuthenticated = viewModel.validateFields()
-                                    errorConfirmPassword = viewModel.validateConfirmPassword()
-                                }
-                            
-                            Button(action: {
-                                showPassword.toggle()
-                            }) {
-                                Image(showPassword ? "eye" : "eye-slash")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(Color.theme.primaryTextColor)
-                                    .padding(.top, 25)
-                                    .padding(.trailing, 20)
-                            }
+                    
+                    TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, errorMessage: errorEmail, text: $viewModel.email)
+                        .onChange(of: viewModel.email) {
+                            viewModel.isAuthenticated = viewModel.validateFields()
+                            errorEmail = viewModel.validateEmail()
                         }
+                    
+                    ZStack(alignment:.trailing) {
+                        TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, errorMessage: errorPassword, text: $viewModel.password)
+                            .onChange(of: viewModel.password) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorPassword = viewModel.validatePassword()
+                                errorConfirmPassword = viewModel.validateConfirmPassword()
+                            }
                         
-                    }.padding(.top, 10)
-                        .padding(.bottom, 10)
+                        Button(action: {
+                            showPassword.toggle()
+                        }) {
+                            Image(showPassword ? "eye" : "eye-slash")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(Color.theme.primaryTextColor)
+                                .padding(.top, 15)
+                                .padding(.trailing, 20)
+                        }
+                    }
                     
-                    Spacer()
-                    termsConditionsText
-                    createAccountButton
-                    redirectLoginPageButton
+                    ZStack(alignment:.trailing) {
+                        
+                        TextfieldView(title: "Şifre Tekrar", placeholder: "", isPasswordField: !showPassword, errorMessage: errorConfirmPassword, text: $viewModel.confirmPassword)
+                            .onChange(of: viewModel.confirmPassword) {
+                                viewModel.isAuthenticated = viewModel.validateFields()
+                                errorConfirmPassword = viewModel.validateConfirmPassword()
+                            }
+                        
+                        Button(action: {
+                            showPassword.toggle()
+                        }) {
+                            Image(showPassword ? "eye" : "eye-slash")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(Color.theme.primaryTextColor)
+                                .padding(.top, 25)
+                                .padding(.trailing, 20)
+                        }
+                    }
                     
-                }
+                }.padding(.top, 10)
+                    .padding(.bottom, 10)
+                
+                Spacer()
+                termsConditionsText
+                createAccountButton
+                redirectLoginPageButton
+                
             }
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {
-                HomeView()
-            })
+                MainView()
+            }).navigationBarBackButtonHidden(true)
             .navigationDestinationWrapper(isPresented: $loginTag, destination: {
                 LoginView()
             })
@@ -103,7 +101,9 @@ struct RegisterView: View {
                 WelcomeView() // TODO: Dünya Mutfağı sayfasına dönmeli?
             })
         }
+        
     }
+    
 }
 
 #Preview {

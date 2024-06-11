@@ -63,4 +63,21 @@ extension MealSelectionView {
             selectedPreferences.insert(mealType)
         }
     }
+    
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            HStack() {
+                Image("back-button-icon")
+                    .resizable()
+                    .foregroundColor(Color.theme.primaryTextColor)
+                    .frame(width: 20,height: 32)
+                    .padding([.top, .leading], 20)
+                
+                Spacer()
+            }
+            
+        }
+    }
 }
