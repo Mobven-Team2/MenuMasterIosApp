@@ -33,7 +33,7 @@ class RecipeDetailViewModel : ObservableObject {
                     print("Fetched Recipes: \(fetchedRecipes)")
                     self.recipes = fetchedRecipes
                 }
-                UserDefaultsHelper.shared.setData(value: self.recipes, key: .recipes)
+//                UserDefaultsHelper.shared.setData(value: self.recipes, key: .recipes)
             case .failure(let error):
                 print("Hata: \(error.localizedDescription)")
                 

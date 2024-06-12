@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     @ObservedObject var viewModel = RecipeDetailViewModel()
-    @State private var selectedMeal: String = "Kahvaltı"
+    @State private var selectedMeal: String = ""
     @State private var showIngredients = false
     @State private var shoppingList: [String] = []
     @State private var selectedSegment: Int = 0
@@ -31,7 +31,7 @@ struct RecipeDetailView: View {
                     .foregroundColor(Color.theme.primaryTextColor)
                 
                 Menu {
-                    ForEach(recipes.map { $0.mealType }, id: \.self) { option in
+                    ForEach(recipes.map { $0.mealTypeName }, id: \.self) { option in
                         Button(action: {
                             selectedMeal = option
                         }) {
@@ -58,17 +58,20 @@ struct RecipeDetailView: View {
             Spacer()
             
             
-            ForEach(viewModel.recipes.filter { $0.mealType == selectedMeal }, id: \.id) { recipe in
+            ForEach(recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
                 VStack(alignment: .leading){
                     HStack{
                         Text(recipe.name)
                             .font(.poppins(size: 22))
                             .bold()
+                            
                         Spacer()
                     }
-                    Text("Vegan Tarif")
+                    
+                    Text("Tarif")
                         .font(.poppins(size: 16))
-                }.padding(.leading,20)
+                }.frame(width: UIScreen.main.bounds.width - 48,height: 90)
+                    .foregroundColor(Color.theme.customDarkTextColor)
                 
                 
                 Spacer()
@@ -83,8 +86,9 @@ struct RecipeDetailView: View {
                     VStack {
                         ScrollView(showsIndicators: false) {
                             VStack(alignment: .center) {
-                                Text("\(recipe.mealType) öğününüz için gereken ürünleri alışveriş listenize ekleyin.")
+                                Text("\(recipe.mealTypeName) öğününüz için gereken ürünleri alışveriş listenize ekleyin.")
                                     .font(.poppins(size: 16))
+                                    .padding(15)
                                 Spacer()
                                 
                                 ForEach(recipe.ingredients, id: \.self) { item in
@@ -99,28 +103,28 @@ struct RecipeDetailView: View {
                             }
                             
                         }
-                    }
+                    }.foregroundColor(Color.theme.customDarkTextColor)
                 } else {
                     VStack(alignment: .leading) {
-                        Text("Tarif Detay")
-                        // Burada tarif detaylarını ekleyebilirsiniz.
-                        Text("Tarif detayları burada yer alacak...")
+                        
+                        RecipeView(recipeText: recipe.recipe)
+                        Spacer()
                     }
-                    .frame(height: 500)
+                    
+                    
+                    
                 }
-                
-                
+         
             }
-
-            
             
         }.onAppear {
-            viewModel.getRecipes()
-            recipes = viewModel.recipes
-            selectedMeal = recipes.first?.mealType ?? "Breakfast"
+            if recipes.isEmpty {
+                viewModel.getRecipes()
+                recipes = viewModel.recipes
+                selectedMeal = recipes.first?.mealTypeName ?? "Kahvaltı"
+            }
+            selectedMeal = recipes.first?.mealTypeName ?? "Kahvaltı"
         }
-        
-        
     }
     
 }
