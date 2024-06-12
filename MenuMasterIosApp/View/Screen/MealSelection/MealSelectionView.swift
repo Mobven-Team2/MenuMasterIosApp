@@ -47,7 +47,7 @@ struct MealSelectionView: View {
             
             Spacer()
         }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
-            RecipeDetailView()
+            RecipeDetailView(recipes : [])
         })
     }
 }

@@ -19,7 +19,6 @@ class LoginViewModel: ObservableObject {
     
     func login() {
         if validateFields() {
-            let defaults = UserDefaults.standard
             
             LoginService().loginUserFunc(email: email, password: password) { result in
                 switch result {

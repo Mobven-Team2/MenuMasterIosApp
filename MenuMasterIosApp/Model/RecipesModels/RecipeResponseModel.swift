@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RecipeResponseModel : Codable {
+public struct RecipeResponseModel : Codable , Hashable{
     let id : Int
     let name : String
     let ingredients : [String]
@@ -23,4 +23,20 @@ public struct RecipeResponseModel : Codable {
         self.mealType = mealType
         self.isLiked = isLiked
     }
+    
+    public var mealTypeName: String {
+        switch mealType {
+        case "Breakfast":
+            return "Kahvaltı"
+        case "Snack":
+            return "Atıştırmalık"
+        case "Lunch":
+            return "Öğle Yemeği"
+        case "Dinner":
+            return "Akşam Yemeği"
+        default:
+            return mealType
+        }
+    }
+    
 }

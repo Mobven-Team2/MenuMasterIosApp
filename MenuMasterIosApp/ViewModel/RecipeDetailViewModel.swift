@@ -13,6 +13,10 @@ class RecipeDetailViewModel : ObservableObject {
     @Published var mealTypes: [String] = []
     @Published var recipes : [RecipeResponseModel] = []
     
+    init() {
+        getRecipes()
+    }
+    
     func getRecipes(){
         guard let id = UserDefaultsHelper.shared.getData(type: Int.self, forKey: .userId),
               let mealTypes = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedMeals) else {
@@ -24,14 +28,16 @@ class RecipeDetailViewModel : ObservableObject {
         
         RecipesService().postSelectedMealRecipes(requestModel: requestModel) { result in
             switch result {
-            case .success(let recipes):
-                print("Recipes: \(recipes)")
-                
+            case .success(let fetchedRecipes):
+                DispatchQueue.main.async {
+                    print("Fetched Recipes: \(fetchedRecipes)")
+                    self.recipes = fetchedRecipes
+                }
+//                UserDefaultsHelper.shared.setData(value: self.recipes, key: .recipes)
             case .failure(let error):
                 print("Hata: \(error.localizedDescription)")
                 
             }
         }
     }
-
 }
