@@ -26,7 +26,7 @@ struct MainView: View {
                     Text("Öğünler")
                 }
                 .tag(1)
-            RecipeDetailView()
+            RecipeDetailView(recipes : [])
                 .tabItem {
                     Image("tab-recipe").renderingMode(.template)
                     Text("AI Tarifler")

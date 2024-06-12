@@ -63,7 +63,7 @@ struct LoginView: View {
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $loginTag, destination: {
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
                 MainView()
             }).navigationBarBackButtonHidden(true)
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {

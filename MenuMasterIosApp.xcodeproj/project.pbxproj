@@ -39,6 +39,7 @@
 		8D585B2E2C11B46F000D5621 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D585B2D2C11B46F000D5621 /* LoginService.swift */; };
 		8D585B312C11B517000D5621 /* UserLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D585B302C11B517000D5621 /* UserLoginRequestModel.swift */; };
 		8D585B332C11B555000D5621 /* UserLoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D585B322C11B555000D5621 /* UserLoginResponseModel.swift */; };
+		8D5BCDD62C19A2B6007AE83C /* IngredientsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */; };
 		8D5EAFFC2C0F268700073603 /* MealSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFB2C0F268700073603 /* MealSelectionView.swift */; };
 		8D5EAFFE2C0F26BB00073603 /* MealCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFD2C0F26BB00073603 /* MealCardView.swift */; };
 		8D5EB0002C0F271900073603 /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFF2C0F271900073603 /* WeeklyCalendarView.swift */; };
@@ -144,6 +145,7 @@
 		8D585B2D2C11B46F000D5621 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		8D585B302C11B517000D5621 /* UserLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginRequestModel.swift; sourceTree = "<group>"; };
 		8D585B322C11B555000D5621 /* UserLoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponseModel.swift; sourceTree = "<group>"; };
+		8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsItemView.swift; sourceTree = "<group>"; };
 		8D5EAFFB2C0F268700073603 /* MealSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectionView.swift; sourceTree = "<group>"; };
 		8D5EAFFD2C0F26BB00073603 /* MealCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCardView.swift; sourceTree = "<group>"; };
 		8D5EAFFF2C0F271900073603 /* WeeklyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarView.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				8D5EB0042C0F572000073603 /* RecipeDetailView.swift */,
 				8D1753FF2C176B3A00B627AA /* CustomSegmentedControlView.swift */,
+				8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */,
 			);
 			path = RecipeDetail;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				7A51A06C2C062965008ADCF4 /* Validator.swift in Sources */,
 				8D585B222C11AD74000D5621 /* NetworkEnvironment.swift in Sources */,
 				7AA7F63E2C1140E3007FAE4E /* HomeSuggestionView.swift in Sources */,
+				8D5BCDD62C19A2B6007AE83C /* IngredientsItemView.swift in Sources */,
 				8DD195DD2C00A03E0057C130 /* TextfieldView.swift in Sources */,
 				8DDFA4C52C14B69400CF8D6D /* UserRegisterResponseModel.swift in Sources */,
 				8DE8CFA12C1875F3009DD456 /* RecipesService.swift in Sources */,

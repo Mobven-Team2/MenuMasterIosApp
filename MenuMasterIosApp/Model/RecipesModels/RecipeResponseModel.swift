@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RecipeResponseModel : Codable {
+public struct RecipeResponseModel : Codable , Hashable{
     let id : Int
     let name : String
     let ingredients : [String]
