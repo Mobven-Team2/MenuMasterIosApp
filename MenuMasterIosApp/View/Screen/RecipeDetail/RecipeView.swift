@@ -75,7 +75,7 @@ struct RecipeView : View {
         }
         .background(.white)
         .cornerRadius(16)
-        .shadow(color: Color.gray.opacity(0.1), radius: 8, x: 0, y: 0)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 0)
     }
 }
 

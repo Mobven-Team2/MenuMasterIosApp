@@ -41,6 +41,7 @@
 		8D585B332C11B555000D5621 /* UserLoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D585B322C11B555000D5621 /* UserLoginResponseModel.swift */; };
 		8D5BCDD62C19A2B6007AE83C /* IngredientsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */; };
 		8D5BCDD82C19BC9D007AE83C /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDD72C19BC9D007AE83C /* RecipeView.swift */; };
+		8D5BCDDB2C19E972007AE83C /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDDA2C19E972007AE83C /* ShoppingListView.swift */; };
 		8D5EAFFC2C0F268700073603 /* MealSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFB2C0F268700073603 /* MealSelectionView.swift */; };
 		8D5EAFFE2C0F26BB00073603 /* MealCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFD2C0F26BB00073603 /* MealCardView.swift */; };
 		8D5EB0002C0F271900073603 /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFF2C0F271900073603 /* WeeklyCalendarView.swift */; };
@@ -148,6 +149,7 @@
 		8D585B322C11B555000D5621 /* UserLoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponseModel.swift; sourceTree = "<group>"; };
 		8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsItemView.swift; sourceTree = "<group>"; };
 		8D5BCDD72C19BC9D007AE83C /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		8D5BCDDA2C19E972007AE83C /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
 		8D5EAFFB2C0F268700073603 /* MealSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectionView.swift; sourceTree = "<group>"; };
 		8D5EAFFD2C0F26BB00073603 /* MealCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCardView.swift; sourceTree = "<group>"; };
 		8D5EAFFF2C0F271900073603 /* WeeklyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,14 @@
 			path = UserModels;
 			sourceTree = "<group>";
 		};
+		8D5BCDD92C19E955007AE83C /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				8D5BCDDA2C19E972007AE83C /* ShoppingListView.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
 		8D5EAFBD2C0DC57600073603 /* Cuisine */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +383,7 @@
 		8DD195DA2C009FD60057C130 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				8D5BCDD92C19E955007AE83C /* ShoppingList */,
 				7A8F7C7E2C186C0B000EFF95 /* Profile */,
 				8DDFA4BF2C14A13600CF8D6D /* DietType */,
 				8DDFA4B22C1351ED00CF8D6D /* UserInformation */,
@@ -782,6 +793,7 @@
 				8DE4BD392BFDE75500BEEE53 /* MenuMasterIosAppApp.swift in Sources */,
 				8DDFA4C12C14A21000CF8D6D /* DietTypeViewModel.swift in Sources */,
 				7AFCCB6E2C00BB9700D96BD0 /* HomeView.swift in Sources */,
+				8D5BCDDB2C19E972007AE83C /* ShoppingListView.swift in Sources */,
 				8DE8CF9B2C1851EF009DD456 /* RecipesRequestModel.swift in Sources */,
 				8D5EB00A2C1047A100073603 /* OnboardingData.swift in Sources */,
 				7A2E40992BFEB6C00026CC3A /* LoginViewModel.swift in Sources */,

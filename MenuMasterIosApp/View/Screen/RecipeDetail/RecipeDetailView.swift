@@ -78,6 +78,8 @@ struct RecipeDetailView: View {
                 
                 CustomSegmentedControl(preselectedIndex: $selectedSegment, options: ["İçindekiler","Tarif"])
                     .padding(.horizontal,20)
+                    .fontWeight(.semibold)
+                    .font(.poppins(size: 16))
                 
                 Spacer()
                 
@@ -89,7 +91,7 @@ struct RecipeDetailView: View {
                                 Text("\(recipe.mealTypeName) öğününüz için gereken ürünleri alışveriş listenize ekleyin.")
                                     .font(.poppins(size: 16))
                                     .padding(15)
-                                Spacer()
+                                
                                 
                                 ForEach(recipe.ingredients, id: \.self) { item in
                                     IngredientsItemView(name: item, isSelected: selectedIngredients.contains(item)) {
@@ -97,17 +99,45 @@ struct RecipeDetailView: View {
                                     }
                                 }
                                 
+                                Spacer()
+                                
                                 CustomButtonView(text: "Alışveriş Listene Ekle", isButtonTapped: $isButtonTapped) {
                                     // alısveris listesine eklenecek
                                 }
-                            }
+                            }.frame(minHeight: UIScreen.main.bounds.height - 300)
                             
                         }
                     }.foregroundColor(Color.theme.customDarkTextColor)
                 } else {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         
-                        RecipeView(recipeText: recipe.recipe)
+                        HStack {
+                            HStack {
+                                Text("1 Kişilik")
+                                    .font(.poppins(size: 14))
+                                    .fontWeight(.semibold)
+                                    
+                                
+                                Image("clock-icon")
+                            }.frame(width: (UIScreen.main.bounds.width - 48) / 2,height: 48)
+                                .background(Color.theme.lightOrangeColor)
+                                .cornerRadius(8.0)
+                            .foregroundColor(Color.theme.primaryOrangeColor)
+                            
+                            HStack {
+                                Text("30 Dakika")
+                                    .font(.poppins(size: 14))
+                                    .fontWeight(.semibold)
+                                    
+                                
+                                Image("knife-icon")
+                            }.frame(width: (UIScreen.main.bounds.width - 48) / 2,height: 48)
+                                .background(Color.theme.lightOrangeColor)
+                                .cornerRadius(8.0)
+                                .foregroundColor(Color.theme.primaryOrangeColor)
+                        }.padding(.vertical,10)
+                        
+                        RecipeView(recipeText: recipe.recipe).padding(.horizontal,20)
                         Spacer()
                     }
                     

@@ -26,10 +26,10 @@ struct MainView: View {
                     Text("Öğünler")
                 }
                 .tag(1)
-            RecipeDetailView(recipes : [])
+            ShoppingListView()
                 .tabItem {
-                    Image("tab-recipe").renderingMode(.template)
-                    Text("AI Tarifler")
+                    Image("tab-shopping").renderingMode(.template)
+                    Text("Alışveriş Listesi")
                 }
                 .tag(2)
             ProfileView()
