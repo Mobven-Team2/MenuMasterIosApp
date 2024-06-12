@@ -9,16 +9,12 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     @ObservedObject var viewModel = RecipeDetailViewModel()
-    @State private var selectedMeal: String = ""
-    @State private var showIngredients = false
+    @State private var selectedMeal: String = "Kahvaltı"
     @State private var shoppingList: [String] = []
     @State private var selectedSegment: Int = 0
     @State private var isButtonTapped: Bool = false
-    
-    @State private var selectedIngredients: [String] = []
     @State private var isItemSelectButtonTapped = false
     @State var recipes : [RecipeResponseModel]
-    
     
     var body: some View {
         VStack {
@@ -58,7 +54,7 @@ struct RecipeDetailView: View {
             Spacer()
             
             
-            ForEach(recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
+            ForEach(viewModel.recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
                 VStack(alignment: .leading){
                     HStack{
                         Text(recipe.name)
@@ -94,16 +90,16 @@ struct RecipeDetailView: View {
                                 
                                 
                                 ForEach(recipe.ingredients, id: \.self) { item in
-                                    IngredientsItemView(name: item, isSelected: selectedIngredients.contains(item)) {
-                                        self.toggleSelection(for: item)
+                                    IngredientsItemView(name: item, isSelected: viewModel.selectedIngredients.contains(item)) {
+                                        viewModel.toggleSelection(for: item)
                                     }
                                 }
                                 
                                 Spacer()
-                                
                                 CustomButtonView(text: "Alışveriş Listene Ekle", isButtonTapped: $isButtonTapped) {
-                                    UserDefaultsHelper.shared.setData(value: selectedIngredients, key: .selectedIngredients)
+                                    viewModel.saveSelectedIngredients(for: selectedMeal, ingredients: viewModel.selectedIngredients)
                                 }
+                                
                             }.frame(minHeight: UIScreen.main.bounds.height - 300)
                             
                         }
@@ -141,8 +137,6 @@ struct RecipeDetailView: View {
                         Spacer()
                     }
                     
-                    
-                    
                 }
          
             }
@@ -151,24 +145,12 @@ struct RecipeDetailView: View {
             if recipes.isEmpty {
                 viewModel.getRecipes()
                 recipes = viewModel.recipes
-                selectedMeal = recipes.first?.mealTypeName ?? "Kahvaltı"
             }
-            selectedMeal = recipes.first?.mealTypeName ?? "Kahvaltı"
         }
     }
     
 }
 
-
-extension RecipeDetailView {
-    func toggleSelection(for item: String) {
-        if selectedIngredients.contains(item) {
-            selectedIngredients.removeAll {$0 == item }
-        } else {
-            selectedIngredients.append(item)
-        }
-    }
-}
 
 
 

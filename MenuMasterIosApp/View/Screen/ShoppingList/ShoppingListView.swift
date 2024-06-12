@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ShoppingListView: View {
     @State private var selectedSegment: Int = 0
-    @State private var breakfastShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedIngredients) ?? ["Yumurta","Kinoa","Fındık","Hindistan cevizi","Bal","Kinoa","Fındık","Hindistan cevizi","Bal","Kinoa","Fındık","Hindistan cevizi","Bal"])
-    @State private var snackShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedIngredients) ?? ["Fıstık"])
-    @State private var lunchShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedIngredients) ?? ["Bezelye"])
-    @State private var dinnerShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedIngredients) ?? ["Tavuk"])
+    @State private var breakfastShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedBreakfastIngredients) ?? ["Liste Henüz Boş"])
+    @State private var snackShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedSnackIngredients) ?? ["Liste Henüz Boş"])
+    @State private var lunchShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedLunchIngredients) ?? ["Liste Henüz Boş"])
+    @State private var dinnerShoppingList : [String] = (UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedDinnerIngredients) ?? ["Liste Henüz Boş"])
     
     var body: some View {
         VStack {
@@ -54,11 +54,8 @@ struct ShoppingListView: View {
                     }
                 }
             }.padding(.bottom,90)
-            
-            
+             
         }.frame(minHeight: UIScreen.main.bounds.height)
-            
-            
            
     }
 }
