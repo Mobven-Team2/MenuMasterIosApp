@@ -42,6 +42,7 @@
 		8D5BCDD62C19A2B6007AE83C /* IngredientsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */; };
 		8D5BCDD82C19BC9D007AE83C /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDD72C19BC9D007AE83C /* RecipeView.swift */; };
 		8D5BCDDB2C19E972007AE83C /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDDA2C19E972007AE83C /* ShoppingListView.swift */; };
+		8D5BCDDD2C19F54E007AE83C /* ShoppingSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BCDDC2C19F54E007AE83C /* ShoppingSegmentedControlView.swift */; };
 		8D5EAFFC2C0F268700073603 /* MealSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFB2C0F268700073603 /* MealSelectionView.swift */; };
 		8D5EAFFE2C0F26BB00073603 /* MealCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFD2C0F26BB00073603 /* MealCardView.swift */; };
 		8D5EB0002C0F271900073603 /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EAFFF2C0F271900073603 /* WeeklyCalendarView.swift */; };
@@ -150,6 +151,7 @@
 		8D5BCDD52C19A2B6007AE83C /* IngredientsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsItemView.swift; sourceTree = "<group>"; };
 		8D5BCDD72C19BC9D007AE83C /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		8D5BCDDA2C19E972007AE83C /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
+		8D5BCDDC2C19F54E007AE83C /* ShoppingSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingSegmentedControlView.swift; sourceTree = "<group>"; };
 		8D5EAFFB2C0F268700073603 /* MealSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectionView.swift; sourceTree = "<group>"; };
 		8D5EAFFD2C0F26BB00073603 /* MealCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCardView.swift; sourceTree = "<group>"; };
 		8D5EAFFF2C0F271900073603 /* WeeklyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarView.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				8D5BCDDA2C19E972007AE83C /* ShoppingListView.swift */,
+				8D5BCDDC2C19F54E007AE83C /* ShoppingSegmentedControlView.swift */,
 			);
 			path = ShoppingList;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				8D585B2C2C11AF86000D5621 /* UserAPIRequest.swift in Sources */,
 				8D5EB0102C1058C600073603 /* OnboardingView.swift in Sources */,
 				7A8F7C852C188A33000EFF95 /* DietTypeView.swift in Sources */,
+				8D5BCDDD2C19F54E007AE83C /* ShoppingSegmentedControlView.swift in Sources */,
 				8DE4BD3B2BFDE75500BEEE53 /* ContentView.swift in Sources */,
 				8DDFA4BE2C14793800CF8D6D /* UserDefaultsHelper.swift in Sources */,
 				7A8F7C842C188A33000EFF95 /* DietTypeSelectionRowView.swift in Sources */,
