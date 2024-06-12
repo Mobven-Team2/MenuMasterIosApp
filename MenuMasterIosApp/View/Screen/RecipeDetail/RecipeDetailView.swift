@@ -15,7 +15,7 @@ struct RecipeDetailView: View {
     @State private var selectedSegment: Int = 0
     @State private var isButtonTapped: Bool = false
     
-    @State private var selectedIngredients: Set<String> = []
+    @State private var selectedIngredients: [String] = []
     @State private var isItemSelectButtonTapped = false
     @State var recipes : [RecipeResponseModel]
     
@@ -102,7 +102,7 @@ struct RecipeDetailView: View {
                                 Spacer()
                                 
                                 CustomButtonView(text: "Alışveriş Listene Ekle", isButtonTapped: $isButtonTapped) {
-                                    // alısveris listesine eklenecek
+                                    UserDefaultsHelper.shared.setData(value: selectedIngredients, key: .selectedIngredients)
                                 }
                             }.frame(minHeight: UIScreen.main.bounds.height - 300)
                             
@@ -161,11 +161,11 @@ struct RecipeDetailView: View {
 
 
 extension RecipeDetailView {
-    private func toggleSelection(for item: String) {
+    func toggleSelection(for item: String) {
         if selectedIngredients.contains(item) {
-            selectedIngredients.remove(item)
+            selectedIngredients.removeAll {$0 == item }
         } else {
-            selectedIngredients.insert(item)
+            selectedIngredients.append(item)
         }
     }
 }

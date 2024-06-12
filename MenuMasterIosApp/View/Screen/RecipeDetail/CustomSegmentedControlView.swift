@@ -43,7 +43,6 @@ struct CustomSegmentedControl: View {
             .cornerRadius(20)
         }
         .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
-        
     }
 }
 
