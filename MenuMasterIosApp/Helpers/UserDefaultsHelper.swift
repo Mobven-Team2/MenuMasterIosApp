@@ -21,7 +21,10 @@ enum UserDefaultKeys: String, CaseIterable {
     case userId
     case accessToken
     case recipes
-    case selectedIngredients
+    case selectedBreakfastIngredients
+    case selectedLunchIngredients
+    case selectedSnackIngredients
+    case selectedDinnerIngredients
 }
 
 final class UserDefaultsHelper {

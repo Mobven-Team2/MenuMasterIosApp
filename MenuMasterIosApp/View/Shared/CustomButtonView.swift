@@ -9,22 +9,22 @@ import SwiftUI
 
 struct CustomButtonView: View {
     let text: String
-    @Binding var isButtonTapped : Bool
+    @Binding var isButtonTapped: Bool
     let action: () -> Void
-    
 
     var body: some View {
         Button(action: {
             isButtonTapped = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-               action()
+                action()
+                isButtonTapped = false
+                
             }
         }) {
-            if !isButtonTapped {
+            if !isButtonTapped{
                 Text(text)
             } else {
                 ProgressView()
-                    .foregroundColor(.white)
             }
         }
         .customButtonStyle()
