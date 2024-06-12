@@ -9,10 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var tabSelector = TabSelector()
-    @State var currentTab = 0
     
     var body: some View {
-        TabView(selection: $currentTab) {
+        TabView(selection: $tabSelector.selectedTab) {
             HomeView()
                 .tabItem {
                     Image("tab-home").renderingMode(.template)
@@ -26,12 +25,14 @@ struct MainView: View {
                     Text("Öğünler")
                 }
                 .tag(1)
+
             ShoppingListView()
                 .tabItem {
                     Image("tab-shopping").renderingMode(.template)
                     Text("Alışveriş Listesi")
                 }
                 .tag(2)
+            
             ProfileView()
                 .tabItem {
                     Image("tab-profile").renderingMode(.template)
@@ -42,15 +43,6 @@ struct MainView: View {
         }
         .environmentObject(tabSelector)
         .accentColor(Color.theme.primaryOrangeColor)
-        .onAppear {
-            currentTab = tabSelector.selectedTab
-        }
-//        .onChange(of: tabSelector.selectedTab) {
-//            currentTab = tabSelector.selectedTab
-//        }
-        .toolbar(.hidden)
-        .tabViewStyle(.automatic)
-//        .navigationBarBackButtonHidden()
     }
 }
 
