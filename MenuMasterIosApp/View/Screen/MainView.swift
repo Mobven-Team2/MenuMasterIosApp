@@ -41,9 +41,10 @@ struct MainView: View {
                 .tag(3)
             
         }
+        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(.top)
         .tabViewStyle(.automatic)
         .toolbar(.hidden)
-        .edgesIgnoringSafeArea(.top)
         .environmentObject(tabSelector)
         .accentColor(Color.theme.primaryOrangeColor)
     }

@@ -144,6 +144,8 @@ struct RecipeDetailView: View {
                             }.padding(.vertical,10)
                             
                             RecipeView(recipeText: recipe.recipe).padding(.horizontal,20)
+                            
+                            suggestionView
                             Spacer()
                         }
                         
@@ -180,8 +182,36 @@ extension RecipeDetailView {
                 .resizable()
                 .foregroundColor(Color.theme.primaryTextColor)
                 .frame(width: 20,height: 32)
-                .padding(0)
+                .padding(.leading,20)
+                .padding(.top,40)
         }
+    }
+    
+    private var suggestionView : some View {
+        HStack {
+            Image("suggestion-first")
+                .frame(width: 100, height: 100, alignment: .leading)
+            
+            VStack(alignment:.leading) {
+                Text("Püf Noktalar")
+                    .offset(x:-32)
+                    .font(.poppins(size: 14))
+                    .bold()
+                
+                
+                Text("Yemeğinizi pişirirken süreyi dikkatlice takip etmeyi unutmayın")
+                    .frame(width: 240, alignment: .leading)
+                    .font(.poppins(size: 14))
+                    .fontWeight(.regular)
+                    .padding(.leading, -32)
+                    .padding(.trailing, 28)
+                .lineLimit(3)
+            }
+        }
+        .frame(width: UIScreen.main.bounds.width - 48, height: 80)
+        .background(Color.theme.suggestionRedColor)
+        .cornerRadius(16)
+        .padding(.top, 12)
     }
 }
 

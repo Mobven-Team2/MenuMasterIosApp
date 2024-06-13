@@ -175,7 +175,8 @@ extension RegisterView {
                     .resizable()
                     .foregroundColor(Color.theme.primaryTextColor)
                     .frame(width: 20,height: 32)
-                    .padding([.top, .leading], 20)
+                    .padding(.leading, 20)
+                    .padding(.top,40)
                 
                 Spacer()
             }

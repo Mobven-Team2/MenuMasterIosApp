@@ -24,58 +24,62 @@ struct RecipeView : View {
      }
     
     var body: some View {
-        VStack(alignment:.leading) {
-            Text("\(currentStepIndex + 1). Adım")
-                .font(.poppins(size: 18))
-                .fontWeight(.semibold)
-                .padding(.leading,22)
-                .padding(.top, 22)
-            HStack() {
-                Text("\(steps[currentStepIndex]).")
-                    .font(.poppins(size: 16))
-                    .fontWeight(.regular)
+        VStack {
+            VStack(alignment:.leading) {
+                Text("\(currentStepIndex + 1). Adım")
+                    .font(.poppins(size: 18))
+                    .fontWeight(.semibold)
                     .padding(.leading,22)
-                
-            }
-            .foregroundColor(Color.theme.customDarkTextColor)
-             
-            .frame(width: UIScreen.main.bounds.width - 48 , height: 135)
-            
-            HStack{
-                if currentStepIndex > 0 {
-                    Image(systemName: "arrow.backward")
-                        .resizable()
-                        .frame(width: 16,height: 10)
-                        .padding(0)
+                    .padding(.top, 22)
+                HStack() {
+                    Text("\(steps[currentStepIndex]).")
+                        .font(.poppins(size: 16))
+                        .fontWeight(.regular)
+                        .padding(.leading,22)
                     
-                    Button(action: {
-                        currentStepIndex -= 1
-                    }) {
-                        Text("Önceki Adım")
-                            .font(.poppins(size: 16))
+                }
+                .foregroundColor(Color.theme.customDarkTextColor)
+                 
+                .frame(width: UIScreen.main.bounds.width - 48 , height: 135)
+                
+                HStack{
+                    if currentStepIndex > 0 {
+                        Image(systemName: "arrow.backward")
+                            .resizable()
+                            .frame(width: 16,height: 10)
+                            .padding(0)
+                        
+                        Button(action: {
+                            currentStepIndex -= 1
+                        }) {
+                            Text("Önceki Adım")
+                                .font(.poppins(size: 16))
+                        }
+                    }
+                    Spacer()
+                    if currentStepIndex < steps.count - 2 {
+                        Button(action: {
+                            currentStepIndex += 1
+                        }) {
+                            Text("Sonraki Adım")
+                                .font(.poppins(size: 16))
+                        }
+                        Image(systemName: "arrow.forward")
+                            .resizable()
+                            .frame(width: 16,height: 10)
+                            .padding(0)
                     }
                 }
-                Spacer()
-                if currentStepIndex < steps.count - 2 {
-                    Button(action: {
-                        currentStepIndex += 1
-                    }) {
-                        Text("Sonraki Adım")
-                            .font(.poppins(size: 16))
-                    }
-                    Image(systemName: "arrow.forward")
-                        .resizable()
-                        .frame(width: 16,height: 10)
-                        .padding(0)
-                }
+                .foregroundColor(Color.theme.primaryOrangeColor)
+                .padding(.horizontal, 20)
+                .padding(.bottom,12)
             }
-            .foregroundColor(Color.theme.primaryOrangeColor)
-            .padding(.horizontal, 20)
-            .padding(.bottom,12)
+            .background(.white)
+            .cornerRadius(16)
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 0)
+                  
         }
-        .background(.white)
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 0)
+        
     }
 }
 

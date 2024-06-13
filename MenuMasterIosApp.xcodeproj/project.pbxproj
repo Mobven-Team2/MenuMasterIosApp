@@ -24,6 +24,7 @@
 		7AC9FF072C17447900A178F5 /* TabSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9FF062C17447900A178F5 /* TabSelector.swift */; };
 		7AFCCB6C2C00BA9D00D96BD0 /* NavigationViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */; };
 		7AFCCB6E2C00BB9700D96BD0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */; };
+		8D09058E2C1B5F6600896105 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09058D2C1B5F6600896105 /* OnboardingViewModel.swift */; };
 		8D09FFB62C087E610069D196 /* CuisineSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */; };
 		8D09FFBA2C08CD520069D196 /* AccountCreationCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09FFB92C08CD520069D196 /* AccountCreationCompletionView.swift */; };
 		8D1754002C176B3A00B627AA /* CustomSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1753FF2C176B3A00B627AA /* CustomSegmentedControlView.swift */; };
@@ -65,7 +66,6 @@
 		8D5EB0302C106A1B00073603 /* ChillaxVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF1AB712BFE0318008F9899 /* ChillaxVariable.ttf */; };
 		8D5EB0312C106A1E00073603 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D5EB01A2C10652A00073603 /* Poppins-Thin.ttf */; };
 		8D5EB0322C106AC600073603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE4BD3C2BFDE75700BEEE53 /* Assets.xcassets */; };
-		8D5EB0342C10739900073603 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EB0332C10739900073603 /* Onboarding.swift */; };
 		8D5EB0372C10A9C800073603 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EB0362C10A9C800073603 /* HomeViewModel.swift */; };
 		8D87DC8C2C065B26004D16BA /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DC8B2C065B26004D16BA /* CustomPickerView.swift */; };
 		8D87DC8E2C065D1F004D16BA /* UserInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DC8D2C065D1E004D16BA /* UserInformationViewModel.swift */; };
@@ -133,6 +133,7 @@
 		7AC9FF062C17447900A178F5 /* TabSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelector.swift; sourceTree = "<group>"; };
 		7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewStack.swift; sourceTree = "<group>"; };
 		7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8D09058D2C1B5F6600896105 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineSelectionViewModel.swift; sourceTree = "<group>"; };
 		8D09FFB92C08CD520069D196 /* AccountCreationCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationCompletionView.swift; sourceTree = "<group>"; };
 		8D1753FF2C176B3A00B627AA /* CustomSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControlView.swift; sourceTree = "<group>"; };
@@ -173,7 +174,6 @@
 		8D5EB0182C10652A00073603 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		8D5EB0192C10652A00073603 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		8D5EB01A2C10652A00073603 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
-		8D5EB0332C10739900073603 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		8D5EB0362C10A9C800073603 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8D87DC8B2C065B26004D16BA /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		8D87DC8D2C065D1E004D16BA /* UserInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewModel.swift; sourceTree = "<group>"; };
@@ -261,6 +261,7 @@
 				8D5EB0362C10A9C800073603 /* HomeViewModel.swift */,
 				8DDFA4C02C14A21000CF8D6D /* DietTypeViewModel.swift */,
 				8DE8CFA22C187BA0009DD456 /* RecipeDetailViewModel.swift */,
+				8D09058D2C1B5F6600896105 /* OnboardingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -364,7 +365,6 @@
 				8D5EB0092C1047A100073603 /* OnboardingData.swift */,
 				8D5EB00D2C10581600073603 /* OnboardingTabView.swift */,
 				8D5EB00F2C1058C600073603 /* OnboardingView.swift */,
-				8D5EB0332C10739900073603 /* Onboarding.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -779,8 +779,8 @@
 				8D585B312C11B517000D5621 /* UserLoginRequestModel.swift in Sources */,
 				8DF1AB692BFDF7FD008F9899 /* LoginView.swift in Sources */,
 				8D246E632BFF7C1A008CA0A4 /* Text+Ext.swift in Sources */,
-				8D5EB0342C10739900073603 /* Onboarding.swift in Sources */,
 				8D585B2E2C11B46F000D5621 /* LoginService.swift in Sources */,
+				8D09058E2C1B5F6600896105 /* OnboardingViewModel.swift in Sources */,
 				8D5EB00E2C10581600073603 /* OnboardingTabView.swift in Sources */,
 				8DE8CF9D2C1851FE009DD456 /* RecipeResponseModel.swift in Sources */,
 				8D585B2A2C11AF1A000D5621 /* Networking.swift in Sources */,
