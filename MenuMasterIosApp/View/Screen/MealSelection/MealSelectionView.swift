@@ -39,7 +39,7 @@ struct MealSelectionView: View {
             
                 
                 ForEach(MealType.allCases, id: \.self) { mealType in
-                    MealCardView(name: mealType.rawValue, imageName: mealType.imageName, isSelected: self.selectedPreferences.contains(mealType)
+                    MealCardView(name: mealType.title, imageName: mealType.imageName, isSelected: self.selectedPreferences.contains(mealType)
                     ) {
                         self.toggleSelection(for: mealType)
                         
@@ -55,10 +55,10 @@ struct MealSelectionView: View {
                 
                 Spacer()
             }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
-                RecipeDetailView(recipes : [])
+                RecipeDetailView(recipes : [],isCreateButtonTapped: true)
             })
             .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
-                HomeView()
+                MainView()
             })
         }.toolbar(.hidden)
     }

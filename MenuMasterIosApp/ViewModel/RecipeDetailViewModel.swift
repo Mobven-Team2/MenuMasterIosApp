@@ -13,14 +13,30 @@ class RecipeDetailViewModel : ObservableObject {
     @Published var mealTypes: [String] = []
     @Published var recipes : [RecipeResponseModel] = []
     @Published var selectedMeal: String = "Kahvaltı"
-    
+
     @Published var selectedBreakfastIngredients: [String] = []
     @Published var selectedLunchIngredients: [String] = []
     @Published var selectedSnackIngredients: [String] = []
     @Published var selectedDinnerIngredients: [String] = []
     
-    init() {
-        getRecipes()
+    private var isCreateButtonTapped: Bool
+    
+    init(isCreateButtonTapped: Bool) {
+        self.isCreateButtonTapped = isCreateButtonTapped
+        self.loadSavedRecipes()
+        if isCreateButtonTapped {
+            self.getRecipes()
+            self.saveRecipes()
+        }
+    }
+    
+    private var isRecipesCreated: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "isRecipesCreated")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isRecipesCreated")
+        }
     }
     
     func getRecipes(){
@@ -38,12 +54,33 @@ class RecipeDetailViewModel : ObservableObject {
                 DispatchQueue.main.async {
                     print("Fetched Recipes: \(fetchedRecipes)")
                     self.recipes = fetchedRecipes
+                    self.saveRecipes()
                 }
             case .failure(let error):
                 print("Hata: \(error.localizedDescription)")
                 
             }
         }
+    }
+    
+    func saveRecipes() {
+        if let encoded = try? JSONEncoder().encode(recipes) {
+            UserDefaults.standard.set(encoded, forKey: "savedRecipes")
+            print("saved recipes :",encoded)
+        }
+    }
+    
+    func loadSavedRecipes() {
+        if let savedRecipes = UserDefaults.standard.data(forKey: "savedRecipes"),
+           let decodedRecipes = try? JSONDecoder().decode([RecipeResponseModel].self, from: savedRecipes) {
+            self.recipes = decodedRecipes
+            print("yukle recipes :",recipes)
+        }
+    }
+    
+    func clearRecipes() {
+        self.recipes.removeAll()
+        UserDefaults.standard.removeObject(forKey: "savedRecipes")
     }
     
     var selectedIngredients: [String] {
@@ -105,6 +142,11 @@ class RecipeDetailViewModel : ObservableObject {
         default:
             break
         }
+    }
+    
+    func regenerateRecipes() {
+        clearRecipes()
+        getRecipes()
     }
     
     

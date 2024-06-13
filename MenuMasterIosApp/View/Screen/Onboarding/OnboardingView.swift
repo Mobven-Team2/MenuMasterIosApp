@@ -22,8 +22,8 @@ struct OnboardingView: View {
                     .frame(width: UIScreen.main.bounds.width, height: 400)
                     .scaledToFit()
                     .scaleEffect(isAnimating ? 1 : 0.8)
-                    .offset(y: -20)
-                
+//                    .offset(y: -20)
+                Spacer()
                 Text(data.primaryText)
                     .bold()
                     .font(.poppins(size: 24))
@@ -55,7 +55,7 @@ struct OnboardingView: View {
                         }
                     }
                 }) {
-                    Text("Next")
+                    Text("İlerle")
                 }
                 .customButtonStyle()
                 .padding(.bottom, 18)
@@ -63,7 +63,7 @@ struct OnboardingView: View {
                 Button(action: {
                     welcomeTag = true
                 }, label: {
-                    Text("Skip")
+                    Text("Atla")
                         .font(.poppins(size: 16))
                         .foregroundColor(Color(red: 100 / 255, green: 105 / 255, blue: 130 / 255))
                     

@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
-    @ObservedObject var viewModel = RecipeDetailViewModel()
+    @ObservedObject var viewModel : RecipeDetailViewModel
     @State private var selectedMeal: String = "Kahvaltı"
     @State private var shoppingList: [String] = []
     @State private var selectedSegment: Int = 0
     @State private var isButtonTapped: Bool = false
     @State private var isItemSelectButtonTapped = false
     @State var recipes : [RecipeResponseModel]
+    @State var isCreateButtonTapped : Bool
+    
+    init(recipes: [RecipeResponseModel], isCreateButtonTapped: Bool) {
+         self.recipes = recipes
+         self.isCreateButtonTapped = isCreateButtonTapped
+         self.viewModel = RecipeDetailViewModel(isCreateButtonTapped: isCreateButtonTapped)
+     }
     
     var body: some View {
         VStack {
@@ -27,7 +34,7 @@ struct RecipeDetailView: View {
                     .foregroundColor(Color.theme.primaryTextColor)
                 
                 Menu {
-                    ForEach(recipes.map { $0.mealTypeName }, id: \.self) { option in
+                    ForEach(viewModel.recipes.map { $0.mealTypeName }, id: \.self) { option in
                         Button(action: {
                             selectedMeal = option
                         }) {
@@ -54,7 +61,7 @@ struct RecipeDetailView: View {
             Spacer()
             
             
-            ForEach(recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
+            ForEach(viewModel.recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
                 VStack(alignment: .leading){
                     HStack{
                         Text(recipe.name)
@@ -141,11 +148,12 @@ struct RecipeDetailView: View {
          
             }
             
-        }.onAppear {
+        }.toolbar(.hidden)
+        .onAppear {
             if recipes.isEmpty {
-                viewModel.getRecipes()
                 recipes = viewModel.recipes
             }
+                
         }
     }
     
@@ -161,6 +169,6 @@ struct RecipeDetailView: View {
             RecipeResponseModel(id: 8, name: "Somon ve Avokado Akşam Yemeği Tabağı", ingredients:["Somon balığı", "Avokado", "Domates", "Salatalık", "Zeytinyağı", "Limon", "Tuz", "Karabiber"], recipe: "Somon balığını ızgarada pişirin. Avokadoyu dilimleyin. Domatesi ve salatalığı doğrayın. Bir tabağa somon balığını, dilimlenmiş avokadoyu, domatesi ve salatalığı yerleştirin. Üzerine zeytinyağı, limon suyu, tuz ve karabiber serpip servis yapın.", mealType: "Dinner", isLiked: false),
             RecipeResponseModel(id: 9, name: "Tavuklu Sezar Salata", ingredients:["Tavuk göğsü", "Roka", "Marul", "Parmesan peyniri", "Kruton", "Sezar sosu"], recipe: "Tavuk göğsünü ızgarada pişirin ve doğrayın. Bir kaseye roka ve marulu ekleyin. Üzerine tavuk, kruton ve parmesan peynirini ekleyin. Sezar sosunu gezdirerek servis yapın.", mealType: "Lunch", isLiked: false),
             RecipeResponseModel(id: 10, name: "Elma ve Fıstık Ezmesi Atıştırmalık", ingredients:["Elma", "Fıstık ezmesi"], recipe: "Elmayı dilimleyin ve üzerine fıstık ezmesi sürerek atıştırmalık olarak servis yapın.", mealType: "Snack", isLiked: false)
-        ]
+        ], isCreateButtonTapped: false
     )
 }

@@ -14,12 +14,6 @@ struct AccountCreationCompletionView: View {
     var body: some View {
         NavigationViewStack {
             ZStack {
-                Image("account-completion-background-image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
-                    .opacity(1.0)
-                    .offset(x:-3)
                 
                 VStack {
                     Spacer()
@@ -27,17 +21,16 @@ struct AccountCreationCompletionView: View {
                     Image("account-completion-image")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 262, height: 262)
-                        .padding(.bottom,80)
+                        .frame(width: 375, height: 418)
                         .padding(.top,50)
                     
-                    Text("Az kaldı, hesap oluşturmayı tamamlamak üzeresin!!")
-                        .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.chillaxVariable(size: 22))
+                    Text("Az kaldı, hesap oluşturmayı tamamlamak üzeresin!")
+                        .foregroundColor(Color.theme.customDarkTextColor)
+                        .font(.poppins(size: 18))
                         .frame(width: 292,height: 100)
                         .lineLimit(5)
                         .multilineTextAlignment(.center)
-                        .fontWeight(.medium)
+                        
                     
                     CustomButtonView(text: "Devam Et", isButtonTapped: $isContinueButtonTapped) {
                         continueTag = true

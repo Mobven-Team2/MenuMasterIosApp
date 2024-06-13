@@ -19,7 +19,7 @@ struct MainView: View {
                 }
                 .tag(0)
             
-            RecipeDetailView(recipes: [])
+            RecipeDetailView(recipes: [],isCreateButtonTapped: false)
                 .tabItem {
                     Image("tab-meal").renderingMode(.template)
                     Text("Öğünler")
