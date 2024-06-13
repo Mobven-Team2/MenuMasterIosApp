@@ -25,6 +25,7 @@
 		7AFCCB6C2C00BA9D00D96BD0 /* NavigationViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */; };
 		7AFCCB6E2C00BB9700D96BD0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */; };
 		8D09058E2C1B5F6600896105 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09058D2C1B5F6600896105 /* OnboardingViewModel.swift */; };
+		8D0905902C1B735100896105 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09058F2C1B735000896105 /* ProfileViewModel.swift */; };
 		8D09FFB62C087E610069D196 /* CuisineSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */; };
 		8D09FFBA2C08CD520069D196 /* AccountCreationCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D09FFB92C08CD520069D196 /* AccountCreationCompletionView.swift */; };
 		8D1754002C176B3A00B627AA /* CustomSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1753FF2C176B3A00B627AA /* CustomSegmentedControlView.swift */; };
@@ -134,6 +135,7 @@
 		7AFCCB6B2C00BA9D00D96BD0 /* NavigationViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewStack.swift; sourceTree = "<group>"; };
 		7AFCCB6D2C00BB9700D96BD0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8D09058D2C1B5F6600896105 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		8D09058F2C1B735000896105 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		8D09FFB52C087E610069D196 /* CuisineSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineSelectionViewModel.swift; sourceTree = "<group>"; };
 		8D09FFB92C08CD520069D196 /* AccountCreationCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationCompletionView.swift; sourceTree = "<group>"; };
 		8D1753FF2C176B3A00B627AA /* CustomSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControlView.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				8DDFA4C02C14A21000CF8D6D /* DietTypeViewModel.swift */,
 				8DE8CFA22C187BA0009DD456 /* RecipeDetailViewModel.swift */,
 				8D09058D2C1B5F6600896105 /* OnboardingViewModel.swift */,
+				8D09058F2C1B735000896105 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				7A2E40952BFEB5C30026CC3A /* AuthenticationService.swift in Sources */,
 				7AA7F6392C11315A007FAE4E /* CuisineSelectionView.swift in Sources */,
 				8D09FFBA2C08CD520069D196 /* AccountCreationCompletionView.swift in Sources */,
+				8D0905902C1B735100896105 /* ProfileViewModel.swift in Sources */,
 				7AC9FF072C17447900A178F5 /* TabSelector.swift in Sources */,
 				8DE4BD452BFDE75700BEEE53 /* MenuMasterIosApp.xcdatamodeld in Sources */,
 				7AFCCB6C2C00BA9D00D96BD0 /* NavigationViewStack.swift in Sources */,

@@ -39,14 +39,14 @@ struct UserInformationView: View {
                             .frame(height: 90)
                             .lineSpacing(8)
                             .lineLimit(2)
-                            .frame(width: .infinity)
                             .padding(.leading,24)
                         .padding(.trailing,18)
                         
                         Spacer()
                     }
                     
-                }
+                }.frame(width: UIScreen.main.bounds.width)
+                    
                 
                 Spacer()
                 
@@ -140,7 +140,8 @@ extension UserInformationView {
                 .resizable()
                 .foregroundColor(Color.theme.primaryTextColor)
                 .frame(width: 20,height: 32)
-                .padding(0)
+                .padding(.top,40)
+                .padding(.leading,20)
         }
     }
 }
