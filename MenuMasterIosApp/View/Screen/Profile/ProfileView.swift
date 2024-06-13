@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject var viewModel = ProfileViewModel()
+    
     var body: some View {
         ScrollView {
             VStack {
                 Image("profile-avatar")
                     .padding(.top, 26)
                 
-                Text("Jane Doe")
+                Text(viewModel.name)
                     .foregroundStyle(Color.theme.primaryTextColor)
                     .font(.poppins(size: 18))
                     .fontWeight(.bold)
                     .padding(8)
                 
                 HStack {
-                    ProfileInfoView(data: "160cm", text: "Boy")
+                    ProfileInfoView(data: String(viewModel.height), text: "Boy")
                     Spacer()
-                    ProfileInfoView(data: "65kg", text: "Kilo")
+                    ProfileInfoView(data: String(viewModel.weight), text: "Kilo")
                     Spacer()
-                    ProfileInfoView(data: "22", text: "Yaş")
+                    ProfileInfoView(data: String(viewModel.age), text: "Yaş")
                 }
                 .frame(width: UIScreen.main.bounds.width - 48, height: 70)
                 .padding(.bottom, 16)

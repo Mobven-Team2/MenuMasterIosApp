@@ -76,7 +76,8 @@ extension DietTypeView {
                 .resizable()
                 .foregroundColor(Color.theme.primaryTextColor)
                 .frame(width: 20,height: 32)
-                .padding(0)
+                .padding(.top,40)
+                
         }
     }
 }

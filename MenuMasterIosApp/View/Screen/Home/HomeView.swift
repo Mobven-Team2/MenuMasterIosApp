@@ -23,6 +23,7 @@ struct HomeView: View {
                             .scaledToFit()
                         
                         helloUser
+                            .padding(.horizontal,24)
                     }
                     
                     VStack{
@@ -44,7 +45,7 @@ struct HomeView: View {
                         
                         suggestion
                     }
-                    .offset(y: -90)
+                    .offset(y: -120)
                     
                     Spacer()
                 }
@@ -74,11 +75,11 @@ extension HomeView {
             
             VStack(alignment: .leading) {
                 Text("Merhaba, hoşgeldin")
-                    .foregroundStyle(Color.theme.primaryTextColor)
-                    .font(.body)
-                    .fontWeight(.light)
-                Text("Jane Doe")
-                    .foregroundStyle(Color.theme.primaryTextColor)
+                    .font(.poppins(size: 18))
+                    .foregroundStyle(Color.theme.customDarkTextColor)
+                    .fontWeight(.regular)
+                Text(viewModel.name)
+                    .foregroundStyle(Color.theme.customDarkTextColor)
                     .font(.body)
                     .fontWeight(.bold)
             }
@@ -92,9 +93,12 @@ extension HomeView {
     
     private var pickMeal : some View {
         ZStack {
-            Image("top-card")
-                .resizable()
-                .frame(width: UIScreen.main.bounds.width + 40, height: 330)
+            VStack {
+                Image("top-card")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width + 40, height: UIScreen.main.bounds.height / 2.3)
+                .scaledToFit()
+            }
             
             VStack {
                 Text("Öğün Seç & Tarifleri Al")
@@ -155,7 +159,7 @@ extension HomeView {
                 .font(.poppins(size: 16))
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 36)
+                .padding(.leading, 45)
                 .padding(.bottom, 2)
             
             HomeSuggestionView(imageName: "suggestion-first", text: "Yemeğinizi pişirirken süreyi dikkatlice takip etmeyi unutmayın", backgroundColor: Color.theme.suggestionRedColor)

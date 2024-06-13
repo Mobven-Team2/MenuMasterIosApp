@@ -10,7 +10,7 @@ import SwiftUI
 
 
 class HomeViewModel: ObservableObject {
-    
+    var name : String = UserDefaultsHelper.shared.getData(type: String.self, forKey: .fullName) ?? "Jane Doe"
     var topImage: String?
     
     let hour = Calendar.current.component(.hour, from: Date())
@@ -29,4 +29,5 @@ class HomeViewModel: ObservableObject {
         }
         return topImage ?? "noon"
     }
+    
 }
