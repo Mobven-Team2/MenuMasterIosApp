@@ -15,6 +15,10 @@ class HomeViewModel: ObservableObject {
     
     let hour = Calendar.current.component(.hour, from: Date())
     
+    func getImageName() -> String {
+        return determineTime()
+    }
+    
     func determineTime() -> String {
         if hour >= 5 && hour < 12 {
             topImage = "morning"
