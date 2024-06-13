@@ -17,7 +17,6 @@ struct MealSelectionView: View {
     var body: some View {
         NavigationViewStack {
             ScrollView {
-                
                 VStack(spacing: 12) {
                     HStack() {
                         backButton
@@ -55,7 +54,7 @@ struct MealSelectionView: View {
                         .disabled(selectedPreferences.isEmpty ? true : false)
                     
                     Spacer()
-                }
+                }.padding(.top,60)
             }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
                 RecipeDetailView(recipes : [],isCreateButtonTapped: true)
             })
@@ -63,6 +62,7 @@ struct MealSelectionView: View {
                 MainView()
             })
             .toolbar(.hidden)
+            
         }
         
     }

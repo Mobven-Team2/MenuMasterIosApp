@@ -134,15 +134,6 @@ extension LoginView {
         
     }
     
-//    private var google : some View {
-//        Image("Google")
-//            .resizable()
-//            .scaledToFit()
-//            .frame(width: 327, height: 56)
-//            .padding(.bottom, 20)
-//            .padding(.top, 50)
-//    }
-    
     private var backButton : some View {
         Button(action: {
             backButtonTag = true
@@ -153,6 +144,7 @@ extension LoginView {
                     .foregroundColor(Color.theme.primaryTextColor)
                     .frame(width: 20,height: 32)
                     .padding(.leading, 20)
+                    .padding(.top,40)
                 
                 Spacer()
             }

@@ -49,12 +49,14 @@ struct HomeView: View {
                     Spacer()
                 }
             }
+            .ignoresSafeArea()
             .edgesIgnoringSafeArea(.top)
             .navigationDestinationWrapper(isPresented: $mealSelectionTag, destination: {
                 MealSelectionView()
-                    
+           
         })
-        }
+        }.ignoresSafeArea()
+            .edgesIgnoringSafeArea(.top)
 
     }
 }
