@@ -30,19 +30,28 @@ struct UserInformationView: View {
                         .foregroundColor(Color.theme.primaryTextColor)
                         .font(.chillaxVariable(size: 24))
                         .fontWeight(.semibold)
+                        .padding(.leading,24)
                     
-                    Text("Yemek tariflerini sana özel olarak hazırlayabilmemiz için aşağıdaki bilgileri doldurmalısın.")
-                        .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.poppins(size: 14))
-                        .lineSpacing(8)
-                        .lineLimit(2)
+                    HStack {
+                        Text("Yemek tariflerini sana özel olarak hazırlayabilmemiz için formu doldurmalısın.")
+                            .foregroundColor(Color.theme.primaryTextColor)
+                            .font(.poppins(size: 14))
+                            .frame(height: 90)
+                            .lineSpacing(8)
+                            .lineLimit(2)
+                            .frame(width: .infinity)
+                            .padding(.leading,24)
+                        .padding(.trailing,18)
+                        
+                        Spacer()
+                    }
                     
-                }.frame(width: UIScreen.main.bounds.width - 39)
+                }
                 
                 Spacer()
                 
                 Form {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 10) {
                         TextfieldView(title: "Yaş", placeholder: "", isPasswordField: false, errorMessage: errorAge, text: $viewModel.age)
                             .onChange(of: viewModel.age) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
@@ -53,7 +62,7 @@ struct UserInformationView: View {
                             .onChange(of: viewModel.gender) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 viewModel.objectWillChange.send()
-                            }
+                            }.padding(.bottom,10)
                         
                         TextfieldView(title: "Boy", placeholder: "CM", isPasswordField: false, errorMessage: errorHeight, text: $viewModel.height)
                             .onChange(of: viewModel.height) {

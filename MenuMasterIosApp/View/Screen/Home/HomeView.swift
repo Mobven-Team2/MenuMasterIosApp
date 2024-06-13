@@ -10,29 +10,37 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var tabSelector: TabSelector
     @ObservedObject var viewModel = HomeViewModel()
+    @State private var mealSelectionTag: Bool = false
     @State private var isButtonTapped: Bool = false
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ZStack {
-                    Image(getImageName())
-                        .resizable()
-                        .scaledToFit()
+        NavigationViewStack {
+            ScrollView {
+                VStack {
+                    ZStack {
+                        Image(getImageName())
+                            .resizable()
+                            .scaledToFit()
+                        
+                        helloUser
+                    }
                     
-                    helloUser
+                    VStack{
+                        pickMeal
+                        suggestion
+                    }
+                    .offset(y: -90)
+                    
+                    Spacer()
                 }
-                
-                VStack{
-                    pickMeal
-                    suggestion
-                }
-                .offset(y: -90)
-                
-                Spacer()
             }
+            .edgesIgnoringSafeArea(.top)
+            .navigationDestinationWrapper(isPresented: $mealSelectionTag, destination: {
+                MealSelectionView()
+                    
+        })
         }
-        .edgesIgnoringSafeArea(.top)
+
     }
 }
 
@@ -87,7 +95,7 @@ extension HomeView {
                     .lineLimit(3)
                 Button(action: {
                     isButtonTapped = true
-                    tabSelector.selectedTab = 1
+                    mealSelectionTag = true
                 }) {
                     Text("Öğün Oluştur")
                 }
