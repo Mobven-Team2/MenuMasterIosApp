@@ -15,52 +15,58 @@ struct MealSelectionView: View {
     @State private var backButtonTag: Bool = false
     
     var body: some View {
-        ScrollView {
-            
-            VStack(spacing: 12) {
-                HStack() {
-                    backButton
-                    
-                    Spacer()
-                    
-                    Text("Öğün Oluştur")
-                        .font(.poppins(size: 18))
-                        .fontWeight(.medium)
-                    .padding(.trailing, 40)
-                    
-                    Spacer()
-                    
-                }.padding(.bottom,-12)
+        NavigationViewStack {
+            ScrollView {
                 
-                Spacer()
-                
-                WeeklyCalendarView()
-                    .padding(.bottom,15)
-            
-                
-                ForEach(MealType.allCases, id: \.self) { mealType in
-                    MealCardView(name: mealType.title, imageName: mealType.imageName, isSelected: self.selectedPreferences.contains(mealType)
-                    ) {
-                        self.toggleSelection(for: mealType)
+                VStack(spacing: 12) {
+                    HStack() {
+                        backButton
                         
+                        Spacer()
+                        
+                        Text("Öğün Oluştur")
+                            .font(.poppins(size: 18))
+                            .fontWeight(.medium)
+                            .padding(.trailing, 40)
+                        
+                        Spacer()
+                        
+                    }.padding(.bottom,-12)
+                    
+                    Spacer()
+                    
+                    WeeklyCalendarView()
+                        .padding(.bottom,15)
+                    
+                    
+                    ForEach(MealType.allCases, id: \.self) { mealType in
+                        MealCardView(name: mealType.title, imageName: mealType.imageName, isSelected: self.selectedPreferences.contains(mealType)
+                        ) {
+                            self.toggleSelection(for: mealType)
+                            
+                        }
                     }
+                    
+                    CustomButtonView(text: "Öğünleri Oluştur", isButtonTapped: $isButtonTapped) {
+                        UserDefaultsHelper.shared.setData(value: selectedPreferences.map { $0.rawValue }, key: .selectedMeals)
+                        UserDefaultsHelper.shared.printUserInformation()
+                        //                    tabSelector.selectedTab = 1
+                        recipeDetailTag = true
+                    }.opacity(selectedPreferences.isEmpty ? 0.5 : 1)
+                        .disabled(selectedPreferences.isEmpty ? true : false)
+                    
+                    Spacer()
                 }
-                
-                CustomButtonView(text: "Öğünleri Oluştur", isButtonTapped: $isButtonTapped) {
-                    UserDefaultsHelper.shared.setData(value: selectedPreferences.map { $0.rawValue }, key: .selectedMeals)
-                    UserDefaultsHelper.shared.printUserInformation()
-                    recipeDetailTag = true
-                }.opacity(selectedPreferences.isEmpty ? 0.5 : 1)
-                    .disabled(selectedPreferences.isEmpty ? true : false)
-                
-                Spacer()
             }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
+                MainView()
                 RecipeDetailView(recipes : [],isCreateButtonTapped: true)
             })
             .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
                 MainView()
             })
-        }.toolbar(.hidden)
+            .toolbar(.hidden)
+        }
+        
     }
 }
 
