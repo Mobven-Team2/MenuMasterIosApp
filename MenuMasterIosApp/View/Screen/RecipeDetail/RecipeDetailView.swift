@@ -18,145 +18,167 @@ struct RecipeDetailView: View {
     @State var isCreateButtonTapped : Bool
     
     init(recipes: [RecipeResponseModel], isCreateButtonTapped: Bool) {
-         self.recipes = recipes
-         self.isCreateButtonTapped = isCreateButtonTapped
-         self.viewModel = RecipeDetailViewModel(isCreateButtonTapped: isCreateButtonTapped)
-     }
+        self.recipes = recipes
+        self.isCreateButtonTapped = isCreateButtonTapped
+        self.viewModel = RecipeDetailViewModel(isCreateButtonTapped: isCreateButtonTapped)
+    }
     
     var body: some View {
-        VStack {
-            
-            HStack {
-                Text(selectedMeal)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 16)
-                    .font(.poppins(size: 16))
-                    .foregroundColor(Color.theme.primaryTextColor)
-                
-                Menu {
-                    ForEach(viewModel.recipes.map { $0.mealTypeName }, id: \.self) { option in
-                        Button(action: {
-                            selectedMeal = option
-                        }) {
-                            Text(option)
-                        }
-                    }
-                } label: {
-                    Image(systemName: "chevron.down")
-                        .resizable()
-                        .foregroundColor(Color.theme.primaryTextColor)
-                        .frame(width: 12, height: 8)
+        NavigationViewStack {
+            VStack {
+                HStack {
+                    backButton
+                    Spacer()
                 }
-                .padding(.trailing, 16)
-            }
-            .frame(maxWidth: UIScreen.main.bounds.width - 48, minHeight: 47)
-            .background(.white)
-            .cornerRadius(8)
-            .shadow(color: Color.gray.opacity(0.1), radius: 8, x: 3, y: 10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8.0)
-                    .stroke(Color.black.opacity(0.2), lineWidth: 1)
-            )
-            
-            Spacer()
-            
-            
-            ForEach(viewModel.recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
-                VStack(alignment: .leading){
-                    HStack{
-                        Text(recipe.name)
-                            .font(.poppins(size: 22))
-                            .bold()
-                            
-                        Spacer()
-                    }
-                    
-                    Text("Tarif")
+                HStack {
+                    Text(selectedMeal)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 16)
                         .font(.poppins(size: 16))
-                }.frame(width: UIScreen.main.bounds.width - 48,height: 90)
-                    .foregroundColor(Color.theme.customDarkTextColor)
-                
-                
-                Spacer()
-                
-                CustomSegmentedControl(preselectedIndex: $selectedSegment, options: ["İçindekiler","Tarif"])
-                    .padding(.horizontal,20)
-                    .fontWeight(.semibold)
-                    .font(.poppins(size: 16))
-                
-                Spacer()
-                
-                
-                if selectedSegment == 0 {
-                    VStack {
-                        ScrollView(showsIndicators: false) {
-                            VStack(alignment: .center) {
-                                Text("\(recipe.mealTypeName) öğününüz için gereken ürünleri alışveriş listenize ekleyin.")
-                                    .font(.poppins(size: 16))
-                                    .padding(15)
-                                
-                                
-                                ForEach(recipe.ingredients, id: \.self) { item in
-                                    IngredientsItemView(name: item, isSelected: viewModel.selectedIngredients.contains(item)) {
-                                        viewModel.toggleSelection(for: item)
-                                    }
-                                }
-                                
-                                Spacer()
-                                CustomButtonView(text: "Alışveriş Listene Ekle", isButtonTapped: $isButtonTapped) {
-                                    viewModel.saveSelectedIngredients(for: selectedMeal, ingredients: viewModel.selectedIngredients)
-                                }
-                                
-                            }.frame(minHeight: UIScreen.main.bounds.height - 300)
-                            
+                        .foregroundColor(Color.theme.primaryTextColor)
+                    
+                    Menu {
+                        ForEach(recipes.map { $0.mealTypeName }, id: \.self) { option in
+                            Button(action: {
+                                selectedMeal = option
+                            }) {
+                                Text(option)
+                            }
                         }
-                    }.foregroundColor(Color.theme.customDarkTextColor)
-                } else {
-                    VStack(alignment: .center) {
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .foregroundColor(Color.theme.primaryTextColor)
+                            .frame(width: 12, height: 8)
+                    }
+                    .padding(.trailing, 16)
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width - 48, minHeight: 47)
+                .background(.white)
+                .cornerRadius(8)
+                .shadow(color: Color.gray.opacity(0.1), radius: 8, x: 3, y: 10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8.0)
+                        .stroke(Color.black.opacity(0.2), lineWidth: 1)
+                )
+                
+                Spacer()
+                
+                
+                ForEach(recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text(recipe.name)
+                                .font(.poppins(size: 22))
+                                .bold()
+                            
+                            Spacer()
+                        }
                         
-                        HStack {
-                            HStack {
-                                Text("1 Kişilik")
-                                    .font(.poppins(size: 14))
-                                    .fontWeight(.semibold)
+                        Text("Tarif")
+                            .font(.poppins(size: 16))
+                    }.frame(width: UIScreen.main.bounds.width - 48,height: 90)
+                        .foregroundColor(Color.theme.customDarkTextColor)
+                    
+                    
+                    Spacer()
+                    
+                    CustomSegmentedControl(preselectedIndex: $selectedSegment, options: ["İçindekiler","Tarif"])
+                        .padding(.horizontal,20)
+                        .fontWeight(.semibold)
+                        .font(.poppins(size: 16))
+                    
+                    Spacer()
+                    
+                    
+                    if selectedSegment == 0 {
+                        VStack {
+                            ScrollView(showsIndicators: false) {
+                                VStack(alignment: .center) {
+                                    Text("\(recipe.mealTypeName) öğününüz için gereken ürünleri alışveriş listenize ekleyin.")
+                                        .font(.poppins(size: 16))
+                                        .padding(15)
                                     
+                                    
+                                    ForEach(recipe.ingredients, id: \.self) { item in
+                                        IngredientsItemView(name: item, isSelected: viewModel.selectedIngredients.contains(item)) {
+                                            viewModel.toggleSelection(for: item)
+                                        }
+                                    }
+                                    
+                                    Spacer()
+                                    CustomButtonView(text: "Alışveriş Listene Ekle", isButtonTapped: $isButtonTapped) {
+                                        viewModel.saveSelectedIngredients(for: selectedMeal, ingredients: viewModel.selectedIngredients)
+                                    }
+                                    
+                                }.frame(minHeight: UIScreen.main.bounds.height - 400)
                                 
-                                Image("clock-icon")
-                            }.frame(width: (UIScreen.main.bounds.width - 48) / 2,height: 48)
-                                .background(Color.theme.lightOrangeColor)
-                                .cornerRadius(8.0)
-                            .foregroundColor(Color.theme.primaryOrangeColor)
+                            }
+                        }.foregroundColor(Color.theme.customDarkTextColor)
+                    } else {
+                        VStack(alignment: .center) {
                             
                             HStack {
-                                Text("30 Dakika")
-                                    .font(.poppins(size: 14))
-                                    .fontWeight(.semibold)
+                                HStack {
+                                    Text("1 Kişilik")
+                                        .font(.poppins(size: 14))
+                                        .fontWeight(.semibold)
                                     
+                                    
+                                    Image("clock-icon")
+                                }.frame(width: (UIScreen.main.bounds.width - 48) / 2,height: 48)
+                                    .background(Color.theme.lightOrangeColor)
+                                    .cornerRadius(8.0)
+                                    .foregroundColor(Color.theme.primaryOrangeColor)
                                 
-                                Image("knife-icon")
-                            }.frame(width: (UIScreen.main.bounds.width - 48) / 2,height: 48)
-                                .background(Color.theme.lightOrangeColor)
-                                .cornerRadius(8.0)
-                                .foregroundColor(Color.theme.primaryOrangeColor)
-                        }.padding(.vertical,10)
+                                HStack {
+                                    Text("30 Dakika")
+                                        .font(.poppins(size: 14))
+                                        .fontWeight(.semibold)
+                                    
+                                    
+                                    Image("knife-icon")
+                                }.frame(width: (UIScreen.main.bounds.width - 48) / 2,height: 48)
+                                    .background(Color.theme.lightOrangeColor)
+                                    .cornerRadius(8.0)
+                                    .foregroundColor(Color.theme.primaryOrangeColor)
+                            }.padding(.vertical,10)
+                            
+                            RecipeView(recipeText: recipe.recipe).padding(.horizontal,20)
+                            Spacer()
+                        }
                         
-                        RecipeView(recipeText: recipe.recipe).padding(.horizontal,20)
-                        Spacer()
                     }
                     
                 }
-         
-            }
-            
-        }.toolbar(.hidden)
-        .onAppear {
-            if recipes.isEmpty {
-                recipes = viewModel.recipes
-            }
                 
+            }
+            .navigationDestinationWrapper(isPresented: $viewModel.backButtonTag, destination: {
+                MainView()
+            })
+            .toolbar(.hidden)
+            .onAppear {
+                
+                recipes = viewModel.recipes
+                
+            }
         }
     }
     
+}
+
+extension RecipeDetailView {
+    private var backButton : some View {
+        Button(action: {
+            viewModel.backButtonTag = true
+        }) {
+            Image("back-button-icon")
+                .resizable()
+                .foregroundColor(Color.theme.primaryTextColor)
+                .frame(width: 20,height: 32)
+                .padding(0)
+        }
+    }
 }
 
 

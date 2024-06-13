@@ -13,7 +13,7 @@ class RecipeDetailViewModel : ObservableObject {
     @Published var mealTypes: [String] = []
     @Published var recipes : [RecipeResponseModel] = []
     @Published var selectedMeal: String = "Kahvaltı"
-
+    @Published var backButtonTag: Bool = false
     @Published var selectedBreakfastIngredients: [String] = []
     @Published var selectedLunchIngredients: [String] = []
     @Published var selectedSnackIngredients: [String] = []

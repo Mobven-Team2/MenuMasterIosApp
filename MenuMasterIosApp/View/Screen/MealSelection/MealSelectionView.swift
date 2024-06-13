@@ -50,7 +50,6 @@ struct MealSelectionView: View {
                     CustomButtonView(text: "Öğünleri Oluştur", isButtonTapped: $isButtonTapped) {
                         UserDefaultsHelper.shared.setData(value: selectedPreferences.map { $0.rawValue }, key: .selectedMeals)
                         UserDefaultsHelper.shared.printUserInformation()
-                        //                    tabSelector.selectedTab = 1
                         recipeDetailTag = true
                     }.opacity(selectedPreferences.isEmpty ? 0.5 : 1)
                         .disabled(selectedPreferences.isEmpty ? true : false)
@@ -58,7 +57,6 @@ struct MealSelectionView: View {
                     Spacer()
                 }
             }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
-                MainView()
                 RecipeDetailView(recipes : [],isCreateButtonTapped: true)
             })
             .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
