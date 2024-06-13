@@ -18,7 +18,7 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     ZStack {
-                        Image(getImageName())
+                        Image(viewModel.getImageName())
                             .resizable()
                             .scaledToFit()
                         
@@ -49,10 +49,6 @@ struct HomeView: View {
 }
 
 extension HomeView {
-    private func getImageName() -> String {
-        return viewModel.determineTime()
-    } // TODO: refactor - move it to view model
-    
     private var helloUser : some View {
         HStack {
             Image("user-avatar")
@@ -114,18 +110,16 @@ extension HomeView {
     
     private var suggestion : some View {
         VStack {
-            Text("Menu Master AI Önerileri")
-                .font(.poppins(size: 18))
+            Text("Yemek Tarifleri İçin Püf Noktalar")
+                .font(.poppins(size: 16))
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 36)
-                .padding(.bottom, 18)
+                .padding(.bottom, 2)
             
-            HomeSuggestionView(imageName: "suggestion-photo", title: "Fotoğraftan Yemek Tarifi Al", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+            HomeSuggestionView(imageName: "suggestion-first", text: "Yemeğinizi pişirirken süreyi dikkatlice takip etmeyi unutmayın", backgroundColor: Color.theme.suggestionRedColor)
             
-            HomeSuggestionView(imageName: "suggestion-list", title: "Alışveriş Listesi ve Sepet", text: "Tariflerinizdeki malzemeleri listeler, sizi market alışverişine yönlendirir.")
-            
-            HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Malzemelerinizin analizini yaparak tariflerinizi ve öğünlerinizi oluşturur.")
+            HomeSuggestionView(imageName: "suggestion-second", text: "Yemeğinizi pişirirken süreyi dikkatlice takip etmeyi unutmayın", backgroundColor: Color.theme.suggestionGreenColor)
         }
     }
 }

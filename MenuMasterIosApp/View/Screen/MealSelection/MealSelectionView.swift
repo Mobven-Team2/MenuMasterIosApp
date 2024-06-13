@@ -58,7 +58,7 @@ struct MealSelectionView: View {
                 RecipeDetailView(recipes : [])
             })
             .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
-                HomeView()
+                MainView()
             })
         }.toolbar(.hidden)
     }

@@ -31,4 +31,7 @@ struct ColorTheme {
     let customDarkTextColor = Color("CustomDarkTextColor")
     let profileRowBgColor = Color("ProfileRowBgColor")
     
+    let suggestionRedColor = Color("SuggestionRedColor")
+    let suggestionGreenColor = Color("SuggestionGreenColor")
+    
 }
