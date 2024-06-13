@@ -43,7 +43,7 @@ struct HomeView: View {
 extension HomeView {
     private func getImageName() -> String {
         return viewModel.determineTime()
-    }
+    } // TODO: refactor - move it to view model
     
     private var helloUser : some View {
         HStack {

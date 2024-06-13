@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
     @State private var showPassword: Bool = false
-    @State private var loginTag: Bool = false
     @State private var registerTag: Bool = false
     @State private var backButtonTag: Bool = false
     @State private var isButtonClickable: Bool = false
