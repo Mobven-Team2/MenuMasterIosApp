@@ -27,6 +27,21 @@ struct HomeView: View {
                     
                     VStack{
                         pickMeal
+                        
+                        Button(action: {
+                            tabSelector.selectedTab = 1
+                        }) {
+                            showMeal
+                        }
+                        .font(.poppins(size: 16))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.theme.primaryTextColor)
+                        .frame(width: UIScreen.main.bounds.width - 48, height: 55)
+                        .background(Color.theme.fullWhiteColor)
+                        .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                        .padding(.bottom, 8)
+                        
                         suggestion
                     }
                     .offset(y: -90)
@@ -77,8 +92,9 @@ extension HomeView {
         ZStack {
             Image("top-card")
                 .resizable()
+                .frame(width: UIScreen.main.bounds.width + 40, height: 330)
             
-            VStack(alignment: .leading) {
+            VStack {
                 Text("Öğün Seç & Tarifleri Al")
                     .font(.poppins(size: 16))
                     .fontWeight(.bold)
@@ -87,25 +103,48 @@ extension HomeView {
                     .padding(.leading, 4)
                 Text("Tarif almak istediğin öğünleri seç, yapay zekanın sana özel hazırladığı tariflere göz at")
                     .font(.poppins(size: 14))
-                    .frame(width: 285, height: 63)
+                    .frame(width: 285, height: 63, alignment: .leading)
                     .lineLimit(3)
-                Button(action: {
-                    isButtonTapped = true
-                    mealSelectionTag = true
-                }) {
-                    Text("Öğün Oluştur")
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isButtonTapped = true
+                        mealSelectionTag = true
+                    }) {
+                        Text("Öğün Oluştur")
+                            .frame(width: 120, height: 56, alignment: .leading)
+                            .lineLimit(1)
+                        Image(systemName: "chevron.right")
+                            .offset(x: -16)
+                    }
+                    .font(.poppins(size: 16))
+                    .fontWeight(.medium)
+                    .foregroundColor(Color.theme.primaryOrangeColor)
+                    .frame(width: 150, height: 56, alignment: .trailing)
+                    .background(Color.theme.fullWhiteColor)
+                    .cornerRadius(8)
+                    .padding(.trailing, 50)
+//                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                 }
-                .font(.poppins(size: 16))
-                .fontWeight(.medium)
-                .foregroundColor(.white)
-                .frame(width: UIScreen.main.bounds.width - 96, height: 56)
-                .background(Color.theme.primaryOrangeColor)
-                .cornerRadius(8)
-                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
             }
             .padding(.top, 80)
         }
         .padding(.bottom, -40)
+    }
+    
+    private var showMeal : some View {
+        HStack {
+            Image("spaghetti")
+                .frame(width: 40, height: 40)
+                .padding(.leading, 10)
+            
+            Text("Öğünlerini Gör")
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Image(systemName: "chevron.right")
+                .padding(.leading, 10)
+                .padding(.trailing, 32)
+        }
     }
     
     private var suggestion : some View {

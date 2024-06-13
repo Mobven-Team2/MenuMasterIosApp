@@ -60,6 +60,8 @@ struct ProfileRowView: View {
         .frame(width: 347, height: 130)
         .background(Color.theme.profileRowBgColor)
         .cornerRadius(16)
+        .shadow(color: Color.black.opacity(0.1), radius: 16, x: 0, y: 2)
+
     }
 }
 

@@ -24,10 +24,8 @@ struct ProfileInfoView: View {
         .frame(width: 99, height: 65)
         .background(.white)
         .cornerRadius(16)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(lineWidth: 0.1)
-        )
+        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+
     }
 }
 
