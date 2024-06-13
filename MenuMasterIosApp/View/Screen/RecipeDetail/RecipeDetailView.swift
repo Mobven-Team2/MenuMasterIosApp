@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     @ObservedObject var viewModel : RecipeDetailViewModel
-    @State private var selectedMeal: String = "Kahvaltı"
     @State private var shoppingList: [String] = []
     @State private var selectedSegment: Int = 0
     @State private var isButtonTapped: Bool = false
@@ -31,7 +30,7 @@ struct RecipeDetailView: View {
                     Spacer()
                 }
                 HStack {
-                    Text(selectedMeal)
+                    Text(viewModel.selectedMeal)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 16)
                         .font(.poppins(size: 16))
@@ -40,7 +39,7 @@ struct RecipeDetailView: View {
                     Menu {
                         ForEach(recipes.map { $0.mealTypeName }, id: \.self) { option in
                             Button(action: {
-                                selectedMeal = option
+                                viewModel.selectedMeal = option
                             }) {
                                 Text(option)
                             }
@@ -65,7 +64,7 @@ struct RecipeDetailView: View {
                 Spacer()
                 
                 
-                ForEach(recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
+                ForEach(recipes.filter { $0.mealTypeName == viewModel.selectedMeal }, id: \.id) { recipe in
                     VStack(alignment: .leading){
                         HStack{
                             Text(recipe.name)
@@ -108,7 +107,7 @@ struct RecipeDetailView: View {
                                     
                                     Spacer()
                                     CustomButtonView(text: "Alışveriş Listene Ekle", isButtonTapped: $isButtonTapped) {
-                                        viewModel.saveSelectedIngredients(for: selectedMeal, ingredients: viewModel.selectedIngredients)
+                                        viewModel.saveSelectedIngredients(for: viewModel.selectedMeal, ingredients: viewModel.selectedIngredients)
                                     }
                                     
                                 }.frame(minHeight: UIScreen.main.bounds.height - 400)
