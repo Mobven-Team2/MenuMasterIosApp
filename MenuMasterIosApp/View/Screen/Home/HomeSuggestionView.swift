@@ -25,7 +25,7 @@ struct HomeSuggestionView: View {
                 Text(title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.poppins(size: 14))
-                    .fontWeight(.bold)
+                    .fontWeight(.semibold)
                     .lineLimit(1)
                 Text(text)
                     .frame(maxWidth: .infinity, alignment: .leading)

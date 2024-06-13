@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-//    @EnvironmentObject var tabSelector: TabSelector
+    @EnvironmentObject var tabSelector: TabSelector
     @ObservedObject var viewModel = HomeViewModel()
     @State private var mealSelectionTag: Bool = false
     @State private var isButtonTapped: Bool = false
@@ -42,13 +42,13 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    MainView()
 }
 
 extension HomeView {
     private func getImageName() -> String {
         return viewModel.determineTime()
-    }
+    } // TODO: refactor - move it to view model
     
     private var helloUser : some View {
         HStack {
@@ -70,8 +70,6 @@ extension HomeView {
             
             Image("bell")
                 .frame(width: 42, height: 42)
-                .background(Color.theme.bellColor)
-                .cornerRadius(24)
                 .padding(.trailing, 27)
         }
     }
@@ -79,6 +77,7 @@ extension HomeView {
     private var pickMeal : some View {
         ZStack {
             Image("top-card")
+                .resizable()
             
             VStack(alignment: .leading) {
                 Text("Öğün Seç & Tarifleri Al")
@@ -126,5 +125,4 @@ extension HomeView {
             HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Malzemelerinizin analizini yaparak tariflerinizi ve öğünlerinizi oluşturur.")
         }
     }
-    
 }

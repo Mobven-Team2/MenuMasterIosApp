@@ -38,7 +38,7 @@ struct MealCardView: View {
                 .foregroundColor(Color.theme.primaryGreenColor)
                 .padding(.trailing,20)
         }
-        .frame(width: UIScreen.main.bounds.width - 48, height: 70)
+        .frame(width: UIScreen.main.bounds.width - 48, height: 64)
         .padding(.vertical,16)
         .foregroundColor(Color.theme.customDarkTextColor)
         .background(isSelected ? Color.theme.lightGreenColor : Color.white)

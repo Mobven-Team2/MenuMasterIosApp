@@ -9,10 +9,60 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                Image("profile-avatar")
+                    .padding(.top, 26)
+                
+                Text("Jane Doe")
+                    .foregroundStyle(Color.theme.primaryTextColor)
+                    .font(.poppins(size: 18))
+                    .fontWeight(.bold)
+                    .padding(8)
+                
+                HStack {
+                    ProfileInfoView(data: "160cm", text: "Boy")
+                    Spacer()
+                    ProfileInfoView(data: "65kg", text: "Kilo")
+                    Spacer()
+                    ProfileInfoView(data: "22", text: "Yaş")
+                }
+                .frame(width: UIScreen.main.bounds.width - 48, height: 70)
+                .padding(.bottom, 16)
+                
+                ProfileRowView(firstImageName: "profile-icon-user", secondImageName: "profile-icon-history", firstText: "Kişisel Bilgiler", secondText: "Beslenme Geçmişi")
+                
+                HStack {
+                    Image("profile-icon-popup")
+                        .padding(.leading, 27)
+                        .padding(.trailing, 8)
+                    
+                    Text("Pop-up Bildirimler")
+                        .foregroundStyle(Color.theme.primaryTextColor)
+                        .font(.poppins(size: 16))
+                        .fontWeight(.medium)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .padding(.leading, 10)
+                        .padding(.trailing, 32)
+                }
+                .frame(width: 347, height: 80)
+                .background(Color.theme.profileRowBgColor)
+                .cornerRadius(16)
+                .padding()
+                
+                ProfileRowView(firstImageName: "profile-icon-settings", secondImageName: "profile-icon-logout", firstText: "Ayarlar", secondText: "Çıkış Yap")
+            }
+        }
     }
 }
 
 #Preview {
     ProfileView()
+}
+
+extension ProfileView {
+    
 }
