@@ -9,46 +9,34 @@ import SwiftUI
 
 struct HomeSuggestionView: View {
     var imageName: String
-    var title: String
     var text: String
+    var backgroundColor: Color
     
     var body: some View {
         HStack {
-            Spacer()
-            
             Image(imageName)
-                .frame(width: 80, height: 80)
-                .padding(.leading, 20)
-                .padding(.trailing, 10)
-                        
-            VStack {
-                Text(title)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.poppins(size: 14))
-                    .fontWeight(.semibold)
-                    .lineLimit(1)
-                Text(text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.poppins(size: 14))
-                    .fontWeight(.regular)
-                    .lineLimit(3)
-            }
+                .frame(width: 100, height: 100, alignment: .leading)
             
-            Image(systemName: "chevron.right")
-                .padding(.leading, 10)
-                .padding(.trailing, 32)
-            
-            Spacer()
+            Text(text)
+                .frame(width: 240, alignment: .leading)
+                .font(.poppins(size: 14))
+                .fontWeight(.regular)
+                .padding(.leading, -32)
+                .padding(.trailing, 28)
+                .lineLimit(3)
         }
+        .frame(width: UIScreen.main.bounds.width - 48, height: 80)
+        .background(backgroundColor)
+        .cornerRadius(16)
+        .padding(.bottom, 8)
     }
 }
 
 #Preview {
     VStack {
-        HomeSuggestionView(imageName: "suggestion-photo", title: "Fotoğraftan Yemek Tarifi Al", text: "Yemek fotoğraflarını analiz ederek, benzer tarifler sunar.")
+        HomeSuggestionView(imageName: "suggestion-first", text: "Yemeğinizi pişirirken süreyi dikkatlice takip etmeyi unutmayın", backgroundColor: Color.theme.suggestionRedColor)
         
-        HomeSuggestionView(imageName: "suggestion-list", title: "Alışveriş Listesi ve Sepet", text: "Tariflerinizdeki malzemeleri listeler, sizi market alışverişine yönlendirir.")
+        HomeSuggestionView(imageName: "suggestion-second", text: "Yemeğinizi pişirirken süreyi dikkatlice takip etmeyi unutmayın", backgroundColor: Color.theme.suggestionGreenColor)
         
-        HomeSuggestionView(imageName: "suggestion-fridge", title: "Buzdolabından Alternatifler", text: "Malzemelerinizin analizini yaparak tariflerinizi ve öğünlerinizi oluşturur.")
     }
 }
