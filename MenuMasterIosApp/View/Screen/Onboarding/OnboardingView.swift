@@ -81,6 +81,9 @@ struct OnboardingView: View {
                 }
         })
         }
+        .ignoresSafeArea()
+            .edgesIgnoringSafeArea(.all)
+            .safeAreaPadding(0)
     }
 }
 

@@ -157,10 +157,15 @@ struct RecipeDetailView: View {
                 MainView()
             })
             .toolbar(.hidden)
+            .onReceive(viewModel.$recipes) { updatedRecipes in
+                self.recipes = updatedRecipes
+            }
             .onAppear {
-                
+                if recipes.isEmpty {
+                    viewModel.updateRecipes()
+                    viewModel.loadSavedRecipes()
+                }
                 recipes = viewModel.recipes
-                
             }
         }
     }

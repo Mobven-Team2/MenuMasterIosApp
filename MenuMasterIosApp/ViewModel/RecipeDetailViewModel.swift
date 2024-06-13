@@ -25,9 +25,14 @@ class RecipeDetailViewModel : ObservableObject {
         self.isCreateButtonTapped = isCreateButtonTapped
         self.loadSavedRecipes()
         if isCreateButtonTapped {
-            self.getRecipes()
-            self.saveRecipes()
+            recipes.removeAll()
         }
+    }
+    
+    func updateRecipes(){
+        self.getRecipes()
+        self.saveRecipes()
+        self.loadSavedRecipes()
     }
     
     private var isRecipesCreated: Bool {
@@ -74,7 +79,6 @@ class RecipeDetailViewModel : ObservableObject {
         if let savedRecipes = UserDefaults.standard.data(forKey: "savedRecipes"),
            let decodedRecipes = try? JSONDecoder().decode([RecipeResponseModel].self, from: savedRecipes) {
             self.recipes = decodedRecipes
-            print("yukle recipes :",recipes)
         }
     }
     
