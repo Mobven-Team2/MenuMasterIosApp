@@ -14,8 +14,8 @@ struct OnboardingData: Hashable, Identifiable {
     let secondaryText: String
 
     static let list: [OnboardingData] = [
-        OnboardingData(id: 0, objectImage: "onboarding1", primaryText: "All your favorites", secondaryText: "Get all your loved foods in one once you just place the orer we do the rest"),
-        OnboardingData(id: 1, objectImage: "onboarding2", primaryText: "Predict weather", secondaryText: "Predict weather trends and conditions with current solar activity."),
-        OnboardingData(id: 2, objectImage: "onboarding3", primaryText: "Get air quality information", secondaryText: "Immediate, accurate air quality data to help you create healthier.")
+        OnboardingData(id: 0, objectImage: "onboarding1", primaryText: "Sana Özel Tarifler", secondaryText: "Beğenilerini ve beslenme tercihlerini gir, sana uygun tarifler keşfet"),
+        OnboardingData(id: 1, objectImage: "onboarding2", primaryText: "Fotoğrafla Tarif Bul", secondaryText: "Yemeğin fotoğrafını çek, anında kişiselleştirilmiş tarif önerileri al."),
+        OnboardingData(id: 2, objectImage: "onboarding3", primaryText: "Kolayca Öğün Planla", secondaryText: "Öğünlerini planla, her öğün için kişiselleştirilmiş tarifler al.")
     ]
 }

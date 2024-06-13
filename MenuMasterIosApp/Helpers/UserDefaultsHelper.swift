@@ -25,6 +25,7 @@ enum UserDefaultKeys: String, CaseIterable {
     case selectedLunchIngredients
     case selectedSnackIngredients
     case selectedDinnerIngredients
+    case lastGenerateDay
 }
 
 final class UserDefaultsHelper {
