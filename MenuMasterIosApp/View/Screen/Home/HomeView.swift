@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 //    @EnvironmentObject var tabSelector: TabSelector
     @ObservedObject var viewModel = HomeViewModel()
+    @State private var mealSelectionTag: Bool = false
     @State private var isButtonTapped: Bool = false
     
     var body: some View {
@@ -33,6 +34,9 @@ struct HomeView: View {
             }
         }
         .edgesIgnoringSafeArea(.top)
+        .navigationDestinationWrapper(isPresented: $mealSelectionTag, destination: {
+            MealSelectionView()
+        })
 //        .environmentObject(tabSelector)
     }
 }
@@ -89,6 +93,7 @@ extension HomeView {
                     .lineLimit(3)
                 Button(action: {
                     isButtonTapped = true
+                    mealSelectionTag = true
                 }) {
                     Text("Öğün Oluştur")
                 }

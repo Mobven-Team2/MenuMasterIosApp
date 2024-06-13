@@ -54,7 +54,7 @@ struct RecipeDetailView: View {
             Spacer()
             
             
-            ForEach(viewModel.recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
+            ForEach(recipes.filter { $0.mealTypeName == selectedMeal }, id: \.id) { recipe in
                 VStack(alignment: .leading){
                     HStack{
                         Text(recipe.name)
