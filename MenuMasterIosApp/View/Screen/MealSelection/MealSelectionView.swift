@@ -16,12 +16,26 @@ struct MealSelectionView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                Text("Öğün Oluştur")
-                    .font(.poppins(size: 18))
+            
+            VStack(spacing: 12) {
+                HStack() {
+                    backButton
+                    
+                    Spacer()
+                    
+                    Text("Öğün Oluştur")
+                        .font(.poppins(size: 18))
+                        .fontWeight(.medium)
+                    .padding(.trailing, 40)
+                    
+                    Spacer()
+                    
+                }.padding(.bottom,-12)
+                
                 Spacer()
                 
                 WeeklyCalendarView()
+                    .padding(.bottom,15)
             
                 
                 ForEach(MealType.allCases, id: \.self) { mealType in
@@ -43,12 +57,15 @@ struct MealSelectionView: View {
             }.navigationDestinationWrapper(isPresented: $recipeDetailTag, destination: {
                 RecipeDetailView(recipes : [])
             })
-        }
+            .navigationDestinationWrapper(isPresented: $backButtonTag, destination: {
+                HomeView()
+            })
+        }.toolbar(.hidden)
     }
 }
 
 #Preview {
-    MainView()
+    MealSelectionView()
 }
 
 extension MealSelectionView {
@@ -57,6 +74,22 @@ extension MealSelectionView {
             selectedPreferences.remove(mealType)
         } else {
             selectedPreferences.insert(mealType)
+        }
+    }
+    
+    private var backButton : some View {
+        Button(action: {
+            backButtonTag = true
+        }) {
+            HStack() {
+                Image("back-button-icon")
+                    .resizable()
+                    .foregroundColor(Color.theme.primaryTextColor)
+                    .frame(width: 20,height: 32)
+                    .padding(.leading, 20)
+                
+            }
+            
         }
     }
 }

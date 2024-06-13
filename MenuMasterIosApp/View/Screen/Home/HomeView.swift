@@ -14,30 +14,33 @@ struct HomeView: View {
     @State private var isButtonTapped: Bool = false
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ZStack {
-                    Image(getImageName())
-                        .resizable()
-                        .scaledToFit()
+        NavigationViewStack {
+            ScrollView {
+                VStack {
+                    ZStack {
+                        Image(getImageName())
+                            .resizable()
+                            .scaledToFit()
+                        
+                        helloUser
+                    }
                     
-                    helloUser
+                    VStack{
+                        pickMeal
+                        suggestion
+                    }
+                    .offset(y: -90)
+                    
+                    Spacer()
                 }
-                
-                VStack{
-                    pickMeal
-                    suggestion
-                }
-                .offset(y: -90)
-                
-                Spacer()
             }
-        }
-        .edgesIgnoringSafeArea(.top)
-        .navigationDestinationWrapper(isPresented: $mealSelectionTag, destination: {
-            MealSelectionView()
+            .edgesIgnoringSafeArea(.top)
+            .navigationDestinationWrapper(isPresented: $mealSelectionTag, destination: {
+                MealSelectionView()
+                    
         })
-//        .environmentObject(tabSelector)
+        }
+
     }
 }
 
