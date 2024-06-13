@@ -142,11 +142,11 @@ enum ValidationError {
         case .empty:
             return "Bu alan boş bırakılamaz."
         case .age:
-            return "Eksik veya hatalı yazım."
+            return "Lütfen geçerli bir değer girin."
         case .height:
-            return "Eksik veya hatalı yazım."
+            return "Lütfen geçerli bir değer girin."
         case .weight:
-            return "Eksik veya hatalı yazım."
+            return "Lütfen geçerli bir değer girin."
         }
     }
 }
