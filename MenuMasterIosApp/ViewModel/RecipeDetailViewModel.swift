@@ -25,9 +25,14 @@ class RecipeDetailViewModel : ObservableObject {
         self.isCreateButtonTapped = isCreateButtonTapped
         self.loadSavedRecipes()
         if isCreateButtonTapped {
-            self.getRecipes()
-            self.saveRecipes()
+            recipes.removeAll()
         }
+    }
+    
+    func updateRecipes(){
+        self.getRecipes()
+        self.saveRecipes()
+        self.loadSavedRecipes()
     }
     
     private var isRecipesCreated: Bool {
@@ -74,7 +79,6 @@ class RecipeDetailViewModel : ObservableObject {
         if let savedRecipes = UserDefaults.standard.data(forKey: "savedRecipes"),
            let decodedRecipes = try? JSONDecoder().decode([RecipeResponseModel].self, from: savedRecipes) {
             self.recipes = decodedRecipes
-            print("yukle recipes :",recipes)
         }
     }
     
@@ -89,7 +93,7 @@ class RecipeDetailViewModel : ObservableObject {
             return selectedBreakfastIngredients
         case "Öğle Yemeği":
             return selectedLunchIngredients
-        case "Ara Öğün":
+        case "Atıştırmalık":
             return selectedSnackIngredients
         case "Akşam Yemeği":
             return selectedDinnerIngredients
@@ -112,7 +116,7 @@ class RecipeDetailViewModel : ObservableObject {
             } else {
                 selectedLunchIngredients.append(item)
             }
-        case "Ara Öğün":
+        case "Atıştırmalık":
             if selectedSnackIngredients.contains(item) {
                 selectedSnackIngredients.removeAll { $0 == item }
             } else {
@@ -129,19 +133,40 @@ class RecipeDetailViewModel : ObservableObject {
         }
     }
     
-    func saveSelectedIngredients(for mealType: String, ingredients: [String]) {
+    private func loadIngredients(for mealType: String) -> [String] {
+        switch mealType {
+        case "Kahvaltı":
+            return UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedBreakfastIngredients) ?? []
+        case "Öğle Yemeği":
+            return UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedLunchIngredients) ?? []
+        case "Atıştırmalık":
+            return UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedSnackIngredients) ?? []
+        case "Akşam Yemeği":
+            return UserDefaultsHelper.shared.getData(type: [String].self, forKey: .selectedDinnerIngredients) ?? []
+        default:
+            return []
+        }
+    }
+
+    private func saveIngredients(_ ingredients: [String], for mealType: String) {
         switch mealType {
         case "Kahvaltı":
             UserDefaultsHelper.shared.setData(value: ingredients, key: .selectedBreakfastIngredients)
         case "Öğle Yemeği":
             UserDefaultsHelper.shared.setData(value: ingredients, key: .selectedLunchIngredients)
-        case "Ara Öğün":
+        case "Atıştırmalık":
             UserDefaultsHelper.shared.setData(value: ingredients, key: .selectedSnackIngredients)
         case "Akşam Yemeği":
             UserDefaultsHelper.shared.setData(value: ingredients, key: .selectedDinnerIngredients)
         default:
             break
         }
+    }
+
+    func saveSelectedIngredients(for mealType: String, ingredients: [String]) {
+        var currentIngredients = loadIngredients(for: mealType)
+        let updatedIngredients = Array(Set(currentIngredients + ingredients))
+        saveIngredients(updatedIngredients, for: mealType)
     }
     
     func regenerateRecipes() {

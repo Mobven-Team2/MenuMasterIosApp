@@ -17,25 +17,36 @@ public struct NavigationViewStack<V>: View where V: View {
     }
 
     public var body: some View {
-        if #available(iOS 16, *) {
-            NavigationStack { content() }.navigationBarBackButtonHidden(true)
-        } else {
-            NavigationView { content() }.navigationBarBackButtonHidden(true)
+            if #available(iOS 16, *) {
+                NavigationStack {
+                    content()
+                        .edgesIgnoringSafeArea(.top)
+                }
+                .navigationBarBackButtonHidden(true)
+            } else {
+                NavigationView {
+                    content()
+                        .edgesIgnoringSafeArea(.top)
+                }
+                .navigationBarBackButtonHidden(true)
+            }
         }
-    }
 }
 
 public extension View {
     @ViewBuilder
     func navigationDestinationWrapper<V>(isPresented: Binding<Bool>, @ViewBuilder destination: () -> V) -> some View where V: View {
         if #available(iOS 16, *) {
-            self.navigationDestination(isPresented: isPresented, destination: destination)
+            self
+                .navigationDestination(isPresented: isPresented, destination: destination)
+                .edgesIgnoringSafeArea(.top)
         } else {
             ZStack {
                 NavigationLink(isActive: isPresented, destination: destination, label: {
                     EmptyView()
                 })
                 self
+                    .edgesIgnoringSafeArea(.top)
             }
         }
     }
@@ -43,7 +54,9 @@ public extension View {
     @ViewBuilder
     func navigationDestinationWrapper<D, C>(item: Binding<D?>, @ViewBuilder destination: @escaping (D) -> C) -> some View where D: Hashable, C: View {
         if #available(iOS 17, *) {
-            self.navigationDestination(item: item, destination: destination)
+            self
+                .navigationDestination(item: item, destination: destination)
+                .edgesIgnoringSafeArea(.top)
         } else {
             ZStack {
                 NavigationLink(
@@ -51,12 +64,12 @@ public extension View {
                     isActive: Binding<Bool>(
                         get: { item.wrappedValue != nil },
                         set: { _ in
-                            item.wrappedValue = nil
-                        }
+                            item.wrappedValue = nil }
                     ),
                     label: { EmptyView() }
                 )
                 self
+                    .edgesIgnoringSafeArea(.top)
             }
         }
     }
