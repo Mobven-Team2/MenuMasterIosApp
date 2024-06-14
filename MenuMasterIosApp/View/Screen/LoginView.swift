@@ -25,14 +25,32 @@ struct LoginView: View {
                     VStack(alignment: .leading) {
                         
                         TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button("Done") {
+                                        hideKeyboard()
+                                    }
+                                }
+                            }
                             .onChange(of: viewModel.email) {
                                 isButtonClickable = viewModel.validateFields()
+                            }
+                            .onTapGesture {
+                                hideKeyboard()
                             }
                         
                         ZStack(alignment:.trailing) {
                             TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
+                                .keyboardType(.numberPad)
                                 .onChange(of: viewModel.password) {
                                     isButtonClickable = viewModel.validateFields()
+                                }
+                                .onTapGesture {
+                                    hideKeyboard()
                                 }
                             
                             Button(action: {

@@ -57,6 +57,18 @@ struct UserInformationView: View {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorAge = viewModel.validateAge()
                             }
+                            .keyboardType(.numberPad)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button("Done") {
+                                        hideKeyboard()
+                                    }
+                                }
+                            }
+                            .onTapGesture {
+                                hideKeyboard()
+                            }
                         
                         CustomPickerView(title: "Cinsiyet", selection: $viewModel.gender, options: Gender.allCases, placeholder: "")
                             .onChange(of: viewModel.gender) {
@@ -69,11 +81,19 @@ struct UserInformationView: View {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorHeight = viewModel.validateHeight()
                             }
+                            .keyboardType(.numberPad)
+                            .onTapGesture {
+                                hideKeyboard()
+                            }
                         
                         TextfieldView(title: "Kilo", placeholder: "KG", isPasswordField: false, errorMessage: errorWeight, text: $viewModel.weight)
                             .onChange(of: viewModel.weight) {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorWeight = viewModel.validateWeight()
+                            }
+                            .keyboardType(.numberPad)
+                            .onTapGesture {
+                                hideKeyboard()
                             }
                         
                         CustomPickerView(title: "Aktivite Durumu", selection: $viewModel.activityStatus, options: ActivityStatus.allCases, placeholder: "")
