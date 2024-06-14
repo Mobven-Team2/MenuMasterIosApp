@@ -43,7 +43,9 @@ extension View {
                 RoundedRectangle(cornerRadius: 16.0)
                     .stroke(Color.theme.primaryOrangeColor, lineWidth: 1)
             )
-            
+        
     }
-    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

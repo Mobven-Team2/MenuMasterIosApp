@@ -35,11 +35,31 @@ struct RegisterView: View {
                             viewModel.isAuthenticated = viewModel.validateFields()
                             errorFullName = viewModel.validateFullName()
                         }
+                        .keyboardType(.namePhonePad)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    hideKeyboard()
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                     
                     TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, errorMessage: errorEmail, text: $viewModel.email)
                         .onChange(of: viewModel.email) {
                             viewModel.isAuthenticated = viewModel.validateFields()
                             errorEmail = viewModel.validateEmail()
+                        }
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .onTapGesture {
+                            hideKeyboard()
                         }
                     
                     ZStack(alignment:.trailing) {
@@ -48,6 +68,10 @@ struct RegisterView: View {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorPassword = viewModel.validatePassword()
                                 errorConfirmPassword = viewModel.validateConfirmPassword()
+                            }
+                            .keyboardType(.numberPad)
+                            .onTapGesture {
+                                hideKeyboard()
                             }
                         
                         Button(action: {
@@ -69,6 +93,10 @@ struct RegisterView: View {
                                 viewModel.isAuthenticated = viewModel.validateFields()
                                 errorConfirmPassword = viewModel.validateConfirmPassword()
                             }
+                            .keyboardType(.numberPad)
+                            .onTapGesture {
+                                hideKeyboard()
+                            }
                         
                         Button(action: {
                             showPassword.toggle()
@@ -77,7 +105,7 @@ struct RegisterView: View {
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(Color.theme.primaryTextColor)
-                                .padding(.top, 25)
+                                .padding(.top, 15)
                                 .padding(.trailing, 20)
                         }
                     }
