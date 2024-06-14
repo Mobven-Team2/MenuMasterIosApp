@@ -42,7 +42,7 @@ class Validator {
     }
     
     func validateFullName(_ fullName: String) -> String {
-        if (fullName.count > 3 && fullName.count < 26) || fullName.isEmpty {
+        if (fullName.count > 4 && fullName.count < 26) || fullName.isEmpty {
             validator = .noError
         } else {
             validator = .fullName
@@ -107,7 +107,7 @@ class Validator {
     func validateWeight(_ weight: String) -> String {
         let weightRegex = "[0-9]{2,3}"
         let weightPredicate = NSPredicate(format:"SELF MATCHES %@", weightRegex)
-        if weightPredicate.evaluate(with: weight) {
+        if weightPredicate.evaluate(with: weight) && Int(weight)! > 29 && Int(weight)! < 201 {
             validator = .noError
         } else {
             validator = .weight
@@ -142,11 +142,11 @@ enum ValidationError {
         case .empty:
             return "Bu alan boş bırakılamaz."
         case .age:
-            return "Eksik veya hatalı yazım."
+            return "Lütfen geçerli bir değer girin."
         case .height:
-            return "Eksik veya hatalı yazım."
+            return "Lütfen geçerli bir değer girin."
         case .weight:
-            return "Eksik veya hatalı yazım."
+            return "Lütfen geçerli bir değer girin."
         }
     }
 }

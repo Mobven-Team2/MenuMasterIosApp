@@ -18,14 +18,14 @@ struct WelcomeView: View {
                 VStack {
                     
                     Text("Hoşgeldin")
-                        .foregroundColor(Color.theme.primaryTextColor)
+                        .foregroundColor(Color.theme.customDarkTextColor)
                         .font(.chillaxVariable(size: 32))
                         .fontWeight(.semibold)
                     
                     Text("Tercihlerine göre beslenmenin tadını çıkar!")
-                        .foregroundColor(Color.theme.primaryTextColor)
-                        .font(.dmSans(size: 18))
-                        .frame(width: 292,height: 50)
+                        .foregroundColor(Color.theme.customDarkTextColor)
+                        .font(.poppins(size: 18))
+                        .frame(width: 292,height: 70)
                         .lineLimit(5)
                         .multilineTextAlignment(.center)
                         .fontWeight(.regular)

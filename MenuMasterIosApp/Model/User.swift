@@ -42,11 +42,11 @@ enum Gender: String, Codable, CaseIterable , CustomStringConvertible, Identifiab
 
 enum ActivityStatus: String, Codable, CaseIterable , CustomStringConvertible , Identifiable{
     
-    case sedentary
-    case lightlyActive
-    case moderatelyActive
-    case veryActive
-    case extraActive
+    case sedentary = "Hareketsiz"
+    case lightlyActive = "HafifAktif"
+    case moderatelyActive = "OrtaDereceAktif"
+    case veryActive = "ÇokAktif"
+    case extraActive = "AşırıAktif"
     
     var description: String {
         switch self {
@@ -66,12 +66,12 @@ enum ActivityStatus: String, Codable, CaseIterable , CustomStringConvertible , I
     var id: String { self.rawValue }
 }
 
-enum DietType: String, Codable, CaseIterable {
+enum DietType: String, Codable, CaseIterable , Identifiable{
     case vegan = "Vegan"
-    case vegetarian = "Vejeteryan"
-    case ketogenic = "Ketojenik"
+    case vegetarian = "Vegetarian"
+    case ketogenic = "Ketogenic"
     case paleo = "Paleo"
-    case noPreference = "Beslenme Tercihim Yok"
+    case noPreference = "NotSpecified"
     
     var iconName: String {
         switch self {
@@ -102,6 +102,23 @@ enum DietType: String, Codable, CaseIterable {
             return ""
         }
     }
+    
+    var title: String {
+        switch self {
+        case .vegan:
+            return "Vegan"
+        case .vegetarian:
+            return "Vejeteryan"
+        case .ketogenic:
+            return "Ketojenik"
+        case .paleo:
+            return "Paleo"
+        case .noPreference:
+            return "Beslenme Tercihim Yok"
+        }
+    }
+    
+    var id: String { self.rawValue }
 }
 
 

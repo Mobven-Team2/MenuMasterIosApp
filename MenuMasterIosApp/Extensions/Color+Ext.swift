@@ -24,10 +24,15 @@ struct ColorTheme {
     let lightGreenColor = Color("LightGreenColor")
     
     let borderColor = Color("BorderColor")
+    let fullWhiteColor = Color("FullWhiteColor")
     
     let mediumGrayTextColor = Color("MediumGrayTextColor")
     let lightBrownColor = Color("LightBrownColor")
     
     let customDarkTextColor = Color("CustomDarkTextColor")
+    let profileRowBgColor = Color("ProfileRowBgColor")
+    
+    let suggestionRedColor = Color("SuggestionRedColor")
+    let suggestionGreenColor = Color("SuggestionGreenColor")
     
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
     @State private var showPassword: Bool = false
-    @State private var loginTag: Bool = false
     @State private var registerTag: Bool = false
     @State private var backButtonTag: Bool = false
     @State private var isButtonClickable: Bool = false
@@ -26,14 +25,32 @@ struct LoginView: View {
                     VStack(alignment: .leading) {
                         
                         TextfieldView(title: "E-posta", placeholder: "", isPasswordField: false, text: $viewModel.email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button("Done") {
+                                        hideKeyboard()
+                                    }
+                                }
+                            }
                             .onChange(of: viewModel.email) {
                                 isButtonClickable = viewModel.validateFields()
+                            }
+                            .onTapGesture {
+                                hideKeyboard()
                             }
                         
                         ZStack(alignment:.trailing) {
                             TextfieldView(title: "Şifre", placeholder: "", isPasswordField: !showPassword, text: $viewModel.password)
+                                .keyboardType(.numberPad)
                                 .onChange(of: viewModel.password) {
                                     isButtonClickable = viewModel.validateFields()
+                                }
+                                .onTapGesture {
+                                    hideKeyboard()
                                 }
                             
                             Button(action: {
@@ -63,9 +80,9 @@ struct LoginView: View {
                     
                 }
             }
-            .navigationDestinationWrapper(isPresented: $loginTag, destination: {
-                HomeView()
-            })
+            .navigationDestinationWrapper(isPresented: $viewModel.isAuthenticated, destination: {
+                MainView()
+            }).navigationBarBackButtonHidden(true)
             .navigationDestinationWrapper(isPresented: $registerTag, destination: {
                 UserInformationView()
             })
@@ -101,7 +118,7 @@ extension LoginView {
                 Text("Şifreni mi Unuttun?")
                     .foregroundColor(Color.theme.primaryTextColor)
                     .underline()
-                    .font(.dmSans(size: 12))
+                    .font(.poppins(size: 12))
             }
         }
         .padding(.trailing, 35)
@@ -110,10 +127,7 @@ extension LoginView {
     
     private var loginButton : some View {
         Button(action: {
-//            loginTag = viewModel.login()
-            // TODO: backend gelince false iken hata mesajı yazdır
-            viewModel.isAuthenticated = true
-            loginTag = true
+            viewModel.login()
         }) {
             Text("Giriş Yap")
         }
@@ -132,20 +146,11 @@ extension LoginView {
                     .underline()
                     .fontWeight(.bold)
             }
-        }.font(.dmSans(size: 16))
+        }.font(.poppins(size: 16))
             .padding(.bottom,20)
             .foregroundColor(Color.theme.primaryTextColor)
         
     }
-    
-//    private var google : some View {
-//        Image("Google")
-//            .resizable()
-//            .scaledToFit()
-//            .frame(width: 327, height: 56)
-//            .padding(.bottom, 20)
-//            .padding(.top, 50)
-//    }
     
     private var backButton : some View {
         Button(action: {
@@ -157,6 +162,7 @@ extension LoginView {
                     .foregroundColor(Color.theme.primaryTextColor)
                     .frame(width: 20,height: 32)
                     .padding(.leading, 20)
+                    .padding(.top,40)
                 
                 Spacer()
             }
